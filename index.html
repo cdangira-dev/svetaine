@@ -1,0 +1,602 @@
+<!doctype html>
+<html lang="lt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aliejai kasdien | Lašas jūroje</title>
+<meta name="description" content="Kaip kasdien naudoti eterinius aliejus ir kaip juos užsisakyti pačiam, kai baigiasi.">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" href="vaizdai/Logo_lasas_juroje_sviesus_tamsesnis.png">
+<style>
+/*
+  Dizaino skaitymas (taste-skill): asmeninis puslapis draugėms ir naujiems žmonėms,
+  kryptis „jūra ir prabanga“ (Dangiros pasirinkimas 2026-09-24).
+  Rodikliai: įvairovė 7, judesys 5, tankis 3.
+  Spalvos ir šriftai iš context/stilius.md, Georgia antraštėms yra prekės ženklo
+  sprendimas. Vienintelis akcentas: mėlyna. Kampai visur statūs.
+*/
+:root {
+  --virsus:   #20406f;   /* stiliaus #24406f, kaip jį video rodo Chrome; kitaip aplink ženklą matosi ovalas */
+  --gilus:    #152b4d;   /* tamsesnis to paties atspalvio dugnas juostoms */
+  --tamsi:    #24406f;
+  --melyna:   #3c67b1;
+  --sviesi:   #a9bcdd;
+  --pilkas:   #5a6170;
+  --fonas:    #f7f8fb;
+  --pavirsius:#ffffff;
+  --langelis: #eef1f8;
+  --tekstas:  #23262b;
+  --linija:   #d5deee;
+  --seselis:  rgba(32, 64, 111, .14);
+  --antr: Georgia, Cambria, serif;
+  --teks: "Segoe UI", Calibri, system-ui, sans-serif;
+  --lygiai: cubic-bezier(0.16, 1, 0.3, 1);
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --tamsi:    #c9d6ee;
+    --melyna:   #8fb0e6;
+    --pilkas:   #a7afbf;
+    --fonas:    #0f1829;
+    --pavirsius:#152036;
+    --langelis: #1a2740;
+    --tekstas:  #e6e9f0;
+    --linija:   #2c3d5f;
+    --seselis:  rgba(0, 0, 0, .35);
+  }
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0; font-family: var(--teks); font-size: 17px; line-height: 1.7;
+  color: var(--tekstas); background: var(--fonas);
+  -webkit-font-smoothing: antialiased;
+}
+h1, h2, h3 { font-family: var(--antr); font-weight: normal; color: var(--tamsi); margin: 0; }
+a { color: var(--melyna); }
+img, video { display: block; max-width: 100%; }
+p { margin: 0 0 16px; max-width: 60ch; }
+
+.plotis { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+section { padding: 120px 0; }
+@media (max-width: 767px) { section { padding: 72px 0; } .plotis { padding: 0 20px; } }
+h2 { font-size: clamp(32px, 4.6vw, 54px); line-height: 1.08; letter-spacing: -0.01em; margin-bottom: 22px; max-width: 18ch; }
+.ivadas { font-size: 19px; color: var(--pilkas); max-width: 52ch; }
+
+/* ---------- juodraščio juosta (dingsta, kai įdedama nuoroda) ---------- */
+.juodrastis { display: none; background: #eef1f8; color: #24406f; font-size: 14px; text-align: center; padding: 8px 16px; }
+.be-nuorodos .juodrastis { display: block; }
+
+/* ---------- mygtukai ---------- */
+.mygtukas {
+  display: inline-block; text-decoration: none; white-space: nowrap;
+  font-size: 16px; letter-spacing: .02em; padding: 16px 30px;
+  border: 1px solid rgba(255,255,255,.7); color: #fff;
+  transition: transform .4s var(--lygiai), background-color .4s var(--lygiai), border-color .4s var(--lygiai);
+}
+.mygtukas:hover { background: rgba(255,255,255,.1); border-color: #fff; }
+.mygtukas.pilnas { background: #fff; color: #20406f; border-color: #fff; }
+.mygtukas.pilnas:hover { background: #e6ecf7; }
+.mygtukas:active { transform: translateY(1px) scale(.98); }
+.mygtukas:focus-visible { outline: 2px solid var(--sviesi); outline-offset: 3px; }
+
+/* ---------- 1. pirmas ekranas ---------- */
+.virsus {
+  position: relative; overflow: hidden; color: #fff;
+  background:
+    radial-gradient(60% 70% at 78% 50%, #2a4f86 0%, transparent 70%),
+    var(--virsus);
+  min-height: 100dvh; display: flex; flex-direction: column;
+}
+.virsus > .plotis { width: 100%; }
+.meniu { display: flex; align-items: center; justify-content: space-between; padding: 28px 0; }
+.meniu .zenklas { display: flex; align-items: center; gap: 12px; color: #fff; text-decoration: none; font-family: var(--antr); font-size: 19px; }
+.meniu .zenklas img { width: 34px; }
+.meniu nav { display: flex; gap: 32px; }
+.meniu nav a { color: #dbe4f3; text-decoration: none; font-size: 15px; letter-spacing: .02em; }
+.meniu nav a:hover { color: #fff; }
+@media (max-width: 899px) { .meniu nav { display: none; } }
+
+.virsus .turinys {
+  flex: 1; display: grid; gap: 40px; align-items: center;
+  grid-template-columns: 1fr; padding-bottom: 64px;
+}
+@media (min-width: 900px) { .virsus .turinys { grid-template-columns: 1.2fr 0.8fr; gap: 56px; padding-bottom: 48px; } }
+.uzrasas { font-size: 13px; letter-spacing: 4px; text-transform: uppercase; color: var(--sviesi); margin-bottom: 24px; }
+.virsus h1 { color: #fff; font-size: clamp(46px, 6.6vw, 88px); line-height: 1.02; letter-spacing: -0.015em; margin-bottom: 28px; max-width: 12ch; }
+.virsus .paantraste { font-size: 20px; color: #c9d6ee; max-width: 32ch; margin-bottom: 40px; }
+.mygtukai { display: flex; flex-wrap: wrap; gap: 14px; }
+
+.video-remas {
+  position: relative; width: 100%; aspect-ratio: 4 / 5;
+  background: var(--virsus) url("vaizdai/zenklas-3d-pabaiga.jpg") center / cover no-repeat;
+  -webkit-mask-image: radial-gradient(ellipse 50% 50% at 50% 50%, #000 62%, transparent 100%);
+          mask-image: radial-gradient(ellipse 50% 50% at 50% 50%, #000 62%, transparent 100%);
+}
+@media (min-width: 900px) { .video-remas { aspect-ratio: 9 / 16; max-height: 80dvh; justify-self: center; } }
+.video-remas video { width: 100%; height: 100%; object-fit: cover; }
+
+/* ---------- 2. jūros juosta per visą plotį ---------- */
+.jura { position: relative; overflow: hidden; color: #fff; padding: 0; background: var(--gilus); }
+.jura .fonas-foto { position: absolute; inset: -12% 0; background: url("vaizdai/jura-banga-svetainei.jpg") center 62% / cover no-repeat; }
+.jura::after {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(90deg, rgba(21,43,77,.94) 0%, rgba(21,43,77,.78) 42%, rgba(21,43,77,.15) 100%);
+}
+@media (max-width: 767px) {
+  .jura::after { background: linear-gradient(180deg, rgba(21,43,77,.1) 0%, rgba(21,43,77,.35) 30%, rgba(21,43,77,.92) 62%); }
+}
+.jura .plotis { position: relative; z-index: 1; min-height: 78vh; display: flex; flex-direction: column; justify-content: center; padding-top: 120px; padding-bottom: 120px; }
+.jura .citata { font-family: var(--antr); font-size: clamp(30px, 4.2vw, 52px); line-height: 1.18; max-width: 18ch; margin-bottom: 28px; color: #fff; }
+.jura p:not(.citata) { color: #d4def0; font-size: 18px; max-width: 46ch; }
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .jura .fonas-foto { animation: slinktis linear both; animation-timeline: view(); }
+    @keyframes slinktis { from { transform: translateY(-6%); } to { transform: translateY(6%); } }
+  }
+}
+
+/* ---------- 3. aliejai: buteliukai kaip vitrinoje ---------- */
+.aliejai { background: var(--pavirsius); padding-bottom: 0; }
+.aliejai > .plotis:last-child { padding-top: 0; padding-bottom: 120px; }
+.scenos { margin-top: 64px; display: grid; gap: 0; }
+.scena { position: relative; overflow: hidden; min-height: 86vh; display: flex; align-items: center; }
+.scenos-foto { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.scenos-foto.tuscia { background: radial-gradient(70% 80% at 70% 40%, #2a4f86 0%, transparent 70%), var(--gilus); }
+.scena .plotis { position: relative; width: 100%; display: flex; }
+.scena.desineje .plotis { justify-content: flex-end; }
+@media (min-width: 768px) {
+  .scena.virsuje { align-items: flex-start; padding-top: 56px; }
+  .scena.apacioje { align-items: flex-end; padding-bottom: 56px; }
+}
+.kortele {
+  width: min(460px, 100%); padding: 36px 36px 32px; display: grid; gap: 20px; grid-template-columns: 96px 1fr; align-items: start;
+  background: rgba(255,255,255,.9); color: #23262b;
+  -webkit-backdrop-filter: blur(10px) saturate(140%); backdrop-filter: blur(10px) saturate(140%);
+  box-shadow: 0 30px 60px -30px rgba(21,43,77,.45);
+}
+.kortele .buteliukas { width: 96px; mix-blend-mode: multiply; }
+.kortele h3 { color: #24406f; font-size: 34px; line-height: 1.05; }
+.kortele .kitaip { font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: #5a6170; margin: 4px 0 14px; }
+.kortele p { font-size: 16px; margin-bottom: 10px; }
+.kortele .kada { font-size: 15px; color: #5a6170; margin: 0; }
+.kortele .kada strong { color: #24406f; font-weight: 600; }
+@media (max-width: 767px) {
+  .scena { min-height: auto; flex-direction: column; align-items: stretch; }
+  .scenos-foto { position: relative; height: 56vw; min-height: 240px; }
+  .scenos-foto.tuscia { height: 160px; min-height: 0; }
+  .scena .plotis { margin-top: -48px; padding-bottom: 8px; }
+  .kortele { grid-template-columns: 72px 1fr; padding: 24px; }
+  .kortele .buteliukas { width: 72px; }
+}
+@media (prefers-reduced-transparency: reduce) { .kortele { background: #fff; -webkit-backdrop-filter: none; backdrop-filter: none; } }
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) and (min-width: 768px) {
+    .scenos-foto { animation: priarteja linear both; animation-timeline: view(); }
+    @keyframes priarteja { from { transform: scale(1.08); } to { transform: scale(1); } }
+  }
+}
+
+.taisykles { margin-top: 96px; padding-top: 48px; border-top: 1px solid var(--linija); display: grid; gap: 40px; grid-template-columns: 1fr; }
+@media (min-width: 900px) { .taisykles { grid-template-columns: 0.9fr 1fr 1fr 1fr; gap: 40px; } }
+.taisykles h3 { font-size: 26px; line-height: 1.2; }
+.taisykles .skaicius { font-family: var(--antr); font-size: 56px; line-height: 1; color: var(--melyna); margin-bottom: 12px; }
+.taisykles .skaicius.zodis { font-size: 34px; line-height: 1.15; }
+.taisykles p { font-size: 15px; color: var(--pilkas); margin: 0; }
+
+/* ---------- 4. Raindrop: nuotrauka per pusę ekrano ---------- */
+.raindrop { padding: 0; background: var(--langelis); }
+.raindrop .dalys { display: grid; grid-template-columns: 1fr; }
+@media (min-width: 900px) { .raindrop .dalys { grid-template-columns: 1fr 1fr; min-height: 88vh; } }
+.raindrop .foto { margin: 0; overflow: hidden; min-height: 420px; }
+.raindrop .foto img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 35%; transition: transform 1.6s var(--lygiai); }
+.raindrop .foto.matosi img { transform: scale(1.03); }
+.raindrop .tekstas { padding: 96px 24px; display: flex; flex-direction: column; justify-content: center; }
+@media (min-width: 900px) { .raindrop .tekstas { padding: 96px 8vw 96px 72px; } }
+.pradek { margin-top: 28px; padding: 28px 0 0; border-top: 1px solid var(--linija); }
+.pradek h3 { font-size: 22px; margin-bottom: 10px; }
+.pradek p { font-size: 16px; color: var(--pilkas); margin: 0; }
+
+/* ---------- 5. Wyld NOTES: tamsi prabangi juosta ---------- */
+.kvepalai { background: linear-gradient(160deg, var(--gilus) 0%, var(--virsus) 100%); color: #fff; }
+.kvepalai h2 { color: #fff; }
+.kvepalai .ivadas { color: #c9d6ee; }
+.du-kvapai { display: grid; gap: 0; grid-template-columns: 1fr; margin: 64px 0 56px; border-top: 1px solid rgba(255,255,255,.18); }
+@media (min-width: 768px) { .du-kvapai { grid-template-columns: 1fr 1fr; } }
+.du-kvapai > div { padding: 40px 0; border-bottom: 1px solid rgba(255,255,255,.18); }
+@media (min-width: 768px) { .du-kvapai > div + div { padding-left: 48px; border-left: 1px solid rgba(255,255,255,.18); } }
+.du-kvapai h3 { color: #fff; font-size: clamp(40px, 5vw, 64px); line-height: 1; margin-bottom: 14px; }
+.du-kvapai p { color: #c9d6ee; margin: 0; font-size: 18px; }
+.kvepalai p { color: #d4def0; }
+.kvepalai a { color: #fff; }
+.faktai { list-style: none; padding: 0; margin: 28px 0 0; display: flex; flex-wrap: wrap; gap: 10px; }
+.faktai li { border: 1px solid rgba(255,255,255,.3); padding: 7px 16px; font-size: 14px; color: #e6ecf7; }
+
+/* ---------- 6. užsakymas ---------- */
+.uzsakymas .dalys { display: grid; gap: 56px; grid-template-columns: 1fr; }
+@media (min-width: 900px) { .uzsakymas .dalys { grid-template-columns: 1fr 1fr; gap: 88px; } }
+.zingsniai { list-style: none; padding: 0; margin: 40px 0 0; counter-reset: z; }
+.zingsniai li { counter-increment: z; position: relative; padding: 0 0 32px 72px; }
+.zingsniai li::before {
+  content: counter(z); position: absolute; left: 0; top: -6px;
+  width: 48px; height: 48px; border: 1px solid var(--melyna); color: var(--melyna);
+  font-family: var(--antr); font-size: 22px; display: flex; align-items: center; justify-content: center;
+}
+.zingsniai strong { color: var(--tamsi); font-weight: 600; display: block; font-size: 18px; }
+.keliai h3 { font-size: 24px; margin-bottom: 8px; }
+.keliai > div { padding: 28px 0; border-top: 1px solid var(--linija); }
+.keliai p { margin: 0; color: var(--pilkas); }
+.kvietimas {
+  position: relative; overflow: hidden; color: #fff; padding: 48px 40px; margin-top: 40px;
+  background: radial-gradient(80% 90% at 100% 0%, #2a4f86 0%, transparent 60%), var(--virsus);
+}
+.kvietimas h3 { color: #fff; font-size: 30px; margin-bottom: 10px; }
+.kvietimas p { color: #c9d6ee; margin-bottom: 28px; }
+
+/* ---------- 7. apie mane ---------- */
+.apie { background: var(--pavirsius); }
+.apie .dalys { display: grid; gap: 48px; grid-template-columns: 1fr; align-items: center; }
+@media (min-width: 900px) { .apie .dalys { grid-template-columns: 0.8fr 1.2fr; gap: 88px; } }
+.apie img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 25%; }
+@media (max-width: 899px) { .apie img { aspect-ratio: 1; max-width: 420px; } }
+
+/* ---------- apačia ---------- */
+.saugumas { border-left: 3px solid var(--melyna); padding: 4px 0 4px 20px; font-size: 15px; color: var(--pilkas); max-width: 760px; }
+footer { padding: 48px 0 56px; border-top: 1px solid var(--linija); }
+.autore { display: flex; align-items: center; gap: 16px; margin-bottom: 24px; }
+.autore img { width: 44px; }
+.vardas { font-family: var(--antr); font-size: 20px; color: var(--tamsi); line-height: 1.2; }
+.role { font-size: 14px; color: var(--pilkas); }
+.smulkme { font-size: 13px; color: var(--pilkas); line-height: 1.6; }
+.smulkme p { margin-bottom: 8px; max-width: 90ch; }
+
+/* ---------- judesys: švelnus pasirodymas ---------- */
+@media (prefers-reduced-motion: no-preference) {
+  .js .rodyk { opacity: 0; transform: translateY(24px); transition: opacity 1s var(--lygiai), transform 1s var(--lygiai); }
+  .js .rodyk.matosi { opacity: 1; transform: none; }
+    .virsus .tekstas > * { animation: iskyla 1.1s var(--lygiai) both; }
+  .virsus .tekstas > *:nth-child(2) { animation-delay: .1s; }
+  .virsus .tekstas > *:nth-child(3) { animation-delay: .2s; }
+  .virsus .tekstas > *:nth-child(4) { animation-delay: .3s; }
+  @keyframes iskyla { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+}
+</style>
+</head>
+<body>
+
+<div class="juodrastis">Juodraštis: Young Living užsakymo nuoroda dar neįdėta.</div>
+
+<!-- ============ 1. PIRMAS EKRANAS ============ -->
+<header class="virsus">
+  <div class="plotis meniu">
+    <a class="zenklas" href="#"><img src="vaizdai/Logo_virsui_svetainei.png" alt="">Lašas jūroje</a>
+    <nav aria-label="Puslapio dalys">
+      <a href="#aliejai">Aliejai</a>
+      <a href="#raindrop">Raindrop</a>
+      <a href="#kvepalai">Kvepalai</a>
+      <a href="#uzsakyti">Užsakymas</a>
+    </nav>
+  </div>
+  <div class="plotis turinys">
+    <div class="tekstas">
+      <div class="uzrasas">Aliejai kasdien</div>
+      <h1>Natūralūs kvapai tavo namams</h1>
+      <p class="paantraste">Kaip kasdien naudoti eterinius aliejus ir kaip juos užsisakyti
+        pačiam, kai baigiasi.</p>
+      <div class="mygtukai">
+        <a class="mygtukas pilnas" href="#uzsakyti">Kaip užsisakyti</a>
+        <a class="mygtukas" href="#aliejai">Pradžios aliejai</a>
+      </div>
+    </div>
+    <div class="video-remas">
+      <!-- 3D: vizualai/3d/melyna-zenklas-svetainei (ženklo mėlyna = fonas, Dangiros pasirinkimas C). Svetainei lengvesnė kopija. -->
+      <video id="zenklas" muted playsinline preload="auto"
+             poster="vaizdai/zenklas-3d-pradzia.jpg"
+             aria-label="Jūra susisuka į Lašo jūroje ženklą">
+        <source src="vaizdai/zenklas-3d-svetainei-lengvesne.mp4" type="video/mp4">
+      </video>
+    </div>
+  </div>
+</header>
+
+<!-- ============ 2. JŪROS JUOSTA ============ -->
+<section class="jura">
+  <div class="fonas-foto" role="img" aria-label="Jūros banga saulėtą dieną"></div>
+  <div class="plotis">
+    <div class="rodyk">
+      <p class="citata">Aliejus patiko, naudojai, o kai baigėsi, naujas taip ir neatsirado.</p>
+      <p>Ne todėl, kad nebereikia. Tiesiog pamiršti arba nežinai, kaip užsisakyti be
+        susitikimo. Čia rasi, kaip naudoti tai, ką jau turi, ką imti toliau ir kaip
+        užsisakyti pačiam, kada tau patogu.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 3. KETURI ALIEJAI ============ -->
+<section class="aliejai" id="aliejai">
+  <div class="plotis">
+    <div class="rodyk">
+      <h2>Keturi aliejai pradžiai</h2>
+      <p class="ivadas">Šituos keturis dažniausiai siūlau tiems, kas tik pradeda. Jų užtenka
+        namų kvapui, vakaro ramybei ir mažiems savo ritualams.</p>
+    </div>
+
+  </div>
+
+  <div class="scenos">
+    <article class="scena desineje apacioje">
+      <img class="scenos-foto" src="vaizdai/02-thieves-virtuve-svetainei.jpg" alt="Buteliukas ant medinio virtuvės stalo su cinamonu, gvazdikėliais, citrina ir pyragu" loading="lazy">
+      <div class="plotis">
+        <div class="kortele rodyk">
+          <img class="buteliukas" src="vaizdai/yl-thieves.jpg" alt="Young Living Thieves, 15 ml">
+          <div>
+            <h3>Thieves</h3>
+            <div class="kitaip">mišinys</div>
+            <p>Šiltas, prieskoninis kvapas, lyg ką tik būtų iškeptas pyragas su gvazdikėliais ir cinamonu.</p>
+            <p class="kada"><strong>Kada:</strong> rudenį ir žiemą, kai norisi jaukesnių namų, arba po tvarkymosi.</p>
+          </div>
+        </div>
+      </div>
+    </article>
+    <article class="scena virsuje">
+      <img class="scenos-foto" src="vaizdai/03-pipirmete-rytas-svetainei.jpg" alt="Pipirmėtės lapai stiklinėje, buteliukas ir difuzorius ant stalo prie lango ryte" loading="lazy">
+      <div class="plotis">
+        <div class="kortele rodyk">
+          <img class="buteliukas" src="vaizdai/yl-pipirmete.jpg" alt="Young Living pipirmėtė, 15 ml">
+          <div>
+            <h3>Pipirmėtė</h3>
+            <div class="kitaip">Peppermint</div>
+            <p>Gaivus, vėsus kvapas. Pabunda ir kambarys, ir tas, kas jame sėdi.</p>
+            <p class="kada"><strong>Kada:</strong> ryte arba darbo kampe, kai reikia susikaupti. Stiprus, užtenka kelių lašų.</p>
+          </div>
+        </div>
+      </div>
+    </article>
+    <article class="scena ">
+      <img class="scenos-foto" src="vaizdai/01-levanda-vakaras-svetainei.jpg" alt="Levandų puokštė, buteliukas ir difuzorius ant naktinio staliuko vakare" loading="lazy">
+      <div class="plotis">
+        <div class="kortele rodyk">
+          <img class="buteliukas" src="vaizdai/yl-levanda.jpg" alt="Young Living levanda, 15 ml">
+          <div>
+            <h3>Levanda</h3>
+            <div class="kitaip">Lavender</div>
+            <p>Minkštas, ramus kvapas. Tas, nuo kurio dažniausiai ir pradedama.</p>
+            <p class="kada"><strong>Kada:</strong> vakare, kai dienos triukšmas baigiasi. Difuzorių išjunk prieš miegą.</p>
+          </div>
+        </div>
+      </div>
+    </article>
+    <article class="scena desineje">
+      <div class="scenos-foto tuscia"></div>
+      <div class="plotis">
+        <div class="kortele rodyk">
+          <img class="buteliukas" src="vaizdai/yl-roze.jpg" alt="Young Living rožė, 5 ml">
+          <div>
+            <h3>Rožė</h3>
+            <div class="kitaip">Rose</div>
+            <p>Sodrus, gilus kvapas. Brangiausias iš šitų keturių, todėl naudojamas po lašą.</p>
+            <p class="kada"><strong>Kada:</strong> ypatingam vakarui ar savo ramybės minutei, kai nori sau ko nors gero.</p>
+          </div>
+        </div>
+      </div>
+    </article>
+  </div>
+
+  <div class="plotis">
+    <div class="taisykles">
+      <h3 class="rodyk">Kad aliejus neliktų lentynoje</h3>
+      <div class="rodyk">
+        <div class="skaicius">3</div>
+        <p>Tiek lašų difuzoriuje pradžiai. Young Living garintuvams rašo 8-10 lašų, bet
+          tai riba, ne pradžia.</p>
+      </div>
+      <div class="rodyk">
+        <div class="skaicius">10 min.</div>
+        <p>Tiek per dieną garink naują aliejų, ilgink pamažu. Per naktį nepalik.</p>
+      </div>
+      <div class="rodyk">
+        <div class="skaicius zodis">Durys atviros</div>
+        <p>Gyvūnas turi galėti išeiti iš kambario. Prie mažo vaiko lovos difuzoriaus
+          nejunk.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 4. RAINDROP ============ -->
+<section class="raindrop" id="raindrop">
+  <div class="dalys">
+    <figure class="foto rodyk">
+      <img src="vaizdai/kopos-svetainei.jpg" alt="Kopos su žole prie jūros, debesuota diena" loading="lazy">
+    </figure>
+    <div class="tekstas rodyk">
+      <h2>Raindrop: šeimos ritualas</h2>
+      <p>Raindrop yra būdas, kai aliejai po lašą lašinami išilgai nugaros ir švelniai
+        paskirstomi pirštų galais. Jį namuose daro vienas šeimos narys kitam. Ramiai,
+        be skubėjimo, vakarą, kai niekur nereikia bėgti.</p>
+      <p>Tam nereikia jokio specialaus pasiruošimo ar kelionės pas ką nors. Reikia
+        rinkinio ir pusvalandžio laiko vienas kitam.</p>
+      <div class="pradek">
+        <h3>Nuo ko pradėti</h3>
+        <p>Young Living turi atskirą Raindrop rinkinį, jame visi reikalingi aliejai. Kai
+          kurie iš jų stiprūs, todėl prieš pirmą kartą perskaityk rinkinio aprašymą ir
+          atsargumo nurodymus. Rinkinį rasi Young Living puslapyje per mano nuorodą.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 5. WYLD NOTES ============ -->
+<section class="kvepalai" id="kvepalai">
+  <div class="plotis">
+    <div class="rodyk">
+      <h2>Wyld NOTES kvepalai</h2>
+      <p class="ivadas">Tai naujiena ir man pačiai. Dar neišbandžiau, todėl rašau tik tai,
+        ką apie juos sako pats gamintojas.</p>
+    </div>
+
+    <div class="du-kvapai rodyk">
+      <div>
+        <h3>White Lie</h3>
+        <p>Pelargonija ir rožė su vetiveriu.</p>
+      </div>
+      <div>
+        <h3>Black Book</h3>
+        <p>Muskatas ir osmantas su tonka ir gvajako mediena.</p>
+      </div>
+    </div>
+
+    <div class="rodyk">
+      <p>Abu kartu parduodami rinkinyje <strong>His &amp; Hers</strong>.</p>
+      <p>Ankstesnė kolekcija: <strong>Sweet Decadence</strong> (šilti kepiniai ir riešutai),
+        <strong>Smokey Ember</strong> (mediena ir saulės įkaitinti kraštovaizdžiai) ir
+        <strong>Cashmere Creme</strong> (vanilė, plakta vyšnia ir sandalmedis). Visus
+        kvepalus rasi
+        <a href="https://wyldnotes.com/en-eu/collections/fine-fragrance" target="_blank" rel="noopener">wyldnotes.com</a>.</p>
+      <ul class="faktai">
+        <li>be sintetinių medžiagų</li>
+        <li>ekologiškas cukranendrių alkoholis</li>
+        <li>veganiški</li>
+        <li>netestuoti su gyvūnais</li>
+        <li>siunčiami į Europą</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 6. KAIP UŽSISAKYTI ============ -->
+<section class="uzsakymas" id="uzsakyti">
+  <div class="plotis dalys">
+    <div class="rodyk">
+      <h2>Kaip užsisakyti pačiam</h2>
+      <p class="ivadas">Man nereikia skambinti ir nereikia susitikti. Užsisakai pats, kada
+        tau patogu, o siuntinys atkeliauja tiesiai į namus.</p>
+      <ol class="zingsniai">
+        <li><strong>Atsidaryk mano nuorodą</strong>
+          Mygtukas yra šalia. Jis veda į oficialų Young Living puslapį.</li>
+        <li><strong>Užsiregistruok savo vardu</strong>
+          Paskyra tavo, užsakymai irgi tavo. Kitą kartą tiesiog prisijungsi.</li>
+        <li><strong>Išsirink ir užsisakyk</strong>
+          Kainos surašytos ten pat, oficialiame puslapyje. Siuntinys atkeliauja paštu.</li>
+      </ol>
+    </div>
+
+    <div class="rodyk">
+      <div class="keliai">
+        <div>
+          <h3>Vieną kartą</h3>
+          <p>Užsisakai, ko reikia, ir tuo baigi. Privalomos sumos nėra, gali užsisakyti
+            ir kartą per metus.</p>
+        </div>
+        <div>
+          <h3>Lojalumo programa</h3>
+          <p>Užsakai reguliariai, ir siuntinys kas mėnesį ateina pats, tad pamiršti
+            nebeįmanoma. Tam reikia bent 50 PV per mėnesį, o kuo daugiau PV, tuo didesnė
+            grąža.</p>
+        </div>
+      </div>
+
+      <div class="kvietimas">
+        <h3>Užsisakyk per mano nuorodą</h3>
+        <p>Jei dar nežinai, ką imti, pradėk nuo vieno aliejaus iš keturių aukščiau.</p>
+        <!-- Nuoroda įrašoma vienoje vietoje, apačioje: YL_NUORODA. -->
+        <a class="mygtukas pilnas yl-nuoroda" href="#uzsakyti">Į Young Living</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 7. APIE MANE (vienintelė vieta su veidu) ============ -->
+<section class="apie" id="apie">
+  <div class="plotis dalys">
+    <img class="rodyk" src="vaizdai/dangira-portretas-svetainei.jpg" alt="Dangira prie jūros" loading="lazy">
+    <div class="rodyk">
+      <h2>Labas, aš Dangira</h2>
+      <p class="ivadas">Aš paaiškinu, kaip aliejus naudoti namuose, ir padedu išsirinkti,
+        nuo ko pradėti. Užsakai pats, per mano nuorodą, kada tau patogu.</p>
+      <p>Nežinai, kurį imti? Parašyk man
+        <a href="https://facebook.com/dangira.ciakiene" target="_blank" rel="noopener">Facebook</a>.
+        Paklausiu trijų dalykų ir pasakysiu vieną pavadinimą. Jei pasirodys, kad tau
+        šito nereikia, taip ir pasakysiu.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 8. ATSARGUMAS IR APAČIA ============ -->
+<section style="padding:64px 0">
+  <div class="plotis">
+    <div class="saugumas">
+      Eteriniai aliejai nėra vaistai ir nepakeičia gydytojo konsultacijos. Vaikams,
+      nėščiosioms ir vaistus vartojantiems žmonėms galioja atskiros atsargumo taisyklės.
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="plotis">
+    <div class="autore">
+      <picture>
+        <source srcset="vaizdai/Logo_lasas_juroje_tamsus_tamsesnis.png" media="(prefers-color-scheme: dark)">
+        <img src="vaizdai/Logo_lasas_juroje_sviesus_tamsesnis.png" alt="Lašas jūroje">
+      </picture>
+      <div>
+        <div class="vardas">Dangira</div>
+        <div class="role">Young Living eterinių aliejų nepriklausoma konsultantė.
+          <a href="https://facebook.com/dangira.ciakiene" target="_blank" rel="noopener">Facebook</a></div>
+      </div>
+    </div>
+    <div class="smulkme">
+      <p>Šią svetainę parengiau aš, nepriklausoma konsultantė. Young Living jos nerengė
+        ir netvirtino. Produktų nuotraukos: Young Living.</p>
+      <p>Lašų kiekis garintuvui (8-10): youngliving.com/blog/eu/lt/kaip-naudoti-eterinius-aliejus.
+        Garinimo trukmė (iki 10 min. per dieną naujam aliejui): Young Living saugos gairės,
+        eu.youngliving.com/en-gb/pages/safety-guidelines. Wyld NOTES informacija:
+        wyldnotes.com/en-eu (2026-09-24).</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Dangiros Young Living užsakymo nuoroda. Įrašyti čia, ir ji atsiras visur.
+  var YL_NUORODA = "";
+
+  if (YL_NUORODA) {
+    document.querySelectorAll(".yl-nuoroda").forEach(function (a) {
+      a.href = YL_NUORODA; a.target = "_blank"; a.rel = "noopener";
+    });
+  } else {
+    // Kol nuorodos nėra: kvietimas parašyti žinutę (Dangiros sprendimas 2026-09-24).
+    document.querySelectorAll(".yl-nuoroda").forEach(function (a) {
+      a.href = "https://facebook.com/dangira.ciakiene"; a.target = "_blank"; a.rel = "noopener";
+      a.textContent = "Rašyk man";
+    });
+    var kv = document.querySelector(".kvietimas");
+    kv.querySelector("h3").textContent = "Parašyk man žinutę";
+    kv.querySelector("p").textContent = "Pasakysiu, nuo ko pradėti, ir atsiųsiu nuorodą užsakymui.";
+  }
+
+  var ramiai = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  // 3D ženklas: vieną kartą susisuka ir lieka stovėti. Kas nenori judesio, mato galutinį kadrą.
+  var video = document.getElementById("zenklas");
+  if (ramiai) {
+    video.removeAttribute("preload");
+    video.poster = "vaizdai/zenklas-3d-pabaiga.jpg";
+  } else {
+    video.play().catch(function () { video.poster = "vaizdai/zenklas-3d-pabaiga.jpg"; });
+  }
+
+  // Skyriai švelniai pasirodo, kai iki jų prislenkama.
+  if (!ramiai && "IntersectionObserver" in window) {
+    document.documentElement.classList.add("js");
+    var stebetojas = new IntersectionObserver(function (irasai) {
+      irasai.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add("matosi"); stebetojas.unobserve(e.target); }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll(".rodyk").forEach(function (el) { stebetojas.observe(el); });
+  }
+</script>
+</body>
+</html>
