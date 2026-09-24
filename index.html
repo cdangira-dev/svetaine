@@ -202,16 +202,20 @@ h2 { font-size: clamp(32px, 4.6vw, 54px); line-height: 1.08; letter-spacing: -0.
 .kvepalai { background: linear-gradient(160deg, var(--gilus) 0%, var(--virsus) 100%); color: #fff; }
 .kvepalai h2 { color: #fff; }
 .kvepalai .ivadas { color: #c9d6ee; }
-.du-kvapai { display: grid; gap: 0; grid-template-columns: 1fr; margin: 64px 0 56px; border-top: 1px solid rgba(255,255,255,.18); }
-@media (min-width: 768px) { .du-kvapai { grid-template-columns: 1fr 1fr; } }
-.du-kvapai > div { padding: 40px 0; border-bottom: 1px solid rgba(255,255,255,.18); }
-@media (min-width: 768px) { .du-kvapai > div + div { padding-left: 48px; border-left: 1px solid rgba(255,255,255,.18); } }
-.du-kvapai h3 { color: #fff; font-size: clamp(40px, 5vw, 64px); line-height: 1; margin-bottom: 14px; }
-.du-kvapai p { color: #c9d6ee; margin: 0; font-size: 18px; }
 .kvepalai p { color: #d4def0; }
 .kvepalai a { color: #fff; }
 .faktai { list-style: none; padding: 0; margin: 28px 0 0; display: flex; flex-wrap: wrap; gap: 10px; }
 .faktai li { border: 1px solid rgba(255,255,255,.3); padding: 7px 16px; font-size: 14px; color: #e6ecf7; }
+.penki-kvapai { display: grid; gap: 40px 24px; grid-template-columns: 1fr 1fr; margin: 56px 0 48px; }
+@media (min-width: 720px) { .penki-kvapai { grid-template-columns: repeat(3, 1fr); } }
+@media (min-width: 1100px) { .penki-kvapai { grid-template-columns: repeat(5, 1fr); } }
+.penki-kvapai figure { margin: 0; text-align: center; }
+.penki-kvapai img { height: 190px; width: 100%; object-fit: contain; filter: drop-shadow(0 18px 22px rgba(0,0,0,.35)); }
+.penki-kvapai h3 { color: #fff; font-size: 26px; line-height: 1.1; margin: 18px 0 6px; }
+.penki-kvapai .naujiena { display: inline-block; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: #20406f; background: #f3e6c4; padding: 3px 10px; margin-bottom: 6px; }
+.penki-kvapai p { font-size: 15px; line-height: 1.5; margin: 0 0 6px; color: #d4def0; }
+.penki-kvapai .su-aliejais { font-size: 13px; color: #9fb2d3; }
+@media (max-width: 719px) { .penki-kvapai img { height: 150px; } .penki-kvapai h3 { font-size: 22px; } }
 
 /* ---------- 6. užsakymas ---------- */
 .uzsakymas .dalys { display: grid; gap: 56px; grid-template-columns: 1fr; }
@@ -383,15 +387,20 @@ footer { padding: 48px 0 56px; border-top: 1px solid var(--linija); }
       </div>
     </article>
     <article class="scena desineje">
-      <div class="scenos-foto tuscia"></div>
+      <!-- Garai: projects/young-living/vizualai/2026-09-24-svetaine/garintuvai-flow (Young Living Cactus rožinis, garai iš pačios nuotraukos) -->
+      <video class="scenos-foto" autoplay muted loop playsinline preload="metadata"
+             poster="vaizdai/04-roze-cactus-svetainei.jpg"
+             aria-label="Daug raudonų ir rausvų rožių sidabrinėje urnoje, žvakės, buteliukas ir rausvas Young Living Cactus garintuvas ant aksomo">
+        <source src="vaizdai/04-roze-cactus-garai.mp4" type="video/mp4">
+      </video>
       <div class="plotis">
         <div class="kortele rodyk">
           <img class="buteliukas" src="vaizdai/yl-roze.png" alt="Young Living rožė, 5 ml">
           <div>
             <h3>Rožė</h3>
             <div class="kitaip">Rose</div>
-            <p>Sodrus, gilus kvapas. Brangiausias iš šitų keturių, todėl naudojamas po lašą.</p>
-            <p class="kada"><strong>Kada:</strong> ypatingam vakarui ar savo ramybės minutei, kai nori sau ko nors gero.</p>
+            <p>Sodrus, gilus kvapas. Vienam 5 ml buteliukui reikia 10 kg rožių žiedlapių, todėl jis vienas brangiausių ir naudojamas po lašą.</p>
+            <p class="kada"><strong>Kada:</strong> ypatingam vakarui ar savo ramybės minutei. Užtenka lašo į įprastą kūno losjoną.</p>
           </div>
         </div>
       </div>
@@ -451,23 +460,56 @@ footer { padding: 48px 0 56px; border-top: 1px solid var(--linija); }
         ką apie juos sako pats gamintojas.</p>
     </div>
 
-    <div class="du-kvapai rodyk">
-      <div>
-        <h3>White Lie</h3>
-        <p>Pelargonija ir rožė su vetiveriu.</p>
-      </div>
-      <div>
-        <h3>Black Book</h3>
-        <p>Muskatas ir osmantas su tonka ir gvajako mediena.</p>
-      </div>
+    <!-- Faktai tik iš wyldnotes.com/en-eu produktų aprašymų (2026-09-25). Nuotraukos: projects/young-living/wyld-notes/nuotraukos -->
+    <div class="penki-kvapai rodyk">
+      <figure>
+        <img src="vaizdai/wyld-cashmere-creme.png" alt="Wyld NOTES Cashmere Creme kvepalų buteliukas" loading="lazy">
+        <figcaption>
+          <h3>Cashmere Creme</h3>
+          <span class="naujiena">Naujiena</span>
+          <p>Vanilė, plakta vyšnia ir švelni sandalmedžio užuomina. Šiltas, jaukus kvapas.</p>
+          <p class="su-aliejais">Europoje nuo rugsėjo 19 d.</p>
+        </figcaption>
+      </figure>
+      <figure>
+        <img src="vaizdai/wyld-white-lie.png" alt="Wyld NOTES White Lie kvepalų buteliukas" loading="lazy">
+        <figcaption>
+          <h3>White Lie</h3>
+          <p>Švelnus, pudrinis. Pelargonija ir rožė su vetiveriu, persiko užuomina.</p>
+          <p class="su-aliejais">Su kadagio, levandų ir juodosios eglės aliejais</p>
+        </figcaption>
+      </figure>
+      <figure>
+        <img src="vaizdai/wyld-black-book.png" alt="Wyld NOTES Black Book kvepalų buteliukas" loading="lazy">
+        <figcaption>
+          <h3>Black Book</h3>
+          <p>Prieskoninis ir paslaptingas. Muskatas, osmantas, tonka, imbieras ir tabako užuomina.</p>
+          <p class="su-aliejais">Su kadagio, levandų ir muskatinio šalavijo aliejais</p>
+        </figcaption>
+      </figure>
+      <figure>
+        <img src="vaizdai/wyld-sweet-decadence.png" alt="Wyld NOTES Sweet Decadence kvepalų buteliukas" loading="lazy">
+        <figcaption>
+          <h3>Sweet Decadence</h3>
+          <p>Kaip šilti kepiniai: pistacija, kokosas, Madagaskaro vanilė, apelsino žievelė, rožė ir tonka.</p>
+          <p class="su-aliejais">Su muskatinio šalavijo ir levandų aliejais</p>
+        </figcaption>
+      </figure>
+      <figure>
+        <img src="vaizdai/wyld-smokey-ember.png" alt="Wyld NOTES Smokey Ember kvepalų buteliukas" loading="lazy">
+        <figcaption>
+          <h3>Smokey Ember</h3>
+          <p>Mediena ir saulės įkaitinti kraštovaizdžiai: citrusai, balzaminis kėnis, jazminas ir vanilė.</p>
+          <p class="su-aliejais">Su juodosios eglės, muskatinio šalavijo ir kadagio aliejais</p>
+        </figcaption>
+      </figure>
     </div>
 
     <div class="rodyk">
-      <p>Abu kartu parduodami rinkinyje <strong>His &amp; Hers</strong>.</p>
-      <p>Ankstesnė kolekcija: <strong>Sweet Decadence</strong> (šilti kepiniai ir riešutai),
-        <strong>Smokey Ember</strong> (mediena ir saulės įkaitinti kraštovaizdžiai) ir
-        <strong>Cashmere Creme</strong> (vanilė, plakta vyšnia ir sandalmedis). Visus
-        kvepalus rasi
+      <p>Yra ir rinkiniai: <strong>His &amp; Hers</strong> (Black Book ir White Lie),
+        <strong>Her Signature Duo</strong> (White Lie ir Sweet Decadence),
+        <strong>His Signature Duo</strong> (Smokey Ember ir Black Book) ir
+        <strong>The Complete Collection</strong> su visais penkiais. Visus kvepalus rasi
         <a href="https://wyldnotes.com/en-eu/collections/fine-fragrance" target="_blank" rel="noopener">wyldnotes.com</a>.</p>
       <ul class="faktai">
         <li>be sintetinių medžiagų</li>
@@ -563,11 +605,13 @@ footer { padding: 48px 0 56px; border-top: 1px solid var(--linija); }
     </div>
     <div class="smulkme">
       <p>Šią svetainę parengiau aš, nepriklausoma konsultantė. Young Living jos nerengė
-        ir netvirtino. Produktų nuotraukos: Young Living.</p>
+        ir netvirtino. Produktų nuotraukos: Young Living ir Wyld NOTES. Scenų vaizdai sukurti
+        dirbtiniu intelektu.</p>
       <p>Lašų kiekis garintuvui (8-10): youngliving.com/blog/eu/lt/kaip-naudoti-eterinius-aliejus.
         Garinimo trukmė (iki 10 min. per dieną naujam aliejui): Young Living saugos gairės,
         eu.youngliving.com/en-gb/pages/safety-guidelines. Wyld NOTES informacija:
-        wyldnotes.com/en-eu (2026-09-24).</p>
+        wyldnotes.com/en-eu (2026-09-25). Rožių aliejaus faktai:
+        youngliving.com/lt_lt/products/roziu-eterinis-aliejus.</p>
     </div>
   </div>
 </footer>
