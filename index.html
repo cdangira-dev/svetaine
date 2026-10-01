@@ -170,6 +170,17 @@ h2 { font-size: clamp(32px, 4.6vw, 54px); line-height: 1.08; letter-spacing: -0.
   .kortele { grid-template-columns: 72px 1fr; padding: 24px; }
   .kortele .buteliukas { width: 72px; }
 }
+/* rožė: garintuvas per vidurį (41–60 % pločio) — kortelė jo nedengia (Dangira, 2026-10-02) */
+@media (min-width: 1280px) {
+  .scena.roze .plotis { max-width: none; padding: 0 3vw; }
+  .scena.roze .kortele { width: 420px; }
+}
+@media (min-width: 768px) and (max-width: 1279px) {
+  .scena.roze { min-height: auto; flex-direction: column; align-items: stretch; }
+  .scena.roze .scenos-foto { position: relative; height: auto; aspect-ratio: 1376 / 768; }
+  .scena.roze .plotis { padding-top: 24px; padding-bottom: 24px; }
+}
+@media (max-width: 767px) { .scena.roze .plotis { margin-top: 0; padding-top: 16px; } }
 @media (prefers-reduced-transparency: reduce) { .kortele { background: #fff; -webkit-backdrop-filter: none; backdrop-filter: none; } }
 @supports (animation-timeline: view()) {
   @media (prefers-reduced-motion: no-preference) and (min-width: 768px) {
@@ -207,8 +218,7 @@ h2 { font-size: clamp(32px, 4.6vw, 54px); line-height: 1.08; letter-spacing: -0.
 .faktai { list-style: none; padding: 0; margin: 28px 0 0; display: flex; flex-wrap: wrap; gap: 10px; }
 .faktai li { border: 1px solid rgba(255,255,255,.3); padding: 7px 16px; font-size: 14px; color: #e6ecf7; }
 .penki-kvapai { display: grid; gap: 40px 24px; grid-template-columns: 1fr 1fr; margin: 56px 0 48px; }
-@media (min-width: 720px) { .penki-kvapai { grid-template-columns: repeat(3, 1fr); } }
-@media (min-width: 1100px) { .penki-kvapai { grid-template-columns: repeat(5, 1fr); } }
+@media (min-width: 900px) { .penki-kvapai { grid-template-columns: repeat(4, 1fr); } }
 .penki-kvapai figure { margin: 0; text-align: center; }
 .penki-kvapai img { height: 190px; width: 100%; object-fit: contain; filter: drop-shadow(0 18px 22px rgba(0,0,0,.35)); }
 .penki-kvapai h3 { color: #fff; font-size: 26px; line-height: 1.1; margin: 18px 0 6px; }
@@ -349,9 +359,9 @@ footer { padding: 48px 0 56px; border-top: 1px solid var(--linija); }
       </div>
     </article>
     <article class="scena virsuje">
-      <!-- Garai: projects/young-living/vizualai/2026-09-24-svetaine/garintuvai-flow (Young Living AromaGlobe, garai iš pačios nuotraukos) -->
+      <!-- Garai: projects/young-living/vizualai/2026-09-24-svetaine/garintuvai-flow/garai-daleles.py (Young Living AromaGlobe, dalelių garai, 2026-10-02) -->
       <video class="scenos-foto" autoplay muted loop playsinline preload="metadata"
-             poster="vaizdai/03-pipirmete-aromaglobe-svetainei.jpg"
+             poster="vaizdai/03-pipirmete-aromaglobe-poster.jpg"
              aria-label="Pipirmėtės lapai stiklinėje, buteliukas ir Young Living AromaGlobe garintuvas ant stalo prie lango ryte">
         <source src="vaizdai/03-pipirmete-aromaglobe-garai.mp4" type="video/mp4">
       </video>
@@ -368,9 +378,9 @@ footer { padding: 48px 0 56px; border-top: 1px solid var(--linija); }
       </div>
     </article>
     <article class="scena ">
-      <!-- Garai: projects/young-living/vizualai/2026-09-24-svetaine/garintuvai-flow (Young Living Viya, Flow garai susilpninti) -->
+      <!-- Garai: projects/young-living/vizualai/2026-09-24-svetaine/garintuvai-flow (Viya sumažinta viya-mazinti.py, garai garai-daleles.py, 2026-10-02) -->
       <video class="scenos-foto" autoplay muted loop playsinline preload="metadata"
-             poster="vaizdai/01-levanda-viya-svetainei.jpg"
+             poster="vaizdai/01-levanda-viya-poster.jpg"
              aria-label="Levandų puokštė, buteliukas ir violetine šviesa švytintis Young Living Viya garintuvas ant naktinio staliuko vakare">
         <source src="vaizdai/01-levanda-viya-garai.mp4" type="video/mp4">
       </video>
@@ -386,7 +396,7 @@ footer { padding: 48px 0 56px; border-top: 1px solid var(--linija); }
         </div>
       </div>
     </article>
-    <article class="scena desineje">
+    <article class="scena desineje roze">
       <!-- Garai: projects/young-living/vizualai/2026-09-24-svetaine/garintuvai-flow (Young Living Cactus rožinis, garai iš pačios nuotraukos) -->
       <video class="scenos-foto" autoplay muted loop playsinline preload="metadata"
              poster="vaizdai/04-roze-cactus-svetainei.jpg"
@@ -460,19 +470,11 @@ footer { padding: 48px 0 56px; border-top: 1px solid var(--linija); }
         ką apie juos sako pats gamintojas.</p>
     </div>
 
-    <!-- Faktai tik iš wyldnotes.com/en-eu produktų aprašymų (2026-09-25). Nuotraukos: projects/young-living/wyld-notes/nuotraukos -->
+    <!-- Faktai tik iš wyldnotes.com/en-eu produktų aprašymų (2026-09-25). Nuotraukos: projects/young-living/wyld-notes/nuotraukos.
+         Cashmere Creme išimta 2026-10-02 (Dangira: Lietuvoje dar nėra). White Lie ir Black Book nuotraukos apkirptos, kad buteliukas būtų per vidurį. -->
     <div class="penki-kvapai rodyk">
       <figure>
-        <img src="vaizdai/wyld-cashmere-creme.png" alt="Wyld NOTES Cashmere Creme kvepalų buteliukas" loading="lazy">
-        <figcaption>
-          <h3>Cashmere Creme</h3>
-          <span class="naujiena">Naujiena</span>
-          <p>Vanilė, plakta vyšnia ir švelni sandalmedžio užuomina. Šiltas, jaukus kvapas.</p>
-          <p class="su-aliejais">Europoje nuo rugsėjo 19 d.</p>
-        </figcaption>
-      </figure>
-      <figure>
-        <img src="vaizdai/wyld-white-lie.png" alt="Wyld NOTES White Lie kvepalų buteliukas" loading="lazy">
+        <img src="vaizdai/wyld-white-lie-centre.png" alt="Wyld NOTES White Lie kvepalų buteliukas" loading="lazy">
         <figcaption>
           <h3>White Lie</h3>
           <p>Švelnus, pudrinis. Pelargonija ir rožė su vetiveriu, persiko užuomina.</p>
@@ -480,7 +482,7 @@ footer { padding: 48px 0 56px; border-top: 1px solid var(--linija); }
         </figcaption>
       </figure>
       <figure>
-        <img src="vaizdai/wyld-black-book.png" alt="Wyld NOTES Black Book kvepalų buteliukas" loading="lazy">
+        <img src="vaizdai/wyld-black-book-centre.png" alt="Wyld NOTES Black Book kvepalų buteliukas" loading="lazy">
         <figcaption>
           <h3>Black Book</h3>
           <p>Prieskoninis ir paslaptingas. Muskatas, osmantas, tonka, imbieras ir tabako užuomina.</p>
@@ -509,7 +511,7 @@ footer { padding: 48px 0 56px; border-top: 1px solid var(--linija); }
       <p>Yra ir rinkiniai: <strong>His &amp; Hers</strong> (Black Book ir White Lie),
         <strong>Her Signature Duo</strong> (White Lie ir Sweet Decadence),
         <strong>His Signature Duo</strong> (Smokey Ember ir Black Book) ir
-        <strong>The Complete Collection</strong> su visais penkiais. Visus kvepalus rasi
+        <strong>The Original Collection</strong> su visais keturiais. Visus kvepalus rasi
         <a href="https://wyldnotes.com/en-eu/collections/fine-fragrance" target="_blank" rel="noopener">wyldnotes.com</a>.</p>
       <ul class="faktai">
         <li>be sintetinių medžiagų</li>
