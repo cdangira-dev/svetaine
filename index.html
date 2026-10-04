@@ -161,6 +161,44 @@ h2 { font-size: clamp(32px, 4.6vw, 54px); line-height: 1.08; letter-spacing: -0.
 .kortele .kitaip { font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: #5a6170; margin: 4px 0 14px; }
 .kortele p { font-size: 16px; margin-bottom: 10px; }
 .kortele .kada { font-size: 15px; color: #5a6170; margin: 0; }
+/* aprašymas tik užvedus pelę / palietus „+“ (Dangira 2026-10-04) */
+.kortele { position: relative; padding: 28px 64px 24px 28px; }
+.kortele .aprasas { max-height: 0; opacity: 0; overflow: hidden; transition: max-height .45s var(--lygiai), opacity .3s; }
+.kortele:hover .aprasas, .kortele.atidaryta .aprasas, .kortele:focus-within .aprasas { max-height: 420px; opacity: 1; }
+.kortele .kitaip { margin-bottom: 0; }
+.kortele .aprasas > p:first-child { margin-top: 14px; }
+.kortele .taskas-al { top: 20px; right: 20px; left: auto; margin: 0; border-color: #24406f; color: #24406f; background: rgba(36,64,111,.06); }
+.kortele:hover .taskas-al, .kortele.atidaryta .taskas-al { animation: none; }
+.uzsakyti-al { margin-top: 16px; background: #24406f !important; color: #fff !important; border-color: #24406f !important; }
+/* tikros proporcijos: 5 ml ~5,1 cm, 15 ml ~6,4 cm aukščio (pardavėjų skelbimai) → 80 % */
+.kortele .buteliukas.mazas { width: 77px; justify-self: center; margin-top: 10px; }
+@media (max-width: 767px) { .kortele .buteliukas.mazas { width: 58px; } }
+/* iš pradžių — tik buteliukas ir pavadinimas, be kortelės; užvedus ant buteliuko — kortelė su aprašu (Dangira 2026-10-04) */
+.kortele { background: transparent; box-shadow: none; -webkit-backdrop-filter: none; backdrop-filter: none;
+  transition: background .3s, box-shadow .3s; }
+.kortele h3 { display: inline-block; background: rgba(255,255,255,.88); padding: 4px 14px 6px; transition: background .3s, padding .3s; }
+.kortele .kitaip { display: none; }
+.kortele:hover, .kortele.atidaryta, .kortele:focus-within {
+  background: rgba(255,255,255,.92); box-shadow: 0 30px 60px -30px rgba(21,43,77,.45);
+  -webkit-backdrop-filter: blur(10px) saturate(140%); backdrop-filter: blur(10px) saturate(140%); }
+.kortele:hover h3, .kortele.atidaryta h3, .kortele:focus-within h3 { background: transparent; padding: 0; }
+.kortele:hover .kitaip, .kortele.atidaryta .kitaip, .kortele:focus-within .kitaip { display: block; }
+.kortele .taskas-al { background: rgba(255,255,255,.88); }
+/* telefone: po nuotrauka viena eilutė — buteliukas, pavadinimas, „+“; paspaudus — aprašas su rėmeliu */
+@media (max-width: 767px) {
+  .scena .plotis, .scena.roze .plotis { margin-top: 0; padding-top: 14px; padding-bottom: 18px; }
+  .kortele, .scena.roze .kortele { width: 100%; padding: 6px 56px 6px 0; grid-template-columns: 52px 1fr; gap: 16px; align-items: center;
+    background: transparent; box-shadow: none; border: 1px solid transparent; }
+  .kortele .buteliukas { width: 52px; } .kortele .buteliukas.mazas { width: 42px; margin-top: 0; }
+  .kortele h3, .kortele:hover h3 { background: transparent; padding: 0; font-size: 30px; }
+  .kortele .taskas-al { top: 50%; right: 4px; transform: translateY(-50%); }
+  .kortele.atidaryta { padding: 18px 56px 20px 18px; align-items: start; background: #fff; border-color: var(--linija);
+    box-shadow: 0 18px 40px -24px rgba(21,43,77,.35); }
+  .kortele.atidaryta .taskas-al { top: 18px; transform: none; }
+  .kortele:hover:not(.atidaryta) .aprasas { max-height: 0; opacity: 0; }
+  .kortele:hover:not(.atidaryta) .kitaip { display: none; }
+  .kortele:hover:not(.atidaryta) { background: transparent; box-shadow: none; }
+}
 .kortele .kada strong { color: #24406f; font-weight: 600; }
 @media (max-width: 767px) {
   .scena { min-height: auto; flex-direction: column; align-items: stretch; }
@@ -225,6 +263,59 @@ h2 { font-size: clamp(32px, 4.6vw, 54px); line-height: 1.08; letter-spacing: -0.
 .penki-kvapai .naujiena { display: inline-block; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: #20406f; background: #f3e6c4; padding: 3px 10px; margin-bottom: 6px; }
 .penki-kvapai p { font-size: 15px; line-height: 1.5; margin: 0 0 6px; color: #d4def0; }
 .penki-kvapai .su-aliejais { font-size: 13px; color: #9fb2d3; }
+/* ---------- kvapo natos (taškelis ant buteliuko) — savi piešinėliai, natos iš wyldnotes.com ---------- */
+.butelis { position: relative; }
+.taskas {
+  position: absolute; top: 8px; left: 50%; margin-left: 34px; width: 34px; height: 34px; border-radius: 50%;
+  border: 1px solid rgba(255,255,255,.7); background: rgba(255,255,255,.12); color: #fff; font-size: 20px; line-height: 1;
+  cursor: pointer; animation: pulsas 2.4s ease-in-out infinite;
+}
+.taskas:focus-visible { outline: 2px solid #f3e6c4; outline-offset: 3px; }
+@keyframes pulsas { 0%,100% { box-shadow: 0 0 0 0 rgba(243,230,196,.5); } 50% { box-shadow: 0 0 0 10px rgba(243,230,196,0); } }
+@media (prefers-reduced-motion: reduce) { .taskas { animation: none; } }
+.natos {
+  position: absolute; z-index: 5; left: 50%; top: 0; width: 240px; margin-left: -120px; padding: 18px 18px 12px;
+  text-align: left; box-shadow: 0 18px 40px rgba(0,0,0,.4); opacity: 0; visibility: hidden; transform: translateY(8px);
+  transition: opacity .25s var(--lygiai), transform .25s var(--lygiai), visibility .25s;
+}
+.butelis:hover .natos, .butelis.atidaryta .natos { opacity: 1; visibility: visible; transform: none; }
+.natos-vardas { font-family: var(--antr); font-size: 20px; margin-bottom: 10px; }
+.natos .lygis { display: grid; grid-template-columns: 74px 1fr; gap: 8px; padding: 8px 0; border-top: 1px solid currentColor; border-color: rgba(127,127,127,.3); }
+.natos .lygis > span { font-size: 11px; letter-spacing: .12em; text-transform: uppercase; opacity: .75; padding-top: 3px; }
+.natos ul { list-style: none; margin: 0; padding: 0; }
+.natos li { display: flex; align-items: center; gap: 8px; font-size: 14px; line-height: 1.3; padding: 2px 0; }
+.natos svg { width: 20px; height: 20px; flex: none; }
+.natos-nuotaika { font-family: var(--antr); font-style: italic; font-size: 15px; margin: -6px 0 6px; }
+.natos-apr { font-size: 13px; line-height: 1.45; margin: 0 0 8px; opacity: .9; }
+.natos-alj { font-size: 12px; line-height: 1.4; margin: 6px 0 0; padding-top: 8px; border-top: 1px solid rgba(127,127,127,.3); opacity: .8; }
+.natos p { color: inherit; }
+.natos { width: 260px; margin-left: -130px; }
+/* telefone — juosta ekrano apačioje, kad neišlįstų už krašto */
+@media (max-width: 719px) {
+  .natos { position: fixed; left: 12px; right: 12px; top: auto; bottom: 12px; width: auto; margin: 0; max-height: 75vh; overflow: auto; }
+}
+/* kvepalai kaip wyldnotes.com: užvedus — ingredientų nuotrauka, buteliukas į lėkštelę (Dangira 2026-10-04) */
+.penki-kvapai .butelis { position: relative; aspect-ratio: 1; overflow: hidden; }
+.penki-kvapai .butelis img { position: absolute; inset: 0; width: 100%; height: 100%; }
+.penki-kvapai .butelis .ingredientai { object-fit: cover; opacity: 0; transform: scale(1.06); filter: none; transition: opacity .45s var(--lygiai), transform .7s var(--lygiai); }
+.penki-kvapai .butelis .kv-but { object-fit: contain; transition: transform .5s var(--lygiai); }
+.butelis:hover .ingredientai, .butelis.atidaryta .ingredientai { opacity: 1; transform: none; }
+.butelis:hover .kv-but, .butelis.atidaryta .kv-but { transform: scale(.42); filter: drop-shadow(0 8px 10px rgba(0,0,0,.35)); }
+.penki-kvapai .taskas { z-index: 2; top: 10px; left: auto; right: 10px; margin: 0; }
+.kv-nuotaika { font-family: var(--antr); font-style: italic; font-size: 17px; color: #f3e6c4 !important; margin: 0 0 6px !important; }
+.kv-natos { font-size: 13px !important; color: #9fb2d3 !important; opacity: 0; transition: opacity .35s; }
+.kvapas:hover .kv-natos, .kvapas:has(.atidaryta) .kv-natos { opacity: 1; }
+@media (hover: none) { .kv-natos { opacity: 1; } }
+.natos-wl { background: #f6f1ea; color: #4a3f35; }
+.natos-bb { background: #161a24; color: #e8dcc0; }
+.natos-sd { background: #efe6d6; color: #4d4031; }
+.natos-se { background: #e3e8dc; color: #36412f; }
+.penki-kvapai .nuotaika { font-family: var(--antr); font-style: italic; font-size: 17px; color: #f3e6c4; margin-bottom: 8px; }
+.penki-kvapai a { text-decoration: none; display: block; }
+.wyld-kvietimas { margin-top: 48px; padding: 40px; border: 1px solid rgba(255,255,255,.3); background: rgba(255,255,255,.06); max-width: 720px; }
+.wyld-kvietimas h3 { color: #fff; font-size: 28px; margin-bottom: 10px; }
+.wyld-kvietimas p { margin-bottom: 24px; }
+.wyld-kvietimas .kodas { font-family: Consolas, monospace; background: #fff; color: #20406f; padding: 2px 10px; }
 @media (max-width: 719px) { .penki-kvapai img { height: 150px; } .penki-kvapai h3 { font-size: 22px; } }
 
 /* ---------- 6. užsakymas ---------- */
@@ -247,6 +338,12 @@ h2 { font-size: clamp(32px, 4.6vw, 54px); line-height: 1.08; letter-spacing: -0.
 }
 .kvietimas h3 { color: #fff; font-size: 30px; margin-bottom: 10px; }
 .kvietimas p { color: #c9d6ee; margin-bottom: 28px; }
+
+/* ---------- 5a. šio mėnesio naujienos ---------- */
+.naujienos { background: var(--pavirsius); padding: 88px 0; }
+.naujienos .kvietimas { margin-top: 32px; max-width: 720px; }
+.naujienos .kvietimas .mygtukas { margin: 8px 8px 0 0; }
+.naujienos .menuo { font-size: 14px; letter-spacing: .14em; text-transform: uppercase; color: var(--melyna); margin-bottom: 12px; }
 
 /* ---------- 7. apie mane ---------- */
 .apie { background: var(--pavirsius); }
@@ -348,12 +445,16 @@ footer { padding: 48px 0 56px; border-top: 1px solid var(--linija); }
       </video>
       <div class="plotis">
         <div class="kortele rodyk">
+          <button class="taskas taskas-al" type="button" aria-expanded="false" aria-label="Thieves: daugiau">+</button>
           <img class="buteliukas" src="vaizdai/yl-thieves.png" alt="Young Living Thieves, 15 ml">
           <div>
             <h3>Thieves</h3>
             <div class="kitaip">mišinys</div>
+            <div class="aprasas">
             <p>Šiltas, prieskoninis kvapas, lyg ką tik būtų iškeptas pyragas su gvazdikėliais ir cinamonu.</p>
             <p class="kada"><strong>Kada:</strong> rudenį ir žiemą, kai norisi jaukesnių namų, arba po tvarkymosi.</p>
+              <a class="mygtukas pilnas yl-nuoroda uzsakyti-al" href="#uzsakyti">Užsisakyti</a>
+            </div>
           </div>
         </div>
       </div>
@@ -367,12 +468,16 @@ footer { padding: 48px 0 56px; border-top: 1px solid var(--linija); }
       </video>
       <div class="plotis">
         <div class="kortele rodyk">
+          <button class="taskas taskas-al" type="button" aria-expanded="false" aria-label="Pipirmėtė: daugiau">+</button>
           <img class="buteliukas" src="vaizdai/yl-pipirmete.png" alt="Young Living pipirmėtė, 15 ml">
           <div>
             <h3>Pipirmėtė</h3>
             <div class="kitaip">Peppermint</div>
+            <div class="aprasas">
             <p>Gaivus, vėsus kvapas. Pabunda ir kambarys, ir tas, kas jame sėdi.</p>
             <p class="kada"><strong>Kada:</strong> ryte arba darbo kampe, kai reikia susikaupti. Stiprus, užtenka kelių lašų.</p>
+              <a class="mygtukas pilnas yl-nuoroda uzsakyti-al" href="#uzsakyti">Užsisakyti</a>
+            </div>
           </div>
         </div>
       </div>
@@ -386,12 +491,16 @@ footer { padding: 48px 0 56px; border-top: 1px solid var(--linija); }
       </video>
       <div class="plotis">
         <div class="kortele rodyk">
+          <button class="taskas taskas-al" type="button" aria-expanded="false" aria-label="Levanda: daugiau">+</button>
           <img class="buteliukas" src="vaizdai/yl-levanda.png" alt="Young Living levanda, 15 ml">
           <div>
             <h3>Levanda</h3>
             <div class="kitaip">Lavender</div>
+            <div class="aprasas">
             <p>Minkštas, ramus kvapas. Tas, nuo kurio dažniausiai ir pradedama.</p>
             <p class="kada"><strong>Kada:</strong> vakare, kai dienos triukšmas baigiasi. Difuzorių išjunk prieš miegą.</p>
+              <a class="mygtukas pilnas yl-nuoroda uzsakyti-al" href="#uzsakyti">Užsisakyti</a>
+            </div>
           </div>
         </div>
       </div>
@@ -405,12 +514,16 @@ footer { padding: 48px 0 56px; border-top: 1px solid var(--linija); }
       </video>
       <div class="plotis">
         <div class="kortele rodyk">
-          <img class="buteliukas" src="vaizdai/yl-roze.png" alt="Young Living rožė, 5 ml">
+          <button class="taskas taskas-al" type="button" aria-expanded="false" aria-label="Rožė: daugiau">+</button>
+          <img class="buteliukas mazas" src="vaizdai/yl-roze.png" alt="Young Living rožė, 5 ml">
           <div>
             <h3>Rožė</h3>
             <div class="kitaip">Rose</div>
+            <div class="aprasas">
             <p>Sodrus, gilus kvapas. Vienam 5 ml buteliukui reikia 10 kg rožių žiedlapių, todėl jis vienas brangiausių ir naudojamas po lašą.</p>
             <p class="kada"><strong>Kada:</strong> ypatingam vakarui ar savo ramybės minutei. Užtenka lašo į įprastą kūno losjoną.</p>
+              <a class="mygtukas pilnas yl-nuoroda uzsakyti-al" href="#uzsakyti">Užsisakyti</a>
+            </div>
           </div>
         </div>
       </div>
@@ -462,47 +575,76 @@ footer { padding: 48px 0 56px; border-top: 1px solid var(--linija); }
 </section>
 
 <!-- ============ 5. WYLD NOTES ============ -->
+<svg style="display:none" aria-hidden="true">
+  <symbol id="i-citrus" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="6"/><path d="M12 6v12M6 12h12M7.8 7.8l8.4 8.4M16.2 7.8l-8.4 8.4"/></g></symbol>
+  <symbol id="i-gele" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="2.2"/><ellipse cx="12" cy="6.2" rx="2.6" ry="3.6"/><ellipse cx="12" cy="17.8" rx="2.6" ry="3.6"/><ellipse cx="6.2" cy="12" rx="3.6" ry="2.6"/><ellipse cx="17.8" cy="12" rx="3.6" ry="2.6"/></g></symbol>
+  <symbol id="i-zole" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M12 22V5"/><ellipse cx="10" cy="6" rx="1.6" ry="2.2"/><ellipse cx="14" cy="8" rx="1.6" ry="2.2"/><ellipse cx="10" cy="10.5" rx="1.6" ry="2.2"/><ellipse cx="14" cy="13" rx="1.6" ry="2.2"/><path d="M12 18c-3-1-5-3-5-5M12 18c3-1 5-3 5-5"/></g></symbol>
+  <symbol id="i-spygliai" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M12 22V2M12 6l-4-2M12 6l4-2M12 10l-5-2.5M12 10l5-2.5M12 14l-6-3M12 14l6-3M12 18l-6.5-3M12 18l6.5-3"/></g></symbol>
+  <symbol id="i-mediena" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><ellipse cx="12" cy="12" rx="9" ry="7"/><ellipse cx="12" cy="12" rx="5.5" ry="4"/><ellipse cx="12" cy="12" rx="2" ry="1.4"/></g></symbol>
+  <symbol id="i-prieskonis" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><path d="M12 2l2 6.5 6.5-2-4 5.5 5.5 4-6.8.5L12 23l-1.7-6.5-6.8-.5 5.5-4-4-5.5 6.5 2z"/><circle cx="12" cy="12.5" r="1.6"/></g></symbol>
+  <symbol id="i-saldu" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M4 20C8 12 14 6 20 4c-2 6-8 12-16 16z"/><path d="M6.5 17.5C10 13 14 9 18 6.5"/></g></symbol>
+</svg>
+
 <section class="kvepalai" id="kvepalai">
   <div class="plotis">
     <div class="rodyk">
-      <h2>Wyld NOTES kvepalai</h2>
-      <p class="ivadas">Tai naujiena ir man pačiai. Dar neišbandžiau, todėl rašau tik tai,
-        ką apie juos sako pats gamintojas.</p>
+      <h2>Kvepalai su eteriniais aliejais</h2>
+      <p class="ivadas">Ar žinai, kad kvepaluose gali būti tų pačių aliejų, kuriuos laikai
+        namuose? Levanda, kadagys, muskatinis šalavijas. Wyld NOTES tokius ir kuria.</p>
+      <!-- Faktas: užsakymas WN35846, 2026-10-01 (wyld-notes/README.md). Pakeisti, kai ji išbandys. -->
+      <p>Tai naujiena ir man pačiai. Užsisakiau visus keturis ir laukiu siuntinio. Kai
+        pauostysiu, parašysiu, kuris man artimiausias. Kol kas rašau tai, ką sako gamintojas.</p>
     </div>
 
     <!-- Faktai tik iš wyldnotes.com/en-eu produktų aprašymų (2026-09-25). Nuotraukos: projects/young-living/wyld-notes/nuotraukos.
          Cashmere Creme išimta 2026-10-02 (Dangira: Lietuvoje dar nėra). White Lie ir Black Book nuotraukos apkirptos, kad buteliukas būtų per vidurį. -->
     <div class="penki-kvapai rodyk">
-      <figure>
-        <img src="vaizdai/wyld-white-lie-centre.png" alt="Wyld NOTES White Lie kvepalų buteliukas" loading="lazy">
+      <figure class="kvapas">
+        <div class="butelis">
+          <img class="ingredientai" src="vaizdai/kvapas-white-lie-ingredientai.jpg" alt="" loading="lazy">
+          <img class="kv-but" src="vaizdai/wyld-white-lie-centre.png" alt="Wyld NOTES White Lie kvepalų buteliukas" loading="lazy">
+          <button class="taskas" type="button" aria-expanded="false" aria-label="White Lie: kvapo natos">+</button>
+                  </div>
         <figcaption>
           <h3>White Lie</h3>
-          <p>Švelnus, pudrinis. Pelargonija ir rožė su vetiveriu, persiko užuomina.</p>
-          <p class="su-aliejais">Su kadagio, levandų ir juodosios eglės aliejais</p>
+          <p class="kv-nuotaika">Kai norisi švelnumo</p>
+          <p class="kv-natos">Bergamotė · pelargonija · jazminas · rožė · pačiuliai · vetiveris</p>
         </figcaption>
       </figure>
-      <figure>
-        <img src="vaizdai/wyld-black-book-centre.png" alt="Wyld NOTES Black Book kvepalų buteliukas" loading="lazy">
+      <figure class="kvapas">
+        <div class="butelis">
+          <img class="ingredientai" src="vaizdai/kvapas-black-book-ingredientai.jpg" alt="" loading="lazy">
+          <img class="kv-but" src="vaizdai/wyld-black-book-centre.png" alt="Wyld NOTES Black Book kvepalų buteliukas" loading="lazy">
+          <button class="taskas" type="button" aria-expanded="false" aria-label="Black Book: kvapo natos">+</button>
+                  </div>
         <figcaption>
           <h3>Black Book</h3>
-          <p>Prieskoninis ir paslaptingas. Muskatas, osmantas, tonka, imbieras ir tabako užuomina.</p>
-          <p class="su-aliejais">Su kadagio, levandų ir muskatinio šalavijo aliejais</p>
+          <p class="kv-nuotaika">Vakarui, su paslaptimi</p>
+          <p class="kv-natos">Muskatas · imbieras · osmantas · kadagys · olibanas · tonka</p>
         </figcaption>
       </figure>
-      <figure>
-        <img src="vaizdai/wyld-sweet-decadence.png" alt="Wyld NOTES Sweet Decadence kvepalų buteliukas" loading="lazy">
+      <figure class="kvapas">
+        <div class="butelis">
+          <img class="ingredientai" src="vaizdai/kvapas-sweet-decadence-ingredientai.jpg" alt="" loading="lazy">
+          <img class="kv-but" src="vaizdai/wyld-sweet-decadence.png" alt="Wyld NOTES Sweet Decadence kvepalų buteliukas" loading="lazy">
+          <button class="taskas" type="button" aria-expanded="false" aria-label="Sweet Decadence: kvapo natos">+</button>
+                  </div>
         <figcaption>
           <h3>Sweet Decadence</h3>
-          <p>Kaip šilti kepiniai: pistacija, kokosas, Madagaskaro vanilė, apelsino žievelė, rožė ir tonka.</p>
-          <p class="su-aliejais">Su muskatinio šalavijo ir levandų aliejais</p>
+          <p class="kv-nuotaika">Kai norisi jaukumo</p>
+          <p class="kv-natos">Apelsinas · levanda · kokosas · rožė · tonka · vanilė</p>
         </figcaption>
       </figure>
-      <figure>
-        <img src="vaizdai/wyld-smokey-ember.png" alt="Wyld NOTES Smokey Ember kvepalų buteliukas" loading="lazy">
+      <figure class="kvapas">
+        <div class="butelis">
+          <img class="ingredientai" src="vaizdai/kvapas-smokey-ember-ingredientai.jpg" alt="" loading="lazy">
+          <img class="kv-but" src="vaizdai/wyld-smokey-ember.png" alt="Wyld NOTES Smokey Ember kvepalų buteliukas" loading="lazy">
+          <button class="taskas" type="button" aria-expanded="false" aria-label="Smokey Ember: kvapo natos">+</button>
+                  </div>
         <figcaption>
           <h3>Smokey Ember</h3>
-          <p>Mediena ir saulės įkaitinti kraštovaizdžiai: citrusai, balzaminis kėnis, jazminas ir vanilė.</p>
-          <p class="su-aliejais">Su juodosios eglės, muskatinio šalavijo ir kadagio aliejais</p>
+          <p class="kv-nuotaika">Kai pasiilgsti saulės</p>
+          <p class="kv-natos">Citrina · kadagys · jazminas · muskatinis šalavijas · kiparisas · juodoji eglė</p>
         </figcaption>
       </figure>
     </div>
@@ -512,7 +654,7 @@ footer { padding: 48px 0 56px; border-top: 1px solid var(--linija); }
         <strong>Her Signature Duo</strong> (White Lie ir Sweet Decadence),
         <strong>His Signature Duo</strong> (Smokey Ember ir Black Book) ir
         <strong>The Original Collection</strong> su visais keturiais. Visus kvepalus rasi
-        <a href="https://wyldnotes.com/en-eu/collections/fine-fragrance" target="_blank" rel="noopener">wyldnotes.com</a>.</p>
+        <a href="https://wyldnotes.com/discount/lasas-juroje?ref=lasas-juroje&amp;redirect=/en-eu/collections/fine-fragrance" target="_blank" rel="noopener">wyldnotes.com</a>.</p>
       <ul class="faktai">
         <li>be sintetinių medžiagų</li>
         <li>ekologiškas cukranendrių alkoholis</li>
@@ -520,6 +662,36 @@ footer { padding: 48px 0 56px; border-top: 1px solid var(--linija); }
         <li>netestuoti su gyvūnais</li>
         <li>siunčiami į Europą</li>
       </ul>
+
+      <!-- 10 % pirmam pirkimui — wyldnotes.com/pages/faqs („first-time customers“), kodas lasas-juroje (wyld-notes/README.md).
+           Nuoroda neša ir partnerės ref, ir nuolaidos kodą; ar kasoje nusiskaito automatiškai — nepatikrinta, todėl prašome įvesti. -->
+      <div class="wyld-kvietimas">
+        <h3>Pirmam pirkimui — 10 % nuolaida</h3>
+        <p>Pirmą kartą perkant, kasoje įvesk kodą <span class="kodas">lasas-juroje</span>.
+          Kvepalai siunčiami ir į Lietuvą.</p>
+        <a class="mygtukas pilnas" href="https://wyldnotes.com/discount/lasas-juroje?ref=lasas-juroje&amp;redirect=/en-eu/collections/fine-fragrance" target="_blank" rel="noopener">Pažiūrėti kvepalus</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 5a. ŠIO MĖNESIO NAUJIENOS ============ -->
+<!-- Kas mėnesį keisti tik tris dalykus: .menuo, gido pavadinimą ir href.
+     Gido failo pas save nelaikome — YL Policies & Procedures Europe (2021) 5.2: YL leidiniai
+     „copyrighted and should not be reproduced without written permission“. Todėl tik nuoroda. -->
+<section class="naujienos" id="naujienos">
+  <div class="plotis rodyk">
+    <div class="menuo">Rugsėjis–spalis</div>
+    <h2>Šio mėnesio naujienos</h2>
+    <p class="ivadas">Young Living kas sezoną išleidžia gidą lietuviškai. Dabar tai rudens
+      dovanų gidas.</p>
+    <div class="kvietimas">
+      <h3>Dovanų gidas</h3>
+      <p>Pažiūrėk, kas šį sezoną naujo. Kai išsirinksi, užsisakyk per mano nuorodą —
+        taip žinosiu, kad atėjai per mane, ir galėsiu padėti.</p>
+      <!-- Gidas veda į YL puslapį be jos numerio, todėl šalia — užsakymas per jos nuorodą. -->
+      <a class="mygtukas pilnas yl-nuoroda" href="#uzsakyti">Užsisakyti per mano nuorodą</a>
+      <a class="mygtukas" href="https://www.youngliving.com/lt_lt/ipaper/september-2026/2026-sept-oct-gift-guide-lt-lt" target="_blank" rel="noopener">Atsiversti gidą</a>
     </div>
   </div>
 </section>
@@ -551,8 +723,8 @@ footer { padding: 48px 0 56px; border-top: 1px solid var(--linija); }
         <div>
           <h3>Lojalumo programa</h3>
           <p>Užsakai reguliariai, ir siuntinys kas mėnesį ateina pats, tad pamiršti
-            nebeįmanoma. Tam reikia bent 50 PV per mėnesį, o kuo daugiau PV, tuo didesnė
-            grąža.</p>
+            nebeįmanoma. Tam reikia bent 50 PV per mėnesį. Taškais grįžta 10 %, nuo 4 mėnesio
+            iš eilės 20 %, nuo 25 mėnesio 25 %.</p>
         </div>
       </div>
 
@@ -600,12 +772,18 @@ footer { padding: 48px 0 56px; border-top: 1px solid var(--linija); }
         <img src="vaizdai/Logo_lasas_juroje_sviesus_tamsesnis.png" alt="Lašas jūroje">
       </picture>
       <div>
-        <div class="vardas">Dangira</div>
-        <div class="role">Young Living eterinių aliejų nepriklausoma konsultantė.
+        <div class="vardas">Dangira Čiakienė</div>
+        <!-- YL P&P Europe 2021 (LT) 5.7: BRAND PARTNER'io vardas ir numeris; 5.2: žodžiai „BRAND PARTNER“.
+             Numeris — sponsorid/enrollerid iš jos registracijos nuorodos. -->
+        <div class="role">Young Living nepriklausoma konsultantė (Independent Brand Partner), Nr. 3882850.
           <a href="https://facebook.com/dangira.ciakiene" target="_blank" rel="noopener">Facebook</a></div>
       </div>
     </div>
     <div class="smulkme">
+      <!-- YL P&P Europe 2021 (LT) 5.7 a — teisinė frazė, keisti NEGALIMA. Dar trūksta YL BRAND PARTNER logotipo (iš Virtual Office). -->
+      <p class="teisine">„1. Reklamuotojui ar dalyviui, esančiam prekybos schemoje, nevalia įtikinėti ką nors
+        atlikti mokėjimus, žadant naudą iš to, kad prisijungtų kiti asmenys.<br>
+        2. Neapsigaukite girdėdami teiginius, kad didelis uždarbis lengvai pasiekiamas.“</p>
       <p>Šią svetainę parengiau aš, nepriklausoma konsultantė. Young Living jos nerengė
         ir netvirtino. Produktų nuotraukos: Young Living ir Wyld NOTES. Scenų vaizdai sukurti
         dirbtiniu intelektu.</p>
@@ -613,14 +791,16 @@ footer { padding: 48px 0 56px; border-top: 1px solid var(--linija); }
         Garinimo trukmė (iki 10 min. per dieną naujam aliejui): Young Living saugos gairės,
         eu.youngliving.com/en-gb/pages/safety-guidelines. Wyld NOTES informacija:
         wyldnotes.com/en-eu (2026-09-25). Rožių aliejaus faktai:
-        youngliving.com/lt_lt/products/roziu-eterinis-aliejus.</p>
+        youngliving.com/lt_lt/products/roziu-eterinis-aliejus. Lojalumo programa:
+        youngliving.com/en_eu/opportunity/loyalty-rewards (2026-10-04).</p>
     </div>
   </div>
 </footer>
 
 <script>
   // Dangiros Young Living užsakymo nuoroda. Įrašyti čia, ir ji atsiras visur.
-  var YL_NUORODA = "";
+  // 2026-10-04: jos duota registracijos nuoroda (sponsorid/enrollerid 3882850), patikrinta — atsidaro LT, numeris įsimenamas.
+  var YL_NUORODA = "https://www.youngliving.com/vo/#/signup/new-start?sponsorid=3882850&enrollerid=3882850&isocountrycode=LT&culture=lt-LT&type=member";
 
   if (YL_NUORODA) {
     document.querySelectorAll(".yl-nuoroda").forEach(function (a) {
@@ -632,7 +812,7 @@ footer { padding: 48px 0 56px; border-top: 1px solid var(--linija); }
       a.href = "https://facebook.com/dangira.ciakiene"; a.target = "_blank"; a.rel = "noopener";
       a.textContent = "Rašyk man";
     });
-    var kv = document.querySelector(".kvietimas");
+    var kv = document.querySelector("#uzsakyti .kvietimas");
     kv.querySelector("h3").textContent = "Parašyk man žinutę";
     kv.querySelector("p").textContent = "Pasakysiu, nuo ko pradėti, ir atsiųsiu nuorodą užsakymui.";
   }
@@ -658,6 +838,29 @@ footer { padding: 48px 0 56px; border-top: 1px solid var(--linija); }
     }, { threshold: 0.12 });
     document.querySelectorAll(".rodyk").forEach(function (el) { stebetojas.observe(el); });
   }
+
+  // Kvapo natos: telefone atidaroma palietus taškelį, kompiuteryje — užvedus pelę.
+  document.querySelectorAll(".butelis .taskas").forEach(function (b) {
+    b.addEventListener("click", function (e) {
+      e.stopPropagation();
+      var dez = b.parentElement, atv = !dez.classList.contains("atidaryta");
+      document.querySelectorAll(".butelis.atidaryta").forEach(function (x) { x.classList.remove("atidaryta"); x.querySelector(".taskas").setAttribute("aria-expanded", "false"); });
+      if (atv) { dez.classList.add("atidaryta"); b.setAttribute("aria-expanded", "true"); }
+    });
+  });
+  document.addEventListener("click", function () {
+    document.querySelectorAll(".butelis.atidaryta").forEach(function (x) { x.classList.remove("atidaryta"); x.querySelector(".taskas").setAttribute("aria-expanded", "false"); });
+  });
+
+  // Aliejų kortelės: palietus „+“ išsiskleidžia aprašymas (telefone nėra pelės).
+  document.querySelectorAll(".kortele .taskas-al").forEach(function (b) {
+    b.addEventListener("click", function (e) {
+      e.stopPropagation();
+      var k = b.closest(".kortele"), atv = !k.classList.contains("atidaryta");
+      k.classList.toggle("atidaryta", atv); b.setAttribute("aria-expanded", atv ? "true" : "false");
+      b.textContent = atv ? "−" : "+";
+    });
+  });
 </script>
 </body>
 </html>
