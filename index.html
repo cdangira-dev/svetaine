@@ -173,6 +173,10 @@ h2 { font-size: clamp(32px, 4.6vw, 54px); line-height: 1.08; letter-spacing: -0.
 /* tikros proporcijos: 5 ml ~5,1 cm, 15 ml ~6,4 cm aukščio (pardavėjų skelbimai) → 80 % */
 .kortele .buteliukas.mazas { width: 77px; justify-self: center; margin-top: 10px; }
 @media (max-width: 767px) { .kortele .buteliukas.mazas { width: 58px; } }
+/* tikri YL buteliukai iš Skaitmeninės bibliotekos, be „+“ — aprašas užvedus ant buteliuko, telefone paspaudus (Dangira 2026-10-04) */
+.kortele { padding-right: 28px; grid-template-columns: 72px 1fr; }
+.kortele .buteliukas { width: 72px; cursor: pointer; outline: none; }
+.kortele .buteliukas.mazas { width: 58px; margin-top: 36px; }
 /* iš pradžių — tik buteliukas ir pavadinimas, be kortelės; užvedus ant buteliuko — kortelė su aprašu (Dangira 2026-10-04) */
 .kortele { background: transparent; box-shadow: none; -webkit-backdrop-filter: none; backdrop-filter: none;
   transition: background .3s, box-shadow .3s; }
@@ -191,8 +195,7 @@ h2 { font-size: clamp(32px, 4.6vw, 54px); line-height: 1.08; letter-spacing: -0.
     background: transparent; box-shadow: none; border: 1px solid transparent; }
   .kortele .buteliukas { width: 52px; } .kortele .buteliukas.mazas { width: 42px; margin-top: 0; }
   .kortele h3, .kortele:hover h3 { background: transparent; padding: 0; font-size: 30px; }
-  .kortele .taskas-al { top: 50%; right: 4px; transform: translateY(-50%); }
-  .kortele.atidaryta { padding: 18px 56px 20px 18px; align-items: start; background: #fff; border-color: var(--linija);
+  .kortele.atidaryta { padding: 18px 18px 20px 18px; align-items: start; background: #fff; border-color: var(--linija);
     box-shadow: 0 18px 40px -24px rgba(21,43,77,.35); }
   .kortele.atidaryta .taskas-al { top: 18px; transform: none; }
   .kortele:hover:not(.atidaryta) .aprasas { max-height: 0; opacity: 0; }
@@ -208,6 +211,11 @@ h2 { font-size: clamp(32px, 4.6vw, 54px); line-height: 1.08; letter-spacing: -0.
   .kortele { grid-template-columns: 72px 1fr; padding: 24px; }
   .kortele .buteliukas { width: 72px; }
 }
+@media (max-width: 767px) {
+  .kortele, .scena.roze .kortele { padding: 6px 0; grid-template-columns: 44px 1fr; }
+  .kortele.atidaryta, .scena.roze .kortele.atidaryta { padding: 18px; }
+  .kortele .buteliukas { width: 44px; } .kortele .buteliukas.mazas { width: 35px; margin-top: 0; justify-self: center; }
+}
 /* rožė: garintuvas per vidurį (41–60 % pločio) — kortelė jo nedengia (Dangira, 2026-10-02) */
 @media (min-width: 1280px) {
   .scena.roze .plotis { max-width: none; padding: 0 3vw; }
@@ -222,9 +230,56 @@ h2 { font-size: clamp(32px, 4.6vw, 54px); line-height: 1.08; letter-spacing: -0.
 @media (prefers-reduced-transparency: reduce) { .kortele { background: #fff; -webkit-backdrop-filter: none; backdrop-filter: none; } }
 @supports (animation-timeline: view()) {
   @media (prefers-reduced-motion: no-preference) and (min-width: 768px) {
-    .scenos-foto { animation: priarteja linear both; animation-timeline: view(); }
+    .scenos-foto, .scenos-but { animation: priarteja linear both; animation-timeline: view(); }
     @keyframes priarteja { from { transform: scale(1.08); } to { transform: scale(1); } }
   }
+}
+/* Tikras YL buteliukas pačioje scenoje (su šešėliais, irankiai/buteliukai-scenose.py) vietoj AI bevardžio.
+   Jokių pavadinimų ir „+“: užvedus ant buteliuko išlenda aprašymas, telefone — paspaudus (Dangira 2026-10-04). */
+.scenos-but { position: absolute; z-index: 1; pointer-events: none; max-width: none; }
+.scenos-but-zona { position: absolute; z-index: 2; padding: 0; border: 0; background: transparent; cursor: pointer; }
+.scenos-but-zona:focus-visible { outline: 2px solid #fff; outline-offset: 4px; }
+.scena .plotis { z-index: 3; pointer-events: none; }
+.scena .kortele { pointer-events: auto; grid-template-columns: 1fr; padding: 28px; }
+.kortele > .buteliukas { display: none; }
+.kortele h3, .kortele:hover h3 { background: transparent; padding: 0; }
+.kortele .kitaip { display: block; }
+.kortele .aprasas { max-height: none; opacity: 1; }
+@media (min-width: 768px) {
+  /* lapelis iškyla šalia buteliuko (vietą skaičiuoja JS), scenos spalvomis — kaip kvepaluose */
+  .scenos .scena > .kortele.rodyk { position: absolute; z-index: 3; width: 330px; margin: 0; padding: 24px 26px 22px;
+    opacity: 0; visibility: hidden; transform: scale(.94);
+    -webkit-backdrop-filter: blur(12px) saturate(130%); backdrop-filter: blur(12px) saturate(130%);
+    box-shadow: 0 24px 50px -24px rgba(0,0,0,.55);
+    transition: opacity .3s, transform .3s, visibility 0s linear .5s; }
+  /* užvedus ant buteliuko lapelis lieka, kol pelė scenoje — nedingsta vedant prie „Užsisakyti“ (Dangira 2026-10-04) */
+  .scenos .scena.rodo > .kortele.rodyk, .scenos .scena > .kortele.rodyk:hover, .scenos .scena > .kortele.rodyk.atidaryta, .scenos .scena > .kortele.rodyk:focus-within {
+    opacity: 1; visibility: visible; transform: none; transition: opacity .3s, transform .3s, visibility 0s; }
+  .scenos .scena.roze > .kortele.rodyk { width: 330px; }
+  .scenos .scena > .kortele.rodyk h3 { font-size: 30px; color: var(--al-tekstas); }
+  .scenos .scena > .kortele.rodyk .kitaip { color: var(--al-akcentas); }
+  .scenos .scena > .kortele.rodyk p, .scenos .scena > .kortele.rodyk .kada { color: var(--al-tekstas); }
+  .scenos .scena > .kortele.rodyk .kada { opacity: .85; }
+  .scenos .scena > .kortele.rodyk .kada strong { color: var(--al-akcentas); }
+  .scenos .scena > .kortele.rodyk .uzsakyti-al { background: var(--al-mygtukas) !important; border-color: var(--al-mygtukas) !important; color: #fff !important; }
+  .scenos .scena > .kortele.rodyk, .scenos .scena > .kortele.rodyk:hover, .scenos .scena > .kortele.rodyk.atidaryta { background: var(--al-fonas); }
+}
+.scena[data-al="thieves"]   { --al-fonas: rgba(52,30,18,.80);  --al-tekstas: #f3e3c8; --al-akcentas: #e0ac66; --al-mygtukas: #a8692a; }
+.scena[data-al="pipirmete"] { --al-fonas: rgba(236,243,233,.84); --al-tekstas: #23382a; --al-akcentas: #3f6b4a; --al-mygtukas: #3f6b4a; }
+.scena[data-al="levanda"]   { --al-fonas: rgba(36,32,66,.80);  --al-tekstas: #ece6fb; --al-akcentas: #bfaef0; --al-mygtukas: #7a62b8; }
+.scena[data-al="roze"]      { --al-fonas: rgba(62,12,26,.82);  --al-tekstas: #f8e1e4; --al-akcentas: #eba7b4; --al-mygtukas: #a3263f; }
+@media (max-width: 767px) {
+  .scena .kortele, .scena.roze .kortele { display: none; }
+  .scena .kortele.atidaryta, .scena.roze .kortele.atidaryta { display: grid; grid-template-columns: 1fr; padding: 18px; margin: 0;
+    background: var(--al-fonas); border: 0; box-shadow: none; }
+  .scena .kortele.atidaryta h3, .scena .kortele.atidaryta p, .scena .kortele.atidaryta .kada { color: var(--al-tekstas); }
+  .scena .kortele.atidaryta .kitaip, .scena .kortele.atidaryta .kada strong { color: var(--al-akcentas); }
+  .scena .kortele.atidaryta .uzsakyti-al { background: var(--al-mygtukas) !important; border-color: var(--al-mygtukas) !important; }
+  .scena[data-al="thieves"] .kortele.atidaryta { background: #3a2416; }
+  .scena[data-al="pipirmete"] .kortele.atidaryta { background: #eaf1e6; }
+  .scena[data-al="levanda"] .kortele.atidaryta { background: #2a2548; }
+  .scena[data-al="roze"] .kortele.atidaryta { background: #4a0e1f; }
+  .scena .plotis, .scena.roze .plotis { margin-top: 0; padding-top: 0; padding-bottom: 0; }
 }
 
 .taisykles { margin-top: 96px; padding-top: 48px; border-top: 1px solid var(--linija); display: grid; gap: 40px; grid-template-columns: 1fr; }
@@ -495,17 +550,17 @@ footer { padding: 48px 0 56px; border-top: 1px solid var(--linija); }
              aria-label="Buteliukas ant medinio virtuvės stalo su cinamonu, gvazdikėliais, citrina ir pyragu, iš puodelio kyla garai">
         <source src="vaizdai/02-thieves-virtuve-garai.mp4" type="video/mp4">
       </video>
+      <img class="scenos-but" src="vaizdai/thieves-buteliukas.png" alt="" data-fw="1672" data-fh="941" data-x="165" data-y="88" data-w="802" data-h="688">
+      <button class="scenos-but-zona" type="button" aria-label="Thieves: aprašymas" data-x="491" data-y="385" data-w="150" data-h="362"></button>
       <div class="plotis">
         <div class="kortele rodyk">
-          <button class="taskas taskas-al" type="button" aria-expanded="false" aria-label="Thieves: daugiau">+</button>
-          <img class="buteliukas" src="vaizdai/yl-thieves.png" alt="Young Living Thieves, 15 ml">
           <div>
             <h3>Thieves</h3>
             <div class="kitaip">mišinys</div>
             <div class="aprasas">
             <p>Šiltas, prieskoninis kvapas, lyg ką tik būtų iškeptas pyragas su gvazdikėliais ir cinamonu.</p>
             <p class="kada"><strong>Kada:</strong> rudenį ir žiemą, kai norisi jaukesnių namų, arba po tvarkymosi.</p>
-              <a class="mygtukas pilnas yl-nuoroda uzsakyti-al" href="#uzsakyti">Užsisakyti</a>
+              <a class="mygtukas pilnas uzsakyti-al" href="https://www.youngliving.com/lt_lt/products/thieves?sponsorid=3882850&amp;enrollerid=3882850&amp;isocountrycode=LT&amp;culture=lt-LT&amp;type=member" target="_blank" rel="noopener">Užsisakyti</a>
             </div>
           </div>
         </div>
@@ -518,17 +573,17 @@ footer { padding: 48px 0 56px; border-top: 1px solid var(--linija); }
              aria-label="Pipirmėtės lapai stiklinėje, buteliukas ir Young Living AromaGlobe garintuvas ant stalo prie lango ryte">
         <source src="vaizdai/03-pipirmete-aromaglobe-garai-v2.mp4" type="video/mp4">
       </video>
+      <img class="scenos-but" src="vaizdai/pipirmete-buteliukas.png" alt="" data-fw="1376" data-fh="768" data-x="313" data-y="211" data-w="485" data-h="416">
+      <button class="scenos-but-zona" type="button" aria-label="Pipirmėtė: aprašymas" data-x="510" data-y="390" data-w="91" data-h="219"></button>
       <div class="plotis">
         <div class="kortele rodyk">
-          <button class="taskas taskas-al" type="button" aria-expanded="false" aria-label="Pipirmėtė: daugiau">+</button>
-          <img class="buteliukas" src="vaizdai/yl-pipirmete.png" alt="Young Living pipirmėtė, 15 ml">
           <div>
             <h3>Pipirmėtė</h3>
             <div class="kitaip">Peppermint</div>
             <div class="aprasas">
             <p>Gaivus, vėsus kvapas. Pabunda ir kambarys, ir tas, kas jame sėdi.</p>
             <p class="kada"><strong>Kada:</strong> ryte arba darbo kampe, kai reikia susikaupti. Stiprus, užtenka kelių lašų.</p>
-              <a class="mygtukas pilnas yl-nuoroda uzsakyti-al" href="#uzsakyti">Užsisakyti</a>
+              <a class="mygtukas pilnas uzsakyti-al" href="https://www.youngliving.com/lt_lt/products/pipirmeciu-eterinis-aliejus?sponsorid=3882850&amp;enrollerid=3882850&amp;isocountrycode=LT&amp;culture=lt-LT&amp;type=member" target="_blank" rel="noopener">Užsisakyti</a>
             </div>
           </div>
         </div>
@@ -541,17 +596,17 @@ footer { padding: 48px 0 56px; border-top: 1px solid var(--linija); }
              aria-label="Levandų puokštė, buteliukas ir violetine šviesa švytintis Young Living Viya garintuvas ant naktinio staliuko vakare">
         <source src="vaizdai/01-levanda-viya-garai-v2.mp4" type="video/mp4">
       </video>
+      <img class="scenos-but" src="vaizdai/levanda-buteliukas.png" alt="" data-fw="1376" data-fh="768" data-x="877" data-y="195" data-w="539" data-h="462">
+      <button class="scenos-but-zona" type="button" aria-label="Levanda: aprašymas" data-x="1096" data-y="395" data-w="101" data-h="243"></button>
       <div class="plotis">
         <div class="kortele rodyk">
-          <button class="taskas taskas-al" type="button" aria-expanded="false" aria-label="Levanda: daugiau">+</button>
-          <img class="buteliukas" src="vaizdai/yl-levanda.png" alt="Young Living levanda, 15 ml">
           <div>
             <h3>Levanda</h3>
             <div class="kitaip">Lavender</div>
             <div class="aprasas">
             <p>Minkštas, ramus kvapas. Tas, nuo kurio dažniausiai ir pradedama.</p>
             <p class="kada"><strong>Kada:</strong> vakare, kai dienos triukšmas baigiasi. Difuzorių išjunk prieš miegą.</p>
-              <a class="mygtukas pilnas yl-nuoroda uzsakyti-al" href="#uzsakyti">Užsisakyti</a>
+              <a class="mygtukas pilnas uzsakyti-al" href="https://www.youngliving.com/lt_lt/products/levandu-eterinis-aliejus?sponsorid=3882850&amp;enrollerid=3882850&amp;isocountrycode=LT&amp;culture=lt-LT&amp;type=member" target="_blank" rel="noopener">Užsisakyti</a>
             </div>
           </div>
         </div>
@@ -564,17 +619,17 @@ footer { padding: 48px 0 56px; border-top: 1px solid var(--linija); }
              aria-label="Daug raudonų ir rausvų rožių sidabrinėje urnoje, žvakės, buteliukas ir rausvas Young Living Cactus garintuvas ant aksomo">
         <source src="vaizdai/04-roze-cactus-garai.mp4" type="video/mp4">
       </video>
+      <img class="scenos-but" src="vaizdai/roze-buteliukas.png" alt="" data-fw="1376" data-fh="768" data-x="269" data-y="268" data-w="483" data-h="416">
+      <button class="scenos-but-zona" type="button" aria-label="Rožė: aprašymas" data-x="466" data-y="447" data-w="89" data-h="219"></button>
       <div class="plotis">
         <div class="kortele rodyk">
-          <button class="taskas taskas-al" type="button" aria-expanded="false" aria-label="Rožė: daugiau">+</button>
-          <img class="buteliukas mazas" src="vaizdai/yl-roze.png" alt="Young Living rožė, 5 ml">
           <div>
             <h3>Rožė</h3>
             <div class="kitaip">Rose</div>
             <div class="aprasas">
             <p>Sodrus, gilus kvapas. Vienam 5 ml buteliukui reikia 10 kg rožių žiedlapių, todėl jis vienas brangiausių ir naudojamas po lašą.</p>
             <p class="kada"><strong>Kada:</strong> ypatingam vakarui ar savo ramybės minutei. Užtenka lašo į įprastą kūno losjoną.</p>
-              <a class="mygtukas pilnas yl-nuoroda uzsakyti-al" href="#uzsakyti">Užsisakyti</a>
+              <a class="mygtukas pilnas uzsakyti-al" href="https://www.youngliving.com/lt_lt/products/roziu-eterinis-aliejus?sponsorid=3882850&amp;enrollerid=3882850&amp;isocountrycode=LT&amp;culture=lt-LT&amp;type=member" target="_blank" rel="noopener">Užsisakyti</a>
             </div>
           </div>
         </div>
@@ -945,13 +1000,59 @@ footer { padding: 48px 0 56px; border-top: 1px solid var(--linija); }
     });
   });
 
-  // Aliejų kortelės: palietus „+“ išsiskleidžia aprašymas (telefone nėra pelės).
-  document.querySelectorAll(".kortele .taskas-al").forEach(function (b) {
+  // Tikri buteliukai scenose: padėtis pagal video (object-fit: cover), kad stovėtų tiksliai ant AI buteliuko.
+  document.querySelectorAll(".scena").forEach(function (sc) {
+    var img = sc.querySelector(".scenos-but"), k = sc.querySelector(".kortele");
+    if (!img || !k) return;
+    sc.dataset.al = img.getAttribute("src").replace("vaizdai/", "").replace("-buteliukas.png", "");
+    sc.appendChild(k);  // lapelis — tiesiai scenoje, kad stovėtų šalia buteliuko
+  });
+  function lapelioVieta(sc, z) {
+    var k = sc.querySelector(":scope > .kortele");
+    if (!k) return;
+    if (window.innerWidth < 768) { k.style.left = k.style.top = ""; return; }
+    var zl = z.offsetLeft, zt = z.offsetTop, zw = z.offsetWidth, zh = z.offsetHeight, kw = k.offsetWidth, kh = k.offsetHeight, W = sc.offsetWidth, H = sc.offsetHeight;
+    // lapelis iškyla pačioje buteliuko vietoje — pelės nereikia niekur vesti (Dangira 2026-10-04)
+    var l = zl + zw / 2 - kw / 2, t = zt + zh / 2 - kh / 2;
+    if (l + kw > W - 16) l = W - 16 - kw;
+    t = Math.min(Math.max(t, 16), H - kh - 16);
+    k.style.left = Math.max(l, 16) + "px"; k.style.top = t + "px";
+  }
+  function buteliukuVieta() {
+    document.querySelectorAll(".scena").forEach(function (sc) {
+      var v = sc.querySelector(".scenos-foto"), img = sc.querySelector(".scenos-but"), z = sc.querySelector(".scenos-but-zona");
+      if (!v || !img) return;
+      var fw = +img.dataset.fw, fh = +img.dataset.fh, W = v.offsetWidth, H = v.offsetHeight;
+      var s = Math.max(W / fw, H / fh), ox = v.offsetLeft + (W - fw * s) / 2, oy = v.offsetTop + (H - fh * s) / 2;
+      [img, z].forEach(function (el) {
+        var d = el.dataset, l = ox + d.x * s, t = oy + d.y * s;
+        el.style.left = l + "px"; el.style.top = t + "px";
+        el.style.width = d.w * s + "px"; el.style.height = d.h * s + "px";
+        el.style.transformOrigin = (v.offsetLeft + W / 2 - l) + "px " + (v.offsetTop + H / 2 - t) + "px";
+      });
+      lapelioVieta(sc, z);
+    });
+  }
+  buteliukuVieta(); window.addEventListener("resize", buteliukuVieta); window.addEventListener("load", buteliukuVieta);
+
+  // Pelė: užvedus ant buteliuko lapelis atsiranda jo vietoje ir laikosi, kol pelė ant lapelio;
+  // nuvedus šalin — vėl matosi buteliukas (Dangira 2026-10-04).
+  document.querySelectorAll(".scenos-but-zona").forEach(function (b) {
+    var sc = b.closest(".scena"), k = sc.querySelector(".kortele"), laikas;
+    function rodyk() { clearTimeout(laikas); sc.classList.add("rodo"); }
+    function slepk() { clearTimeout(laikas); laikas = setTimeout(function () { sc.classList.remove("rodo"); }, 250); }
+    b.addEventListener("mouseenter", rodyk); b.addEventListener("mouseleave", slepk);
+    k.addEventListener("mouseenter", function () { if (sc.classList.contains("rodo")) rodyk(); });
+    k.addEventListener("mouseleave", slepk);
+  });
+
+  // Telefone (be pelės) ar klaviatūra: paspaudus ant buteliuko — aprašymas.
+  document.querySelectorAll(".scenos-but-zona").forEach(function (b) {
     b.addEventListener("click", function (e) {
       e.stopPropagation();
-      var k = b.closest(".kortele"), atv = !k.classList.contains("atidaryta");
+      if (window.matchMedia("(hover: hover)").matches) { b.closest(".scena").classList.add("rodo"); return; }
+      var k = b.closest(".scena").querySelector(".kortele"), atv = !k.classList.contains("atidaryta");
       k.classList.toggle("atidaryta", atv); b.setAttribute("aria-expanded", atv ? "true" : "false");
-      b.textContent = atv ? "−" : "+";
     });
   });
 </script>
