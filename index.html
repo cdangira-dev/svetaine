@@ -298,23 +298,75 @@ h2 { font-size: clamp(32px, 4.6vw, 54px); line-height: 1.08; letter-spacing: -0.
 .penki-kvapai .butelis { position: relative; aspect-ratio: 1; overflow: hidden; }
 .penki-kvapai .butelis img { position: absolute; inset: 0; width: 100%; height: 100%; }
 .penki-kvapai .butelis .ingredientai { object-fit: cover; opacity: 0; transform: scale(1.06); filter: none; transition: opacity .45s var(--lygiai), transform .7s var(--lygiai); }
-.penki-kvapai .butelis .kv-but { object-fit: contain; transition: transform .5s var(--lygiai); }
+.penki-kvapai .butelis .kv-but { object-fit: contain; transition: transform .5s var(--lygiai), filter .3s;
+  /* mėlyname fone: mažesnis ir pakeltas, kad šešėlio nenukirptų langelio apačia (Dangira 2026-10-04) */
+  transform: translateY(-5%) scale(.86); filter: drop-shadow(0 10px 12px rgba(0,0,0,.4)); }
 .butelis:hover .ingredientai, .butelis.atidaryta .ingredientai { opacity: 1; transform: none; }
-.butelis:hover .kv-but, .butelis.atidaryta .kv-but { transform: scale(.42); filter: drop-shadow(0 8px 10px rgba(0,0,0,.35)); }
+/* užvedus — gamintojo nuotrauka su tikru buteliuku (partnerių skydelis → Marketing Tools, 2026-10-04),
+   todėl buteliukas nuo mėlyno fono išnyksta. Originalai: projects/young-living/wyld-notes/nuotraukos/marketing-tools/ */
+.penki-kvapai .butelis .kv-but { transition: transform .5s var(--lygiai), opacity .35s var(--lygiai), filter .3s; }
+.butelis:hover .kv-but, .butelis.atidaryta .kv-but { opacity: 0; transform: translateY(-5%) scale(.8); }
+.penki-kvapai .butelis { cursor: zoom-in; }
+/* paspaudus — nuotrauka su buteliuku per ekraną */
+.didinti { border: 0; padding: 0; background: transparent; max-width: none; max-height: none; overflow: visible; }
+.didinti::backdrop { background: rgba(10,20,40,.85); }
+/* telpa ir į plotį, ir į aukštį — gamintojo nuotraukos būna ir stačios (Black Book) */
+.didinti img { display: block; width: auto; height: auto; max-width: min(92vw, 1024px); max-height: 80vh; box-shadow: 0 30px 80px rgba(0,0,0,.5); cursor: zoom-out; }
+.didinti p { color: #f3e6c4; font-family: var(--antr); font-size: 22px; text-align: center; margin: 14px 0 0; }
+.didinti button { position: absolute; top: -14px; right: -14px; width: 40px; height: 40px; border-radius: 50%; border: 0; background: #fff; color: #20406f; font-size: 22px; line-height: 1; cursor: pointer; }
+.didinti[open] { animation: didejimas .35s var(--lygiai); }
+@keyframes didejimas { from { opacity: 0; transform: scale(.85); } to { opacity: 1; transform: none; } }
 .penki-kvapai .taskas { z-index: 2; top: 10px; left: auto; right: 10px; margin: 0; }
 .kv-nuotaika { font-family: var(--antr); font-style: italic; font-size: 17px; color: #f3e6c4 !important; margin: 0 0 6px !important; }
-.kv-natos { font-size: 13px !important; color: #9fb2d3 !important; opacity: 0; transition: opacity .35s; }
+.kv-natos { display: inline-block; text-align: left; color: #9fb2d3; opacity: 0; transition: opacity .35s; margin-top: 8px; }
+@media (max-width: 719px) { .penki-kvapai .kv-natos b { display: block; min-width: 0; margin: 0; } .penki-kvapai .kv-natos p { margin-bottom: 6px; } }
+/* natos po pavadinimu sugrupuotos kaip gamintojo plakate (Top / Mid / Base Notes), Dangira 2026-10-04 */
+.penki-kvapai .kv-natos p { display: grid; grid-template-columns: 88px 1fr; font-size: 13px; line-height: 1.45; color: #9fb2d3; margin: 0 0 3px; }
+@media (max-width: 719px) { .penki-kvapai .kv-natos p { grid-template-columns: 1fr; margin-bottom: 6px; } }
+.kv-natos b { display: inline-block; min-width: 82px; margin-right: 6px; color: #f3e6c4; font-weight: 600; font-size: 11px; letter-spacing: .1em; text-transform: uppercase; }
 .kvapas:hover .kv-natos, .kvapas:has(.atidaryta) .kv-natos { opacity: 1; }
 @media (hover: none) { .kv-natos { opacity: 1; } }
 .natos-wl { background: #f6f1ea; color: #4a3f35; }
 .natos-bb { background: #161a24; color: #e8dcc0; }
 .natos-sd { background: #efe6d6; color: #4d4031; }
 .natos-se { background: #e3e8dc; color: #36412f; }
+/* kvepalų natos (2026-10-04, pagal gamintojo natų lapą): uždengia nuotrauką, atsiranda tik ant „+“ (ne ant viso buteliuko) */
+.penki-kvapai .natos { position: absolute; inset: 0; left: 0; top: 0; width: auto; margin: 0; z-index: 3; padding: 16px 18px;
+  overflow: auto; box-shadow: none; transform: none; cursor: default; }
+.penki-kvapai .natos-wl { background: rgba(246,241,234,.95); } .penki-kvapai .natos-bb { background: rgba(22,26,36,.94); }
+.penki-kvapai .natos-sd { background: rgba(239,230,214,.95); } .penki-kvapai .natos-se { background: rgba(227,232,220,.95); }
+.penki-kvapai .natos .lygis { grid-template-columns: 82px 1fr; }
+.penki-kvapai .taskas { z-index: 4; }
+/* vietoj „+“ — Dangiros lašiukas (Dangira 2026-10-04) */
+.penki-kvapai .taskas-lasas { padding: 0; border: 0; background: transparent; width: 36px; height: 36px; overflow: visible; }
+.penki-kvapai .taskas-lasas img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; filter: drop-shadow(0 2px 6px rgba(0,0,0,.35)); opacity: 1; transform: none; transition: transform .25s var(--lygiai); }
+.penki-kvapai .taskas-lasas:hover img, .penki-kvapai .butelis.atidaryta .taskas-lasas img { transform: scale(1.12); }
+.penki-kvapai .butelis:hover .natos { opacity: 0; visibility: hidden; }
+.penki-kvapai .butelis.atidaryta .natos, .penki-kvapai .butelis:has(.taskas:hover) .natos,
+.penki-kvapai .butelis:has(.natos:hover) .natos { opacity: 1; visibility: visible; }
+@media (max-width: 719px) {
+  /* telefone kortelė per maža — natos juosta ekrano apačioje, visos matosi */
+  .penki-kvapai .natos { position: fixed; inset: auto 12px 12px 12px; z-index: 50; padding: 16px 18px; max-height: 75vh;
+    box-shadow: 0 -10px 40px rgba(0,0,0,.45); }
+}
+/* Wyld skilties antraštė kaip kvepalų vitrina: centre, Wyld auksinė #E7CB8A (ženklo vadovas), fonas — Dangiros mėlyna */
+.kvepalai .plotis > .rodyk:first-child { text-align: center; max-width: 760px; margin: 0 auto 48px; }
+.kvepalai .plotis > .rodyk:first-child .ivadas, .kvepalai .plotis > .rodyk:first-child > p { margin-left: auto; margin-right: auto; max-width: 640px; }
+.kvepalai .plotis > .rodyk:first-child h2 { margin-left: auto; margin-right: auto; }
+.wyld-logotipas { display: inline-block; margin-bottom: 26px; padding-bottom: 22px; position: relative; }
+.wyld-logotipas::after { content: ""; position: absolute; left: 50%; bottom: 0; width: 64px; height: 1px; margin-left: -32px; background: #E7CB8A; }
+.wyld-logotipas img { display: block; width: 190px; height: auto; filter: none; transition: opacity .3s; }
+.wyld-logotipas:hover img { opacity: .85; }
+@media (max-width: 719px) { .wyld-logotipas img { width: 140px; } }
+.kaip-skleidziasi { margin: 36px auto 0; padding: 26px 30px 22px; text-align: left; max-width: 680px; position: relative;
+  border: 1px solid rgba(231,203,138,.35); background: rgba(255,255,255,.04); }.kaip-skleidziasi h3 { color: #fff; font-size: 22px; margin: 0 0 10px; }
+.kaip-skleidziasi p { margin: 0 0 8px; } .kaip-skleidziasi .kaip-pastaba { font-size: 14px; opacity: .75; margin: 0; }
 .penki-kvapai .nuotaika { font-family: var(--antr); font-style: italic; font-size: 17px; color: #f3e6c4; margin-bottom: 8px; }
 .penki-kvapai a { text-decoration: none; display: block; }
 .wyld-kvietimas { margin-top: 48px; padding: 40px; border: 1px solid rgba(255,255,255,.3); background: rgba(255,255,255,.06); max-width: 720px; }
 .wyld-kvietimas h3 { color: #fff; font-size: 28px; margin-bottom: 10px; }
 .wyld-kvietimas p { margin-bottom: 24px; }
+.wyld-kvietimas .pastaba-langas { font-size: 14px; opacity: .8; margin-top: -12px; }
 .wyld-kvietimas .kodas { font-family: Consolas, monospace; background: #fff; color: #20406f; padding: 2px 10px; }
 @media (max-width: 719px) { .penki-kvapai img { height: 150px; } .penki-kvapai h3 { font-size: 22px; } }
 
@@ -588,72 +640,92 @@ footer { padding: 48px 0 56px; border-top: 1px solid var(--linija); }
 <section class="kvepalai" id="kvepalai">
   <div class="plotis">
     <div class="rodyk">
+      <!-- Oficialus baltas logotipas: partnerių skydelis → Marketing Tools → Logos & Brand Guide (xpouvbwa-11.png), 2026-10-04 -->
+      <a class="wyld-logotipas" href="https://wyldnotes.com/discount/lasas-juroje?ref=lasas-juroje&amp;redirect=/en-eu/collections/fine-fragrance" target="_blank" rel="noopener">
+        <img src="vaizdai/wyld-notes-logotipas-baltas.png" alt="Wyld NOTES" width="600" height="411"></a>
       <h2>Kvepalai su eteriniais aliejais</h2>
-      <p class="ivadas">Ar žinai, kad kvepaluose gali būti tų pačių aliejų, kuriuos laikai
-        namuose? Levanda, kadagys, muskatinis šalavijas. Wyld NOTES tokius ir kuria.</p>
+      <!-- Tik gamintojo žodžiai (patikrinta 2026-10-04): produktų puslapiai „Infused with juniper, lavender, and
+           clary sage / black spruce from our farms“; wyldnotes.com/pages/faqs „high-quality essential oils“. -->
+      <p class="ivadas">Ar žinai, kad yra kvepalų su eteriniais aliejais? Wyld NOTES juos papildo
+        kadagio, levandų, muskatinio šalavijo ir juodosios eglės aliejais iš savo ūkių.</p>
       <!-- Faktas: užsakymas WN35846, 2026-10-01 (wyld-notes/README.md). Pakeisti, kai ji išbandys. -->
       <p>Tai naujiena ir man pačiai. Užsisakiau visus keturis ir laukiu siuntinio. Kai
         pauostysiu, parašysiu, kuris man artimiausias. Kol kas rašau tai, ką sako gamintojas.</p>
+      <!-- Gamintojo natų lapo vertimas (partnerių skydelis → Marketing Tools, „fragrance cards“, 2026-10-04):
+           „Fragrance notes evolve over time… Top notes… Mid notes… base notes… layer by layer.“ Mid notes = vidurinės. -->
+      <div class="kaip-skleidziasi">
+        <h3>Kaip skleidžiasi kvapas</h3>
+        <p>Kvapo natos keičiasi laikui bėgant. <strong>Viršutinės natos</strong> yra pirmas įspūdis: dažnai lengvos,
+          gaivios ar citrusinės, jos išgaruoja per pirmąsias 15–30 minučių. Joms nykstant atsiskleidžia
+          <strong>vidurinės natos</strong>, kvapo šerdis: sodresni gėlių, prieskonių ar žolelių kvapai, išliekantys
+          kelias valandas. <strong>Bazinės natos</strong> suteikia gylio ir ilgaamžiškumo: šilti, sumedėję ar muskusiniai
+          aromatai išlieka valandas ar net dienas. Taip kvapas atsiskleidžia sluoksnis po sluoksnio.</p>
+        <p class="kaip-pastaba">Kiekvieno kvapo natos atsiras užvedus pelę ant lašiuko prie buteliuko (telefone — palietus).</p>
+      </div>
     </div>
 
-    <!-- Faktai tik iš wyldnotes.com/en-eu produktų aprašymų (2026-09-25). Nuotraukos: projects/young-living/wyld-notes/nuotraukos.
+    <!-- Faktai tik iš wyldnotes.com/en-eu produktų aprašymų (2026-09-25; pertikrinta 2026-10-04).
+         Po pavadinimu — gamintojo pirmo aprašymo sakinio vertimas, ne savi žodžiai. Natos — skiltis „Notes“.
+         NIEKO neišvedinėti iš sudėties sąrašo (Dangira 2026-10-04: „kvapus gamintojo noriu parduoti, o ne tavo“). Nuotraukos: projects/young-living/wyld-notes/nuotraukos.
          Cashmere Creme išimta 2026-10-02 (Dangira: Lietuvoje dar nėra). White Lie ir Black Book nuotraukos apkirptos, kad buteliukas būtų per vidurį. -->
     <div class="penki-kvapai rodyk">
       <figure class="kvapas">
-        <div class="butelis">
-          <img class="ingredientai" src="vaizdai/kvapas-white-lie-ingredientai.jpg" alt="" loading="lazy">
-          <img class="kv-but" src="vaizdai/wyld-white-lie-centre.png" alt="Wyld NOTES White Lie kvepalų buteliukas" loading="lazy">
-          <button class="taskas" type="button" aria-expanded="false" aria-label="White Lie: kvapo natos">+</button>
+        <div class="butelis" data-didelis="vaizdai/kvapas-white-lie-wyld.jpg">
+          <img class="ingredientai" src="vaizdai/kvapas-white-lie-wyld.jpg" alt="" loading="lazy">
+          <img class="kv-but" src="vaizdai/wyld-white-lie-svarus.png" alt="Wyld NOTES White Lie kvepalų buteliukas" loading="lazy">
+          <button class="taskas taskas-lasas" type="button" aria-expanded="false" aria-label="White Lie: kvapo natos"><img src="vaizdai/lasiukas-mygtukas.png" alt=""></button>
+          <div class="natos natos-wl" role="note"><p class="natos-vardas">White Lie</p><div class="lygis"><span>Viršutinės</span><ul><li><svg><use href="#i-citrus"/></svg>Bergamotė</li><li><svg><use href="#i-gele"/></svg>Pelargonija</li></ul></div><div class="lygis"><span>Vidurinės</span><ul><li><svg><use href="#i-gele"/></svg>Jazminas</li><li><svg><use href="#i-gele"/></svg>Rožė</li></ul></div><div class="lygis"><span>Bazinės</span><ul><li><svg><use href="#i-zole"/></svg>Pačiuliai</li><li><svg><use href="#i-mediena"/></svg>Vetiveris</li></ul></div></div>
                   </div>
         <figcaption>
           <h3>White Lie</h3>
-          <p class="kv-nuotaika">Kai norisi švelnumo</p>
-          <p class="kv-natos">Bergamotė · pelargonija · jazminas · rožė · pačiuliai · vetiveris</p>
+          <p class="kv-nuotaika">Švelnus, pudrinis grakštumas su paslaptimi</p>
+          <div class="kv-natos"><p><b>Viršutinės</b>Bergamotė · pelargonija</p><p><b>Vidurinės</b>Jazminas · rožė</p><p><b>Bazinės</b>Pačiuliai · vetiveris</p></div>
         </figcaption>
       </figure>
       <figure class="kvapas">
-        <div class="butelis">
-          <img class="ingredientai" src="vaizdai/kvapas-black-book-ingredientai.jpg" alt="" loading="lazy">
-          <img class="kv-but" src="vaizdai/wyld-black-book-centre.png" alt="Wyld NOTES Black Book kvepalų buteliukas" loading="lazy">
-          <button class="taskas" type="button" aria-expanded="false" aria-label="Black Book: kvapo natos">+</button>
+        <div class="butelis" data-didelis="vaizdai/kvapas-black-book-wyld.jpg">
+          <img class="ingredientai" src="vaizdai/kvapas-black-book-wyld.jpg" alt="" loading="lazy">
+          <img class="kv-but" src="vaizdai/wyld-black-book-svarus.png" alt="Wyld NOTES Black Book kvepalų buteliukas" loading="lazy">
+          <button class="taskas taskas-lasas" type="button" aria-expanded="false" aria-label="Black Book: kvapo natos"><img src="vaizdai/lasiukas-mygtukas.png" alt=""></button>
+          <div class="natos natos-bb" role="note"><p class="natos-vardas">Black Book</p><div class="lygis"><span>Viršutinės</span><ul><li><svg><use href="#i-prieskonis"/></svg>Muskato riešutas</li><li><svg><use href="#i-prieskonis"/></svg>Imbieras</li></ul></div><div class="lygis"><span>Vidurinės</span><ul><li><svg><use href="#i-gele"/></svg>Osmantas</li><li><svg><use href="#i-spygliai"/></svg>Kadagys</li></ul></div><div class="lygis"><span>Bazinės</span><ul><li><svg><use href="#i-mediena"/></svg>Ladanas (smilkalai)</li><li><svg><use href="#i-saldu"/></svg>Tonkos pupelė</li></ul></div></div>
                   </div>
         <figcaption>
           <h3>Black Book</h3>
-          <p class="kv-nuotaika">Vakarui, su paslaptimi</p>
-          <p class="kv-natos">Muskatas · imbieras · osmantas · kadagys · olibanas · tonka</p>
+          <p class="kv-nuotaika">Prieskoniniai šešėliai ir magnetiška intriga</p>
+          <div class="kv-natos"><p><b>Viršutinės</b>Muskato riešutas · imbieras</p><p><b>Vidurinės</b>Osmantas · kadagys</p><p><b>Bazinės</b>Ladanas (smilkalai) · tonkos pupelė</p></div>
         </figcaption>
       </figure>
       <figure class="kvapas">
-        <div class="butelis">
-          <img class="ingredientai" src="vaizdai/kvapas-sweet-decadence-ingredientai.jpg" alt="" loading="lazy">
-          <img class="kv-but" src="vaizdai/wyld-sweet-decadence.png" alt="Wyld NOTES Sweet Decadence kvepalų buteliukas" loading="lazy">
-          <button class="taskas" type="button" aria-expanded="false" aria-label="Sweet Decadence: kvapo natos">+</button>
+        <div class="butelis" data-didelis="vaizdai/kvapas-sweet-decadence-wyld.jpg">
+          <img class="ingredientai" src="vaizdai/kvapas-sweet-decadence-wyld.jpg" alt="" loading="lazy">
+          <img class="kv-but" src="vaizdai/wyld-sweet-decadence-svarus.png" alt="Wyld NOTES Sweet Decadence kvepalų buteliukas" loading="lazy">
+          <button class="taskas taskas-lasas" type="button" aria-expanded="false" aria-label="Sweet Decadence: kvapo natos"><img src="vaizdai/lasiukas-mygtukas.png" alt=""></button>
+          <div class="natos natos-sd" role="note"><p class="natos-vardas">Sweet Decadence</p><div class="lygis"><span>Viršutinės</span><ul><li><svg><use href="#i-citrus"/></svg>Apelsinas</li><li><svg><use href="#i-zole"/></svg>Levanda</li></ul></div><div class="lygis"><span>Vidurinės</span><ul><li><svg><use href="#i-saldu"/></svg>Kokosas</li><li><svg><use href="#i-gele"/></svg>Rožė</li></ul></div><div class="lygis"><span>Bazinės</span><ul><li><svg><use href="#i-saldu"/></svg>Tonkos pupelė</li><li><svg><use href="#i-saldu"/></svg>Vanilė</li></ul></div></div>
                   </div>
         <figcaption>
           <h3>Sweet Decadence</h3>
-          <p class="kv-nuotaika">Kai norisi jaukumo</p>
-          <p class="kv-natos">Apelsinas · levanda · kokosas · rožė · tonka · vanilė</p>
+          <p class="kv-nuotaika">Įkvėptas ką tik iškeptų kepinių ir riešutų skanėsto</p>
+          <div class="kv-natos"><p><b>Viršutinės</b>Apelsinas · levanda</p><p><b>Vidurinės</b>Kokosas · rožė</p><p><b>Bazinės</b>Tonkos pupelė · vanilė</p></div>
         </figcaption>
       </figure>
       <figure class="kvapas">
-        <div class="butelis">
-          <img class="ingredientai" src="vaizdai/kvapas-smokey-ember-ingredientai.jpg" alt="" loading="lazy">
-          <img class="kv-but" src="vaizdai/wyld-smokey-ember.png" alt="Wyld NOTES Smokey Ember kvepalų buteliukas" loading="lazy">
-          <button class="taskas" type="button" aria-expanded="false" aria-label="Smokey Ember: kvapo natos">+</button>
+        <div class="butelis" data-didelis="vaizdai/kvapas-smokey-ember-wyld.jpg">
+          <img class="ingredientai" src="vaizdai/kvapas-smokey-ember-wyld.jpg" alt="" loading="lazy">
+          <img class="kv-but" src="vaizdai/wyld-smokey-ember-svarus.png" alt="Wyld NOTES Smokey Ember kvepalų buteliukas" loading="lazy">
+          <button class="taskas taskas-lasas" type="button" aria-expanded="false" aria-label="Smokey Ember: kvapo natos"><img src="vaizdai/lasiukas-mygtukas.png" alt=""></button>
+          <div class="natos natos-se" role="note"><p class="natos-vardas">Smokey Ember</p><div class="lygis"><span>Viršutinės</span><ul><li><svg><use href="#i-citrus"/></svg>Citrina</li><li><svg><use href="#i-spygliai"/></svg>Kadagys</li></ul></div><div class="lygis"><span>Vidurinės</span><ul><li><svg><use href="#i-gele"/></svg>Jazminas</li><li><svg><use href="#i-zole"/></svg>Muskatinis šalavijas</li></ul></div><div class="lygis"><span>Bazinės</span><ul><li><svg><use href="#i-spygliai"/></svg>Kiparisas</li><li><svg><use href="#i-spygliai"/></svg>Juodoji eglė</li></ul></div></div>
                   </div>
         <figcaption>
           <h3>Smokey Ember</h3>
-          <p class="kv-nuotaika">Kai pasiilgsti saulės</p>
-          <p class="kv-natos">Citrina · kadagys · jazminas · muskatinis šalavijas · kiparisas · juodoji eglė</p>
+          <p class="kv-nuotaika">Kelionė per miškus ir saulės nutviekstus kraštovaizdžius</p>
+          <div class="kv-natos"><p><b>Viršutinės</b>Citrina · kadagys</p><p><b>Vidurinės</b>Jazminas · muskatinis šalavijas</p><p><b>Bazinės</b>Kiparisas · juodoji eglė</p></div>
         </figcaption>
       </figure>
     </div>
 
     <div class="rodyk">
-      <p>Yra ir rinkiniai: <strong>His &amp; Hers</strong> (Black Book ir White Lie),
-        <strong>Her Signature Duo</strong> (White Lie ir Sweet Decadence),
-        <strong>His Signature Duo</strong> (Smokey Ember ir Black Book) ir
-        <strong>The Original Collection</strong> su visais keturiais. Visus kvepalus rasi
+      <!-- Rinkinių sąrašas išimtas 2026-10-04 (Dangira: svetainė gundo, ne katalogas). Nuoroda — su jos ref ir kodu. -->
+      <p>Visus kvepalus pamatyti ir užsisakyti gali čia:
         <a href="https://wyldnotes.com/discount/lasas-juroje?ref=lasas-juroje&amp;redirect=/en-eu/collections/fine-fragrance" target="_blank" rel="noopener">wyldnotes.com</a>.</p>
       <ul class="faktai">
         <li>be sintetinių medžiagų</li>
@@ -669,6 +741,9 @@ footer { padding: 48px 0 56px; border-top: 1px solid var(--linija); }
         <h3>Pirmam pirkimui — 10 % nuolaida</h3>
         <p>Pirmą kartą perkant, kasoje įvesk kodą <span class="kodas">lasas-juroje</span>.
           Kvepalai siunčiami ir į Lietuvą.</p>
+        <!-- Wyld svetainė kartais rodo savo naujienlaiškio langą „10% off“ su el. pašto laukeliu (Dangira matė 2026-10-04). -->
+        <p class="pastaba-langas">Jei iššoks langas su el. pašto laukeliu, spausk „No, thanks“: nuolaida jau tavo
+          su kodu <strong>lasas-juroje</strong>.</p>
         <a class="mygtukas pilnas" href="https://wyldnotes.com/discount/lasas-juroje?ref=lasas-juroje&amp;redirect=/en-eu/collections/fine-fragrance" target="_blank" rel="noopener">Pažiūrėti kvepalus</a>
       </div>
     </div>
@@ -850,6 +925,24 @@ footer { padding: 48px 0 56px; border-top: 1px solid var(--linija); }
   });
   document.addEventListener("click", function () {
     document.querySelectorAll(".butelis.atidaryta").forEach(function (x) { x.classList.remove("atidaryta"); x.querySelector(".taskas").setAttribute("aria-expanded", "false"); });
+  });
+
+  // Kvepalai: paspaudus ant buteliuko — nuotrauka su buteliuku lėkštelėje per ekraną (Dangira 2026-10-04).
+  var didinti = document.createElement("dialog");
+  didinti.className = "didinti";
+  didinti.innerHTML = '<button type="button" aria-label="Uždaryti">×</button><img alt=""><p></p>';
+  document.body.appendChild(didinti);
+  didinti.addEventListener("click", function () { didinti.close(); });
+  document.querySelectorAll(".butelis[data-didelis]").forEach(function (dez) {
+    dez.addEventListener("click", function (e) {
+      if (e.target.closest(".taskas") || e.target.closest(".natos") || !didinti.showModal) return;
+      var vardas = dez.closest(".kvapas").querySelector("h3").textContent;
+      var img = didinti.querySelector("img");
+      img.src = dez.getAttribute("data-didelis");
+      img.alt = "Wyld NOTES " + vardas + " kvepalai tarp kvapo natų (gamintojo nuotrauka)";
+      didinti.querySelector("p").textContent = vardas;
+      didinti.showModal();
+    });
   });
 
   // Aliejų kortelės: palietus „+“ išsiskleidžia aprašymas (telefone nėra pelės).
