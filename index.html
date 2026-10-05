@@ -596,8 +596,8 @@ footer { padding: 48px 0 56px; border-top: 1px solid var(--linija); }
              aria-label="Levandų puokštė, buteliukas ir violetine šviesa švytintis Young Living Viya garintuvas ant naktinio staliuko vakare">
         <source src="vaizdai/01-levanda-viya-garai-v2.mp4" type="video/mp4">
       </video>
-      <img class="scenos-but" src="vaizdai/levanda-buteliukas.png" alt="" data-fw="1376" data-fh="768" data-x="877" data-y="195" data-w="539" data-h="462">
-      <button class="scenos-but-zona" type="button" aria-label="Levanda: aprašymas" data-x="1096" data-y="395" data-w="101" data-h="243"></button>
+      <img class="scenos-but" src="vaizdai/levanda-buteliukas-15ml.png" alt="" data-fw="1376" data-fh="768" data-x="948" data-y="382" data-w="269" data-h="278">
+      <button class="scenos-but-zona" type="button" aria-label="Levanda: aprašymas" data-x="950" data-y="520" data-w="60" data-h="124"></button>
       <div class="plotis">
         <div class="kortele rodyk">
           <div>
@@ -1004,7 +1004,7 @@ footer { padding: 48px 0 56px; border-top: 1px solid var(--linija); }
   document.querySelectorAll(".scena").forEach(function (sc) {
     var img = sc.querySelector(".scenos-but"), k = sc.querySelector(".kortele");
     if (!img || !k) return;
-    sc.dataset.al = img.getAttribute("src").replace("vaizdai/", "").replace("-buteliukas.png", "");
+    sc.dataset.al = (img.getAttribute("src").match(/vaizdai\/([a-z]+)-buteliukas/) || [])[1] || "";
     sc.appendChild(k);  // lapelis — tiesiai scenoje, kad stovėtų šalia buteliuko
   });
   function lapelioVieta(sc, z) {
