@@ -495,6 +495,46 @@ footer { padding: 48px 0 56px; border-top: 1px solid var(--linija); }
 /* Purification 2026-10-06 */
 .scena[data-al="purification"] { --al-fonas: rgba(244,246,246,.88); --al-tekstas: #2a2f33; --al-akcentas: #9c2a5c; --al-mygtukas: #9c2a5c; }
 @media (max-width: 767px) { .scena[data-al="purification"] .kortele.atidaryta { background: #f1f3f3; } }
+
+/* ---------- pipirmėtės reels: piešta animacija (2026-10-15) ---------- */
+.reels .dalys { display: grid; grid-template-columns: minmax(0, 360px) minmax(0, 1fr); gap: 64px; align-items: center; }
+@media (max-width: 767px) { .reels .dalys { grid-template-columns: 1fr; gap: 32px; } }
+.reel { position: relative; width: 100%; max-width: 360px; aspect-ratio: 9 / 16; margin: 0 auto; overflow: hidden;
+  background: #e9f1e5; box-shadow: 0 18px 40px var(--seselis); }
+.reel svg { display: block; width: 100%; height: 100%; }
+.reel-uzr { position: absolute; left: 14px; right: 14px; bottom: 14px; min-height: 72px; }
+.reel-uzr p { position: absolute; left: 0; right: 0; bottom: 0; margin: 0; max-width: none; padding: 12px 14px;
+  background: rgba(255,255,255,.92); color: #23382a; font-size: 15px; line-height: 1.45; opacity: 0;
+  animation: 15s infinite both; }
+.reel-uzr .u1 { animation-name: reelU1; } .reel-uzr .u2 { animation-name: reelU2; } .reel-uzr .u3 { animation-name: reelU3; }
+.reel-pauze { position: absolute; top: 12px; right: 12px; width: 40px; height: 40px; border: 0; border-radius: 0;
+  background: rgba(255,255,255,.85); color: #23382a; font-size: 15px; cursor: pointer; }
+.reel .ranka { animation: reelRanka 15s infinite both; }
+.reel .lasas { animation: reelLasas 15s infinite both; }
+.reel .lasas:nth-child(2) { animation-delay: .75s; } .reel .lasas:nth-child(3) { animation-delay: 1.5s; } .reel .lasas:nth-child(4) { animation-delay: 2.25s; }
+.reel .garai { animation: reelGarai 15s infinite both; }
+.reel .garai path { animation: reelKyla 3s infinite both; }
+.reel .garai path:nth-child(2) { animation-delay: 1s; } .reel .garai path:nth-child(3) { animation-delay: 2s; }
+.reel .laikas { animation: reelLaikas 15s infinite both; }
+.reel .laikas .ziedas { animation: reelZiedas 15s infinite both; }
+.reel.sustabdyta *, .reel.sustabdyta { animation-play-state: paused !important; }
+@keyframes reelRanka { 0% { transform: translate(140px,-180px); opacity: 0; } 6%, 30% { transform: translate(0,0); opacity: 1; } 37%, 100% { transform: translate(140px,-180px); opacity: 0; } }
+@keyframes reelLasas { 0%, 8% { transform: translateY(0); opacity: 0; } 9% { opacity: 1; } 14% { transform: translateY(105px); opacity: 1; } 15%, 100% { transform: translateY(110px); opacity: 0; } }
+@keyframes reelGarai { 0%, 28% { opacity: 0; } 38%, 85% { opacity: 1; } 95%, 100% { opacity: 0; } }
+@keyframes reelKyla { 0% { transform: translateY(10px); opacity: 0; } 30% { opacity: .85; } 100% { transform: translateY(-40px); opacity: 0; } }
+@keyframes reelLaikas { 0%, 64% { opacity: 0; } 70%, 95% { opacity: 1; } 100% { opacity: 0; } }
+@keyframes reelZiedas { 0%, 68% { stroke-dashoffset: 214; } 92%, 100% { stroke-dashoffset: 0; } }
+@keyframes reelU1 { 0% { opacity: 0; } 4%, 31% { opacity: 1; } 35%, 100% { opacity: 0; } }
+@keyframes reelU2 { 0%, 35% { opacity: 0; } 39%, 62% { opacity: 1; } 66%, 100% { opacity: 0; } }
+@keyframes reelU3 { 0%, 66% { opacity: 0; } 70%, 96% { opacity: 1; } 100% { opacity: 0; } }
+@media (prefers-reduced-motion: reduce) {
+  .reel *, .reel { animation: none !important; }
+  .reel .lasas:not(:first-child), .reel .laikas, .reel-uzr .u2, .reel-uzr .u3, .reel-pauze { display: none; }
+  .reel-uzr .u1 { opacity: 1; }
+}
+.reels ol { margin: 0 0 24px; padding-left: 22px; max-width: 52ch; }
+.reels li { margin-bottom: 12px; }
+.reels .saltinis { font-size: 14px; color: var(--pilkas); }
 </style>
 </head>
 <body>
@@ -821,6 +861,96 @@ footer { padding: 48px 0 56px; border-top: 1px solid var(--linija); }
         <p>Gyvūnas turi galėti išeiti iš kambario. Prie mažo vaiko lovos difuzoriaus
           nejunk.</p>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PIPIRMĖTĖS REELS (piešta animacija, 2026-10-15) ============ -->
+<!-- Faktai tik tie, kurie jau yra svetainėje su YL šaltiniais: 8-10 lašų garintuvui (youngliving.com/blog/eu/lt/kaip-naudoti-eterinius-aliejus),
+     iki 10 min. per dieną naujam aliejui (eu.youngliving.com/en-gb/pages/safety-guidelines). Kiti pipirmėtės naudojimo būdai neįrašyti, kol nepatikrinti YL puslapyje. -->
+<section class="reels" id="pipirmete-reels">
+  <div class="plotis dalys">
+    <div class="reel" id="reel-pipirmete">
+      <svg viewBox="0 0 360 640" role="img" aria-label="Piešinys: ranka laiko pipirmėtės buteliuką ir lašina į garintuvą, kyla garai, laikmatis rodo 10 minučių">
+        <defs>
+          <linearGradient id="reelFonas" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f3f7f0"/><stop offset="1" stop-color="#e2ece0"/></linearGradient>
+        </defs>
+        <rect width="360" height="640" fill="url(#reelFonas)"/>
+        <rect y="484" width="360" height="156" fill="#d7e4d3"/>
+        <rect y="484" width="360" height="3" fill="#c3d4bf"/>
+        <!-- pipirmėtės šakelė ant stalo -->
+        <g fill="#5f8f5f">
+          <path d="M44 482 C52 450 60 430 72 412" stroke="#4d7a4f" stroke-width="3" fill="none"/>
+          <ellipse cx="58" cy="452" rx="13" ry="7" transform="rotate(-40 58 452)"/>
+          <ellipse cx="76" cy="444" rx="13" ry="7" transform="rotate(25 76 444)" fill="#6fa06c"/>
+          <ellipse cx="64" cy="428" rx="12" ry="6" transform="rotate(-50 64 428)" fill="#6fa06c"/>
+          <ellipse cx="80" cy="418" rx="11" ry="6" transform="rotate(20 80 418)"/>
+        </g>
+        <!-- garintuvas -->
+        <path d="M118 442 Q180 380 242 442 Z" fill="#ffffff" stroke="#cbd7c8" stroke-width="2"/>
+        <rect x="110" y="440" width="140" height="44" rx="10" fill="#f7f8fb" stroke="#cbd7c8" stroke-width="2"/>
+        <rect x="124" y="468" width="112" height="4" rx="2" fill="#9fd3b0" opacity=".8"/>
+        <ellipse cx="180" cy="414" rx="10" ry="3" fill="#9bb39a"/>
+        <!-- garai -->
+        <g class="garai" fill="none" stroke="#ffffff" stroke-width="7" stroke-linecap="round">
+          <path d="M180 405 C170 375 192 350 180 318 C170 290 190 266 180 238" opacity=".8"/>
+          <path d="M168 405 C158 380 176 356 164 330 C156 306 170 286 160 262" opacity=".6"/>
+          <path d="M192 405 C202 380 186 356 198 330 C206 306 192 286 202 262" opacity=".6"/>
+        </g>
+        <!-- lašai -->
+        <g fill="#c9e3c4" stroke="#7fae7c" stroke-width="1">
+          <path class="lasas" d="M180 300 C176 308 174 312 174 315 A6 6 0 0 0 186 315 C186 312 184 308 180 300 Z"/>
+          <path class="lasas" d="M180 300 C176 308 174 312 174 315 A6 6 0 0 0 186 315 C186 312 184 308 180 300 Z"/>
+          <path class="lasas" d="M180 300 C176 308 174 312 174 315 A6 6 0 0 0 186 315 C186 312 184 308 180 300 Z"/>
+          <path class="lasas" d="M180 300 C176 308 174 312 174 315 A6 6 0 0 0 186 315 C186 312 184 308 180 300 Z"/>
+        </g>
+        <!-- ranka su buteliuku (apverstas, lašintuvas žemyn) -->
+        <g class="ranka">
+          <polygon points="292,0 360,0 360,96 252,218 212,182" fill="#e3b796"/>
+          <rect x="152" y="166" width="56" height="8" rx="3" fill="#6e3a12"/>
+          <rect x="152" y="170" width="56" height="86" rx="8" fill="#9a5418"/>
+          <rect x="160" y="178" width="7" height="70" rx="3" fill="#ffffff" opacity=".22"/>
+          <rect x="152" y="218" width="56" height="32" fill="#f3f6ef"/>
+          <rect x="152" y="226" width="56" height="7" fill="#5f8f5f"/>
+          <path d="M156 254 L168 270 L192 270 L204 254 Z" fill="#8a4a14"/>
+          <rect x="168" y="268" width="24" height="12" fill="#6e3a12"/>
+          <path d="M172 280 L188 280 L186 294 Q180 302 174 294 Z" fill="#f4f4f0" stroke="#d8d8d0"/>
+          <ellipse cx="224" cy="200" rx="34" ry="44" fill="#e8bf9f"/>
+          <g fill="#e8bf9f" stroke="#c99878" stroke-width="1">
+            <rect x="146" y="172" width="86" height="15" rx="7.5"/>
+            <rect x="146" y="188" width="86" height="15" rx="7.5"/>
+            <rect x="148" y="204" width="82" height="14" rx="7"/>
+          </g>
+          <g fill="#f6dccb"><ellipse cx="153" cy="179.5" rx="4" ry="5"/><ellipse cx="153" cy="195.5" rx="4" ry="5"/><ellipse cx="155" cy="211" rx="4" ry="5"/></g>
+        </g>
+        <!-- laikmatis: 10 min. -->
+        <g class="laikas">
+          <circle cx="180" cy="140" r="34" fill="#ffffff" opacity=".9"/>
+          <circle cx="180" cy="140" r="34" fill="none" stroke="#d7e4d3" stroke-width="6"/>
+          <circle class="ziedas" cx="180" cy="140" r="34" fill="none" stroke="#3f6b4a" stroke-width="6" stroke-dasharray="214" stroke-dashoffset="214" transform="rotate(-90 180 140)"/>
+          <text x="180" y="146" text-anchor="middle" font-family="Georgia, serif" font-size="15" fill="#23382a">10 min.</text>
+        </g>
+      </svg>
+      <div class="reel-uzr" aria-hidden="true">
+        <p class="u1">Į garintuvą: Young Living rašo 8-10 lašų. Pipirmėtė stipri, pradžiai užtenka kelių.</p>
+        <p class="u2">Kambarį užpildo gaivus, vėsus kvapas.</p>
+        <p class="u3">Naują aliejų garink iki 10 min. per dieną. Per naktį nepalik.</p>
+      </div>
+      <button class="reel-pauze" type="button" aria-label="Sustabdyti animaciją">❚❚</button>
+    </div>
+    <div>
+      <h2>Pipirmėtė: kaip lašinti</h2>
+      <p class="ivadas">Trumpas piešinys, kaip pipirmėtę naudoti garintuve.</p>
+      <ol>
+        <li>Lašink į garintuvą. Young Living garintuvams rašo 8-10 lašų, bet pipirmėtė stipri, todėl pradžiai užtenka 3.</li>
+        <li>Naują aliejų garink iki 10 min. per dieną, ilgink pamažu.</li>
+        <li>Per naktį nepalik. Gyvūnas turi galėti išeiti iš kambario, o prie mažo vaiko lovos garintuvo nejunk.</li>
+      </ol>
+      <div class="saugumas">
+        Eteriniai aliejai nėra vaistai ir nepakeičia gydytojo konsultacijos. Vaikams,
+        nėščiosioms ir vaistus vartojantiems žmonėms galioja atskiros atsargumo taisyklės.
+      </div>
+      <p class="saltinis" style="margin-top:16px">Šaltiniai: Young Living, „Kaip naudoti eterinius aliejus“ ir saugos gairės. Animacija sukurta dirbtiniu intelektu.</p>
     </div>
   </div>
 </section>
@@ -1222,6 +1352,18 @@ footer { padding: 48px 0 56px; border-top: 1px solid var(--linija); }
       k.classList.toggle("atidaryta", atv); b.setAttribute("aria-expanded", atv ? "true" : "false");
     });
   });
+</script>
+<script>
+  // Pipirmėtės reels: pauzės mygtukas
+  (function () {
+    var r = document.getElementById("reel-pipirmete"); if (!r) return;
+    var b = r.querySelector(".reel-pauze");
+    b.addEventListener("click", function () {
+      var s = r.classList.toggle("sustabdyta");
+      b.textContent = s ? "▶" : "❚❚";
+      b.setAttribute("aria-label", s ? "Paleisti animaciją" : "Sustabdyti animaciją");
+    });
+  })();
 </script>
 </body>
 </html>
