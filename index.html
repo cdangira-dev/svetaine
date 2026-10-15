@@ -296,6 +296,13 @@ h2 { font-size: clamp(32px, 4.6vw, 54px); line-height: 1.08; letter-spacing: -0.
 .raindrop .foto { margin: 0; overflow: hidden; min-height: 420px; }
 .raindrop .foto img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 35%; transition: transform 1.6s var(--lygiai); }
 .raindrop .foto.matosi img { transform: scale(1.03); }
+.raindrop .video-pora { display: grid; grid-template-columns: 1fr; gap: 20px; padding: 48px 24px 0; align-content: center; }
+@media (min-width: 600px) { .raindrop .video-pora { grid-template-columns: 1fr 1fr; } }
+@media (min-width: 900px) { .raindrop .video-pora { padding: 72px 0 72px 6vw; } }
+@media (max-width: 899px) { .raindrop .tekstas { order: -1; padding-bottom: 8px; } .raindrop .video-pora { padding-bottom: 72px; } }
+.raindrop .video-pora figure { margin: 0; }
+.raindrop .video-pora video { display: block; width: 100%; aspect-ratio: 9 / 16; border-radius: 18px; background: var(--tamsi, #24406f); box-shadow: 0 16px 40px rgba(36,64,111,.14); }
+.raindrop .video-pora figcaption { margin-top: 10px; font-size: 14px; letter-spacing: .14em; text-transform: uppercase; color: var(--melyna, #3c67b1); text-align: center; }
 .raindrop .tekstas { padding: 96px 24px; display: flex; flex-direction: column; justify-content: center; }
 @media (min-width: 900px) { .raindrop .tekstas { padding: 96px 8vw 96px 72px; } }
 .pradek { margin-top: 28px; padding: 28px 0 0; border-top: 1px solid var(--linija); }
@@ -818,8 +825,10 @@ footer { padding: 48px 0 56px; border-top: 1px solid var(--linija); }
       </div>
       <div class="rodyk">
         <div class="skaicius zodis">Durys atviros</div>
-        <p>Gyvūnas turi galėti išeiti iš kambario. Prie mažo vaiko lovos difuzoriaus
+        <p>Gyvūnas turi galėti išeiti iš kambario. Prie kūdikio lovos difuzoriaus
           nejunk.</p>
+        <!-- 2026-10-15 Dangira: „ne mažo vaiko, o kūdikio, nes vaikų linija eteriukų yra“ (YL KidScents). -->
+
       </div>
     </div>
   </div>
@@ -828,16 +837,43 @@ footer { padding: 48px 0 56px; border-top: 1px solid var(--linija); }
 <!-- ============ 4. RAINDROP ============ -->
 <section class="raindrop" id="raindrop">
   <div class="dalys">
-    <figure class="foto rodyk">
-      <img src="vaizdai/kopos-svetainei.jpg" alt="Kopos su žole prie jūros, debesuota diena" loading="lazy">
-    </figure>
+    <!-- 2026-10-15: vietoj kopų nuotraukos — du Raindrop video (Remotion, tools/remotion; originalai
+         raindrop-rinkinys/irasai/04-reels-devyni-aliejai/, čia lengvesnės 720 px kopijos). Rankų kadrai — YL oficialus video. -->
+    <div class="video-pora rodyk">
+      <figure>
+        <video controls playsinline preload="none" poster="vaizdai/raindrop-padai-poster.jpg">
+          <source src="vaizdai/raindrop-padai-svetainei.mp4" type="video/mp4">
+        </video>
+        <figcaption>1 dalis · Padai</figcaption>
+      </figure>
+      <figure>
+        <video controls playsinline preload="none" poster="vaizdai/raindrop-nugara-poster.jpg">
+          <source src="vaizdai/raindrop-nugara-svetainei.mp4" type="video/mp4">
+        </video>
+        <figcaption>2 dalis · Nugara</figcaption>
+      </figure>
+    </div>
     <div class="tekstas rodyk">
       <h2>Raindrop: šeimos ritualas</h2>
       <p>Raindrop yra būdas, kai aliejai po lašą lašinami išilgai nugaros ir švelniai
         paskirstomi pirštų galais. Jį namuose daro vienas šeimos narys kitam. Ramiai,
         be skubėjimo, vakarą, kai niekur nereikia bėgti.</p>
+      <!-- 2026-10-15 „kam jis reikalingas“ — tik YL žodžiai: LT lankstinukas RaindropKitInsert_Brochure_EUR_2024_LT.pdf
+           („Raindrop“ istorija) ir YL video kJJCiN9DhZw („Everyone will experience the Raindrop Technique differently“). -->
+      <p>Kam jis? Metodą sukūrė Young Living įkūrėjas D. Gary Young, kad būtų galima
+        „harmonizuoti, atgaivinti, atpalaiduoti ir suderinti kūną bei protą“. Įkvėpimas atėjo
+        iš indėnų tradicijos: jie stebėdavo Šiaurės pašvaistę, giliai kvėpuodami spygliuočių
+        aromatu.</p>
+      <p>Rinkinio aliejai, gamintojo žodžiais, „sukuria dvasingumo ir ramybės atmosferą“.
+        Ir gamintojas sako atvirai: kiekvienas Raindrop patiria savaip.</p>
       <p>Tam nereikia jokio specialaus pasiruošimo ar kelionės pas ką nors. Reikia
-        rinkinio ir pusvalandžio laiko vienas kitam.</p>
+        rinkinio ir maždaug valandos laiko vienas kitam.</p>
+      <!-- 2026-10-15 Dangira: kreiptis į skaitytoją — tai turi tapti jo ritualu, dalytis, skirti laiko sau. Be sveikatos pažadų (P&P 5.3.1). -->
+      <p>Tegul Raindrop nebūna išimtis kartą per metus. Leisk jam tapti tavo įpročiu, reguliariu
+        ritualu, kai norisi sustoti, atsipalaiduoti ir skirti laiko sau. Tai valanda tik tau ir
+        artimam žmogui, kai niekur nereikia skubėti.</p>
+      <p>Visa eiga — dviem trumpais video: pirma padai, tada nugara. Kiek lašų ir koks
+        judesys — taip, kaip parašyta rinkinio lankstinuke.</p>
       <div class="pradek">
         <h3>Nuo ko pradėti</h3>
         <p>Young Living turi atskirą Raindrop rinkinį, jame visi reikalingi aliejai. Kai
