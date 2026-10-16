@@ -140,7 +140,9 @@ h2 { font-size: clamp(32px, 4.6vw, 54px); line-height: 1.08; letter-spacing: -0.
 /* ---------- 3. aliejai: buteliukai kaip vitrinoje ---------- */
 .aliejai { background: var(--pavirsius); padding-bottom: 0; }
 .aliejai > .plotis:last-child { padding-top: 0; padding-bottom: 120px; }
-.scenos { margin-top: 64px; display: grid; gap: 0; }
+/* tarp scenų — šviesi juostelė (Dangira 2026-10-16: „kad tarp nuotraukų būtų kažkoks tarpelis, juostelė tarp visų“) */
+.scenos { margin-top: 64px; display: grid; gap: 12px; background: var(--fonas); }
+@media (max-width: 767px) { .scenos { gap: 8px; } }
 .scena { position: relative; overflow: hidden; min-height: 86vh; display: flex; align-items: center; }
 .scenos-foto { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 .scenos-foto.tuscia { background: radial-gradient(70% 80% at 70% 40%, #2a4f86 0%, transparent 70%), var(--gilus); }
@@ -322,6 +324,8 @@ h2 { font-size: clamp(32px, 4.6vw, 54px); line-height: 1.08; letter-spacing: -0.
 .faktai li { border: 1px solid rgba(255,255,255,.3); padding: 7px 16px; font-size: 14px; color: #e6ecf7; }
 .penki-kvapai { display: grid; gap: 40px 24px; grid-template-columns: 1fr 1fr; margin: 56px 0 48px; }
 @media (min-width: 900px) { .penki-kvapai { grid-template-columns: repeat(4, 1fr); } }
+/* telefone po vieną buteliuką eilėje (Dangira 2026-10-16: „telefone turi po vieną matytis, o dabar po du“) */
+@media (max-width: 599px) { .penki-kvapai { grid-template-columns: 1fr; gap: 56px; } .penki-kvapai .butelis { max-width: 300px; margin: 0 auto; } }
 .penki-kvapai figure { margin: 0; text-align: center; }
 .penki-kvapai img { height: 190px; width: 100%; object-fit: contain; filter: drop-shadow(0 18px 22px rgba(0,0,0,.35)); }
 .penki-kvapai h3 { color: #fff; font-size: 26px; line-height: 1.1; margin: 18px 0 6px; }
@@ -505,6 +509,49 @@ footer { padding: 48px 0 56px; border-top: 1px solid var(--linija); }
 /* Purification 2026-10-06 */
 .scena[data-al="purification"] { --al-fonas: rgba(244,246,246,.88); --al-tekstas: #2a2f33; --al-akcentas: #9c2a5c; --al-mygtukas: #9c2a5c; }
 @media (max-width: 767px) { .scena[data-al="purification"] .kortele.atidaryta { background: #f1f3f3; } }
+
+/* ===== Viena tipografijos sistema visoms skiltims (Dangira 2026-10-16: „nėra bendros sistemos — šriftai, dydžiai, tarpai
+   skiriasi; antraštėse minimalūs tarpai, tarp antraštės ir teksto šiek tiek tarpelio, tekstas glaustas; pavienodink visur“).
+   Laikomasi visur: antraštės eilutės 1.15, tekstas 1.5; po h2 — 16 px, po h3 — 10 px, tarp pastraipų — 12 px.
+   Naujai skilčiai savų dydžių neišrasti — imti šiuos. ===== */
+:root { --eil-antr: 1.15; --eil-teks: 1.5; --po-h2: 16px; --po-h3: 10px; --po-p: 12px; --pries-mygtuka: 20px; }
+body { line-height: var(--eil-teks); }
+h1, h2, h3, .jura .citata, .natos-vardas, .vardas { line-height: var(--eil-antr); }
+p, .smulkme { line-height: var(--eil-teks); }
+p { margin-bottom: var(--po-p); }
+h2 { margin-bottom: var(--po-h2); }
+.taisykles h3, .pradek h3, .keliai h3, .kvietimas h3, .wyld-kvietimas h3, .kaip-skleidziasi h3 { line-height: var(--eil-antr); margin-bottom: var(--po-h3); }
+.penki-kvapai h3, .kortele h3 { line-height: var(--eil-antr); }
+.ivadas { margin-bottom: var(--po-p); }
+.jura .citata { margin-bottom: var(--po-h2); }
+.virsus h1 { margin-bottom: var(--po-h2); }
+.virsus .paantraste { margin-bottom: 28px; }
+.kvietimas p, .wyld-kvietimas p { margin-bottom: var(--pries-mygtuka); }
+.kaip-skleidziasi p { margin-bottom: 8px; }
+.penki-kvapai .kv-natos p, .natos-apr { line-height: 1.45; }
+
+/* telefone — vienodi dydžiai: skilties antraštė 30, poskyris 22, produkto pavadinimas 26, įvadas 17, tekstas 16, smulkus 14 */
+@media (max-width: 767px) {
+  body { font-size: 16px; }
+  .virsus h1 { font-size: 40px; line-height: 1.1; }
+  h2 { font-size: 30px; }
+  .jura .citata { font-size: 26px; }
+  .taisykles h3, .pradek h3, .keliai h3, .kvietimas h3, .wyld-kvietimas h3, .kaip-skleidziasi h3 { font-size: 22px; }
+  .kortele h3, .kortele:hover h3, .scenos .scena > .kortele.rodyk h3, .penki-kvapai h3 { font-size: 26px; }
+  .ivadas, .virsus .paantraste { font-size: 17px; }
+  .jura p:not(.citata), .kortele p, .taisykles p, .pradek p, .penki-kvapai p, .saugumas, .zingsniai li, .keliai p,
+  .kvietimas p, .wyld-kvietimas p, .raindrop p, .apie p, .uzsakymas p, .naujienos p { font-size: 16px; }
+  .kortele .kada, .kaip-skleidziasi .kaip-pastaba, .wyld-kvietimas .pastaba-langas, .penki-kvapai .su-aliejais,
+  .faktai li, .role, .penki-kvapai .kv-natos p { font-size: 14px; }
+  .taisykles .skaicius, .taisykles .skaicius.zodis { font-size: 32px; margin-bottom: 8px; }
+  .zingsniai strong { font-size: 17px; }
+  /* kvepalų natų langelis ir nuotaika — savo dydžiai (bendra .penki-kvapai p jų neturi liesti) */
+  .penki-kvapai .natos-vardas { font-size: 20px; }
+  .penki-kvapai .kv-nuotaika { font-size: 17px; }
+  .penki-kvapai .natos-nuotaika { font-size: 15px; }
+  .penki-kvapai .natos-apr { font-size: 14px; }
+  .penki-kvapai .natos-alj { font-size: 13px; }
+}
 </style>
 </head>
 <body>
