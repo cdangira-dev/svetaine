@@ -533,6 +533,29 @@ h2 { margin-bottom: var(--po-h2); }
 .tikrinimas p { max-width: 62ch; }
 .tikrinimas .saltinis { font-size: 14px; color: var(--pilkas); margin-top: var(--pries-mygtuka); }
 @media (max-width: 767px) { .tikrinimas p:not(.saltinis):not(.ivadas) { font-size: 16px; } }
+/* Šio mėnesio mišinys (2026-10-21) — bendri dydžiai; video kaip Raindrop (9:16) */
+.misinys { background: var(--pavirsius); padding: 0; }
+.misinys .dalys { display: grid; grid-template-columns: 1fr; gap: 0; }
+@media (min-width: 900px) { .misinys .dalys { grid-template-columns: 0.8fr 1.2fr; align-items: center; } }
+.misinys-video { margin: 0; padding: 0 24px 72px; }
+@media (min-width: 900px) { .misinys-video { padding: 88px 0 88px 8vw; } }
+@media (max-width: 899px) { .misinys .tekstas { order: -1; } .misinys-video { max-width: 360px; margin: 0 auto; } }
+.misinys-video video { display: block; width: 100%; max-width: 360px; margin: 0 auto; aspect-ratio: 9 / 16; border-radius: 18px; background: var(--tamsi, #24406f); box-shadow: 0 16px 40px rgba(36,64,111,.14); }
+.misinys-video figcaption { margin-top: 10px; font-size: 14px; letter-spacing: .14em; text-transform: uppercase; color: var(--melyna, #3c67b1); text-align: center; }
+.misinys .tekstas { padding: 88px 24px 32px; }
+@media (min-width: 900px) { .misinys .tekstas { padding: 88px 8vw 88px 72px; } }
+.misinys .menuo { font-size: 14px; letter-spacing: .14em; text-transform: uppercase; color: var(--melyna); margin-bottom: 12px; }
+.misinys p { max-width: 62ch; }
+.receptas { margin: 8px 0 var(--po-h2); padding: 20px 0; border-top: 1px solid var(--linija); border-bottom: 1px solid var(--linija); }
+.receptas h3 { font-size: 22px; line-height: var(--eil-antr); margin-bottom: var(--po-h3); }
+.receptas ul { margin: 0 0 var(--po-p); padding-left: 1.2em; }
+.receptas li { margin-bottom: 4px; }
+.receptas p { margin: 0; }
+.misinio-mygtukai { margin-top: var(--pries-mygtuka); }
+.misinio-mygtukai .mygtukas { margin: 0 8px 8px 0; background: #24406f; color: #fff; border-color: #24406f; }
+.misinio-mygtukai .mygtukas:hover { background: #2f548f; border-color: #2f548f; }
+.misinys .saltinis { font-size: 14px; color: var(--pilkas); margin-top: var(--po-p); }
+@media (max-width: 767px) { .misinys p:not(.saltinis):not(.ivadas), .receptas li { font-size: 16px; } }
 
 /* telefone — vienodi dydžiai: skilties antraštė 30, poskyris 22, produkto pavadinimas 26, įvadas 17, tekstas 16, smulkus 14 */
 @media (max-width: 767px) {
@@ -569,6 +592,7 @@ h2 { margin-bottom: var(--po-h2); }
     <nav aria-label="Puslapio dalys">
       <a href="#aliejai">Aliejai</a>
       <a href="#raindrop">Raindrop</a>
+      <a href="#misinys">Mišinys</a>
       <a href="#kvepalai">Kvepalai</a>
       <a href="#uzsakyti">Užsakymas</a>
     </nav>
@@ -764,6 +788,46 @@ h2 { margin-bottom: var(--po-h2); }
              nuoroda į oficialų YL failą, kurį pats YL LT rinkinio puslapis (lt_lt/products/id/66039) siūlo kaip „Raindrop Technique“ lankstinukas. -->
         <p style="margin-top: var(--po-p)"><a href="https://static.youngliving.com/EU-DOCS/PDFS/education/Raindrop/RaindropKitInsert_Brochure_EUR_2024_LT.pdf" target="_blank" rel="noopener">Atsisiųsti lankstinuką lietuviškai</a> (PDF, Young Living)</p>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 4a. MIŠINYS ============
+     Dangira 2026-10-21: mišinukus keisim „kas kažkiek laiko“, mėnesiais nevardinsim (be „Spalis“, be „šio mėnesio“). Keičiant: h2, tekstą, receptą,
+     video (vaizdai/misinys-*), mygtukus. Pirmas — galvos odos mišinys (claude-darbas/projects/young-living/misiniai/plauku-misinys/):
+     receptas — jos pačios (4+4+4, 2–3 k./sav., vakare įsitrina, ryte išsiplauna). Šalavijas — jos sprendimas palikti
+     (YL LT 2026-10-21 „šiuo metu neprieinamas“). Citata pažodžiui — youngliving.com/lt_LT/products/rozmarinu-eterinis-aliejus
+     (tikrinta 2026-10-20). Video tik A variantas (B su plike — ne viešai, YL P&P 5.3). Jokių „stabdo slinkimą“, „atauga“. -->
+<section class="misinys" id="misinys">
+  <div class="dalys">
+    <figure class="misinys-video rodyk">
+      <video controls playsinline preload="none" poster="vaizdai/misinys-plaukai-poster.jpg">
+        <source src="vaizdai/misinys-plaukai-svetainei.mp4" type="video/mp4">
+      </video>
+      <figcaption>Vakare įsitrink, ryte išsiplauk</figcaption>
+    </figure>
+    <div class="tekstas rodyk">
+      <h2>Mišinys galvos odai</h2>
+      <p class="ivadas">Plaukams turime šampūną, kondicionierių, kaukę, o galvos oda dažniausiai
+        lieka be jokios priežiūros.</p>
+      <div class="receptas">
+        <h3>Mano mišinys</h3>
+        <ul>
+          <li>4 lašai rozmarino</li>
+          <li>4 lašai pipirmėtės</li>
+          <li>4 lašai šalavijo</li>
+        </ul>
+        <p>Viską sulašinu į valgomąjį šaukštą alyvuogių arba kokosų aliejaus.</p>
+      </div>
+      <p>Mišinį naudoju 2–3 kartus per savaitę: vakare įsitrinu į galvos odą, o ryte išsiplaunu galvą.</p>
+      <p>Young Living apie rozmariną rašo taip: „Rozmarinas taip pat yra populiarus plaukų priežiūros
+        ingredientas, mėgstamas dėl sveikos plaukų ir galvos odos išvaizdos palaikymo.“</p>
+      <div class="misinio-mygtukai">
+        <a class="mygtukas pilnas" href="https://www.youngliving.com/lt_lt/products/rozmarinu-eterinis-aliejus?sponsorid=3882850&amp;enrollerid=3882850&amp;isocountrycode=LT&amp;culture=lt-LT&amp;type=member" target="_blank" rel="noopener">Rozmarinas</a>
+        <a class="mygtukas pilnas" href="https://www.youngliving.com/lt_lt/products/pipirmeciu-eterinis-aliejus?sponsorid=3882850&amp;enrollerid=3882850&amp;isocountrycode=LT&amp;culture=lt-LT&amp;type=member" target="_blank" rel="noopener">Pipirmėtė</a>
+        <a class="mygtukas" href="https://www.youngliving.com/lt_lt/products/salaviju-eterinis-aliejus?sponsorid=3882850&amp;enrollerid=3882850&amp;isocountrycode=LT&amp;culture=lt-LT&amp;type=member" target="_blank" rel="noopener">Šalavijas</a>
+      </div>
+      <p class="saltinis">Šaltinis: <a href="https://www.youngliving.com/lt_LT/products/rozmarinu-eterinis-aliejus" target="_blank" rel="noopener">Young Living, rozmarinų eterinis aliejus</a></p>
     </div>
   </div>
 </section>
