@@ -430,6 +430,7 @@ h2 { font-size: clamp(32px, 4.6vw, 54px); line-height: 1.08; letter-spacing: -0.
 .kaip-skleidziasi { margin: 36px auto 0; padding: 26px 30px 22px; text-align: left; max-width: 680px; position: relative;
   border: 1px solid rgba(231,203,138,.35); background: rgba(255,255,255,.04); }.kaip-skleidziasi h3 { color: #fff; font-size: 22px; margin: 0 0 10px; }
 .kaip-skleidziasi p { margin: 0 0 8px; } .kaip-skleidziasi .kaip-pastaba { font-size: 14px; opacity: .75; margin: 0; }
+.is-ko { margin: 28px 0 0; max-width: 720px; } .is-ko ul { margin: 0; padding-left: 18px; } .is-ko li { margin: 0 0 6px; color: #d4def0; }
 .penki-kvapai .nuotaika { font-family: var(--antr); font-style: italic; font-size: 17px; color: #f3e6c4; margin-bottom: 8px; }
 .penki-kvapai a { text-decoration: none; display: block; }
 .wyld-kvietimas { margin-top: 48px; padding: 40px; border: 1px solid rgba(255,255,255,.3); background: rgba(255,255,255,.06); max-width: 720px; }
@@ -930,13 +931,25 @@ h2 { margin-bottom: var(--po-h2); }
       <!-- Rinkinių sąrašas išimtas 2026-10-04 (Dangira: svetainė gundo, ne katalogas). Nuoroda — su jos ref ir kodu. -->
       <p>Visus kvepalus gali pamatyti ir užsisakyti čia:
         <a href="https://wyldnotes.com/discount/lasas-juroje?ref=lasas-juroje&amp;redirect=/en-eu/collections/fine-fragrance" target="_blank" rel="noopener">wyldnotes.com</a>.</p>
-      <ul class="faktai">
-        <li>be sintetinių medžiagų</li>
-        <li>ekologiškas cukranendrių alkoholis</li>
-        <li>veganiški</li>
-        <li>netestuoti su gyvūnais</li>
-        <li>siunčiami į Europą</li>
-      </ul>
+      <!-- „Iš ko pagaminti“ (2026-10-21, jos prašymu) — tik gamintojo žodžiai: wyldnotes.com/en-eu/pages/wyld-promise
+           („luxurious, 100% natural, and fully transparent“, „essential oils, natural extracts, plant-based absolutes, and organic
+           non-denatured sugarcane alcohol“, „free from parabens, phthalates, sulfates, and petrochemicals“, „100% vegan and cruelty-free“);
+           tinklaraštis crafting-clean-fragrance-… („Most fragrances use denatured alcohol“, „ethanol treated with chemical additives
+           to make it unfit for consumption“); produkto puslapis white-lie — „Full ingredient list“; wyld-restoration — „1% of every sale“.
+           Sveikatos pažadų („safe“, „non-toxic“, „less irritation“) NEDĖTI. Atranka: claude-darbas/projects/young-living/wyld-notes/. -->
+      <div class="kaip-skleidziasi is-ko">
+        <h3>Iš ko pagaminti</h3>
+        <p>Gamintojas sako, kad prabangūs kvepalai gali būti 100 % natūralūs, o jų sudėtis — visiškai atvira.</p>
+        <ul>
+          <li>Sudėtyje — tik augalinės kilmės medžiagos: eteriniai aliejai, natūralūs ekstraktai ir augaliniai absoliutai.</li>
+          <li><strong>Ekologiškas nedenatūruotas cukranendrių alkoholis.</strong> Pasak gamintojo, daugumoje kvepalų naudojamas
+            denatūruotas alkoholis — į jį dedama cheminių priedų, kad jo nebūtų galima gerti.</li>
+          <li>Be sintetinių medžiagų, ftalatų, parabenų, sulfatų ir naftos produktų.</li>
+          <li>Veganiški ir netestuoti su gyvūnais.</li>
+          <li>Gamintojo puslapyje prie kiekvieno kvapo nurodyta visa sudėtis.</li>
+          <li>1 % kiekvieno pardavimo sumos skiriama gamtai atkurti.</li>
+        </ul>
+      </div>
 
       <!-- 10 % pirmam pirkimui — wyldnotes.com/pages/faqs („first-time customers“), kodas lasas-juroje (wyld-notes/README.md).
            Nuoroda neša ir partnerės ref, ir nuolaidos kodą; ar kasoje nusiskaito automatiškai — nepatikrinta, todėl prašome įvesti. -->
@@ -1087,7 +1100,7 @@ h2 { margin-bottom: var(--po-h2); }
       <p>Lašų kiekis garintuvui (8–10): youngliving.com/blog/eu/lt/kaip-naudoti-eterinius-aliejus.
         Garinimo trukmė (iki 10 min. per dieną naujam aliejui): Young Living saugos gairės,
         eu.youngliving.com/en-gb/pages/safety-guidelines. Wyld NOTES informacija:
-        wyldnotes.com/en-eu (2026-09-25). Rožių aliejaus faktai:
+        wyldnotes.com/en-eu (2026-09-25), puslapis „Wyld Promise“, tinklaraštis ir „Wyld Restoration“ (2026-10-21). Rožių aliejaus faktai:
         youngliving.com/lt_lt/products/roziu-eterinis-aliejus. Lojalumo programa:
         youngliving.com/en_eu/opportunity/loyalty-rewards (2026-10-04).</p>
     </div>
