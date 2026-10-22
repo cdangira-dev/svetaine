@@ -480,7 +480,16 @@ h2 { font-size: clamp(32px, 4.6vw, 54px); line-height: 1.08; letter-spacing: -0.
 
 /* ---------- 5a. šio mėnesio naujienos ---------- */
 .naujienos { background: var(--pavirsius); padding: 88px 0; }
-.naujienos .kvietimas { margin-top: 32px; max-width: 720px; }
+.naujienos .kvietimas { margin-top: 32px; }
+.naujienos-dalys { display: grid; grid-template-columns: 1fr 1fr; gap: 0; margin-top: 20px; }
+.naujienos-dalys > div { padding: 4px 40px 4px 0; }
+.naujienos-dalys > div + div { padding-left: 40px; border-left: 1px solid rgba(255,255,255,.25); }
+.naujienos-nr { display: inline-block; font-family: var(--antr); font-size: 40px; line-height: 1; color: #E7CB8A; margin-bottom: 10px; }
+@media (max-width: 767px) {
+  .naujienos-dalys { grid-template-columns: 1fr; }
+  .naujienos-dalys > div { padding: 0 0 20px; }
+  .naujienos-dalys > div + div { padding: 20px 0 0; border-left: 0; border-top: 1px solid rgba(255,255,255,.25); }
+}
 .naujienos .kvietimas .mygtukas { margin: 8px 8px 0 0; }.naujienos .menuo { font-size: 14px; letter-spacing: .14em; text-transform: uppercase; color: var(--melyna); margin-bottom: 12px; }
 
 /* ---------- 7. apie mane ---------- */
@@ -499,6 +508,7 @@ footer { padding: 48px 0 56px; border-top: 1px solid var(--linija); }
 .role { font-size: 14px; color: var(--pilkas); }
 .smulkme { font-size: 13px; color: var(--pilkas); line-height: 1.6; }
 .smulkme p { margin-bottom: 8px; max-width: 90ch; }
+@media (min-width: 900px) { .smulkme { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; } .smulkme p { max-width: none; } }
 
 /* ---------- judesys: švelnus pasirodymas ---------- */
 @media (prefers-reduced-motion: no-preference) {
@@ -997,11 +1007,20 @@ h2 { margin-bottom: var(--po-h2); }
     <h2>Šio mėnesio naujienos</h2>
     <div class="kvietimas">
       <h3>Dovanų gidas</h3>
-      <p>Pažiūrėk, kas šį sezoną naujo.</p>
-      <a class="mygtukas pilnas" href="https://www.youngliving.com/lt_lt/ipaper/september-2026/2026-sept-oct-gift-guide-lt-lt" target="_blank" rel="noopener">Atsiversti gidą</a>
-      <!-- Gidas veda į YL puslapį be jos numerio, todėl toliau — užsakymas per jos nuorodą (YL_NUORODA, kaip ir aliejams). -->
-      <p style="margin-top: var(--po-p)">Kai išsirinksi, užsisakyk per nuorodą.</p>
-      <a class="mygtukas yl-nuoroda" href="#uzsakyti">Užsisakyti</a>
+      <!-- 2026-10-23 Dangira: „kad nebūtų tiek tuščios baltos erdvės“ → langelis per visą plotį, du žingsniai šalia (telefone — vienas po kito). -->
+      <div class="naujienos-dalys">
+        <div>
+          <span class="naujienos-nr">1</span>
+          <p>Pažiūrėk, kas šį sezoną naujo.</p>
+          <a class="mygtukas pilnas" href="https://www.youngliving.com/lt_lt/ipaper/september-2026/2026-sept-oct-gift-guide-lt-lt" target="_blank" rel="noopener">Atsiversti gidą</a>
+        </div>
+        <!-- Gidas veda į YL puslapį be jos numerio, todėl toliau — užsakymas per jos nuorodą (YL_NUORODA, kaip ir aliejams). -->
+        <div>
+          <span class="naujienos-nr">2</span>
+          <p>Kai išsirinksi, užsisakyk per nuorodą.</p>
+          <a class="mygtukas yl-nuoroda" href="#uzsakyti">Užsisakyti</a>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -1114,7 +1133,9 @@ h2 { margin-bottom: var(--po-h2); }
           <a href="https://facebook.com/dangira.ciakiene" target="_blank" rel="noopener">Facebook</a></div>
       </div>
     </div>
+    <!-- 2026-10-23 Dangira: „kad nebūtų tiek tuščios baltos erdvės“ → kompiuteryje dvi kolonos: kairėje teisinė frazė ir pastaba, dešinėje šaltiniai. -->
     <div class="smulkme">
+      <div>
       <!-- YL P&P Europe 2021 (LT) 5.7 a — teisinė frazė, keisti NEGALIMA. Dar trūksta YL BRAND PARTNER logotipo (iš Virtual Office). -->
       <p class="teisine">„1. Reklamuotojui ar dalyviui, esančiam prekybos schemoje, nevalia įtikinėti ką nors
         atlikti mokėjimus, žadant naudą iš to, kad prisijungtų kiti asmenys.<br>
@@ -1122,6 +1143,8 @@ h2 { margin-bottom: var(--po-h2); }
       <p>Šią svetainę parengiau aš, nepriklausoma konsultantė. Young Living jos nerengė
         ir netvirtino. Produktų nuotraukos: Young Living ir Wyld NOTES. Scenų vaizdai sukurti
         dirbtiniu intelektu.</p>
+      </div>
+      <div>
       <!-- 2026-10-23 Dangira: „atskirk Young Living nuo Wyld NOTES pastabų“. -->
       <p><strong>Young Living.</strong> Lašų kiekis garintuvui (8–10): youngliving.com/blog/eu/lt/kaip-naudoti-eterinius-aliejus.
         Garinimo trukmė (iki 10 min. per dieną naujam aliejui): Young Living saugos gairės,
@@ -1130,6 +1153,7 @@ h2 { margin-bottom: var(--po-h2); }
         youngliving.com/en_eu/opportunity/loyalty-rewards (2026-10-04).</p>
       <p><strong>Wyld NOTES.</strong> Informacija: wyldnotes.com/en-eu (2026-09-25), puslapis „Wyld Promise“,
         tinklaraštis ir „Wyld Restoration“ (2026-10-21).</p>
+      </div>
     </div>
   </div>
 </footer>
