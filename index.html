@@ -1055,7 +1055,7 @@ h2 { margin-bottom: var(--po-h2); }
         <li><strong>Atsidaryk mano nuorodą</strong>
           Mygtukas „Į Young Living“ yra šalia. Jis veda į oficialų Young Living puslapį.</li>
         <li><strong>Užsiregistruok savo vardu</strong>
-          Paskyra tavo, užsakymai irgi tavo. Kitą kartą tiesiog prisijungsi.</li>
+          Viršuje spausk „Susikurti paskyrą“. Paskyra tavo, užsakymai irgi tavo. Kitą kartą tiesiog prisijungsi.</li>
         <li><strong>Išsirink ir užsisakyk</strong>
           Kainos surašytos ten pat, oficialiame puslapyje. Siuntinys atkeliauja paštu.</li>
       </ol>
@@ -1082,7 +1082,7 @@ h2 { margin-bottom: var(--po-h2); }
       </div>
 
       <div class="kvietimas">
-        <h3>Užsisakyk per mano nuorodą</h3>
+        <h3>Užsisakyk per nuorodą</h3>
         <p>Jei dar nežinai, ką imti, pradėk nuo vieno iš keturių aukščiau aprašytų aliejų.</p>
         <!-- Nuoroda įrašoma vienoje vietoje, apačioje: YL_NUORODA. -->
         <a class="mygtukas pilnas yl-nuoroda" href="#uzsakyti">Į Young Living</a>
@@ -1141,8 +1141,9 @@ h2 { margin-bottom: var(--po-h2); }
         atlikti mokėjimus, žadant naudą iš to, kad prisijungtų kiti asmenys.<br>
         2. Neapsigaukite girdėdami teiginius, kad didelis uždarbis lengvai pasiekiamas.“</p>
       <p>Šią svetainę parengiau aš, nepriklausoma konsultantė. Young Living jos nerengė
-        ir netvirtino. Produktų nuotraukos: Young Living ir Wyld NOTES. Scenų vaizdai sukurti
-        dirbtiniu intelektu.</p>
+        ir netvirtino. Produktų nuotraukos: Young Living ir Wyld NOTES.</p>
+      <!-- „Scenų vaizdai sukurti dirbtiniu intelektu“ išimta 2026-10-23 jos sprendimu („sakinio nepalik“), nors pasakyta apie ES DI akto 50 str. 4 d. -->
+
       </div>
       <div>
       <!-- 2026-10-23 Dangira: „atskirk Young Living nuo Wyld NOTES pastabų“. -->
@@ -1161,7 +1162,9 @@ h2 { margin-bottom: var(--po-h2); }
 <script>
   // Dangiros Young Living užsakymo nuoroda. Įrašyti čia, ir ji atsiras visur.
   // 2026-10-04: jos duota registracijos nuoroda (sponsorid/enrollerid 3882850), patikrinta — atsidaro LT, numeris įsimenamas.
-  var YL_NUORODA = "https://www.youngliving.com/vo/#/signup/new-start?sponsorid=3882850&enrollerid=3882850&isocountrycode=LT&culture=lt-LT&type=member";
+  // 2026-10-23: tiesioginė vo/#/signup/new-start registracija atsidarydavo angliškai (slapukas culture=en-EU).
+  // Per lt_lt puslapį: įrašomas culture=lt-LT ir link_params (sponsor 3882850), o „Susikurti paskyrą“ → apps/enrollment lietuviškai (patikrinta).
+  var YL_NUORODA = "https://www.youngliving.com/lt_lt/enrollment?sponsorid=3882850&enrollerid=3882850&isocountrycode=LT&culture=lt-LT&type=member";
 
   if (YL_NUORODA) {
     document.querySelectorAll(".yl-nuoroda").forEach(function (a) {
