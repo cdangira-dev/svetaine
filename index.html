@@ -395,6 +395,13 @@ h2 { font-size: clamp(32px, 4.6vw, 54px); line-height: 1.08; letter-spacing: -0.
 .kv-natos b { display: inline-block; min-width: 82px; margin-right: 6px; color: #f3e6c4; font-weight: 600; font-size: 11px; letter-spacing: .1em; text-transform: uppercase; }
 .kvapas:hover .kv-natos, .kvapas:has(.atidaryta) .kv-natos { opacity: 1; }
 @media (hover: none) { .kv-natos { opacity: 1; } }
+/* kompiuteryje nematomos natos neužima vietos — išsiskleidžia užvedus pelę (Dangira 2026-10-23: „nepalik tiek daug mėlynos erdvės“) */
+@media (hover: hover) {
+  .kv-natos { max-height: 0; overflow: hidden; margin-top: 0; transition: opacity .35s, max-height .35s, margin-top .35s; }
+  .kvapas:hover .kv-natos, .kvapas:has(.atidaryta) .kv-natos { max-height: 120px; margin-top: 8px; }
+  .kvepalai .penki-kvapai { margin-bottom: 8px; }
+  .kvepalai .wyld-kvietimas { margin-top: 32px; }
+}
 .natos-wl { background: #f6f1ea; color: #4a3f35; }
 .natos-bb { background: #161a24; color: #e8dcc0; }
 .natos-sd { background: #efe6d6; color: #4d4031; }
@@ -431,6 +438,12 @@ h2 { font-size: clamp(32px, 4.6vw, 54px); line-height: 1.08; letter-spacing: -0.
   border: 1px solid rgba(231,203,138,.35); background: rgba(255,255,255,.04); }.kaip-skleidziasi h3 { color: #fff; font-size: 22px; margin: 0 0 10px; }
 .kaip-skleidziasi p { margin: 0 0 8px; } .kaip-skleidziasi .kaip-pastaba { font-size: 14px; opacity: .75; margin: 0; }
 .is-ko { margin: 36px auto 0; }
+/* kompiuteryje du langeliai šalia, platesnė viršutinė dalis — mažiau tuščios vietos (Dangira 2026-10-23) */
+@media (min-width: 1100px) {
+  .kvepalai .plotis > .rodyk:first-child { max-width: 1180px; }
+  .kv-dezes { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-top: 36px; align-items: stretch; }
+  .kv-dezes .kaip-skleidziasi { margin: 0; max-width: none; }
+}
 /* apatinė dalis (nuoroda + 10 % kvietimas) — centre kaip viršus (2026-10-22, jos ekrano nuotrauka: buvo prigludusi kairėje) */
 .kvepalai .plotis > .rodyk:last-child { max-width: 720px; margin: 0 auto; text-align: center; }
 .kvepalai .plotis > .rodyk:last-child .wyld-kvietimas,
@@ -468,9 +481,7 @@ h2 { font-size: clamp(32px, 4.6vw, 54px); line-height: 1.08; letter-spacing: -0.
 /* ---------- 5a. šio mėnesio naujienos ---------- */
 .naujienos { background: var(--pavirsius); padding: 88px 0; }
 .naujienos .kvietimas { margin-top: 32px; max-width: 720px; }
-.naujienos .kvietimas .mygtukas { margin: 8px 8px 0 0; }
-.uzsakymas .kvietimas .mygtukas { margin: 0 8px 8px 0; }
-.naujienos .menuo { font-size: 14px; letter-spacing: .14em; text-transform: uppercase; color: var(--melyna); margin-bottom: 12px; }
+.naujienos .kvietimas .mygtukas { margin: 8px 8px 0 0; }.naujienos .menuo { font-size: 14px; letter-spacing: .14em; text-transform: uppercase; color: var(--melyna); margin-bottom: 12px; }
 
 /* ---------- 7. apie mane ---------- */
 .apie { background: var(--pavirsius); }
@@ -824,7 +835,8 @@ h2 { margin-bottom: var(--po-h2); }
           <li>4 lašai pipirmėtės</li>
           <li>4 lašai šalavijo</li>
         </ul>
-        <p>Viską sulašinu į valgomąjį šaukštą alyvuogių arba kokosų aliejaus.</p>
+        <!-- 2026-10-23 Dangira: „turi būti kaip video“ — video kortelė: „1 valg. š. V-6 arba kokosų aliejaus“. -->
+        <p>Viską sulašinu į valgomąjį šaukštą V-6 arba kokosų aliejaus.</p>
       </div>
       <p>Mišinį naudoju 2–3 kartus per savaitę: vakare įsitrinu į galvos odą, o ryte išsiplaunu galvą.</p>
       <p>Young Living apie rozmariną rašo taip: „Rozmarinas taip pat yra populiarus plaukų priežiūros
@@ -864,6 +876,8 @@ h2 { margin-bottom: var(--po-h2); }
            to make it unfit for consumption“); produkto puslapis white-lie — „Full ingredient list“; wyld-restoration — „1% of every sale“.
            Sveikatos pažadų („safe“, „non-toxic“, „less irritation“) NEDĖTI. Atranka: claude-darbas/projects/young-living/wyld-notes/.
            2026-10-22 jos prašymu perkelta į įvado vietą vietoj „Ar žinai, kad yra kvepalų su eteriniais aliejais?…“. -->
+      <!-- 2026-10-23 Dangira: „labai daug tuščios vietos“ → kompiuteryje abu langeliai šalia (.kv-dezes), telefone vienas po kito. -->
+      <div class="kv-dezes">
       <div class="kaip-skleidziasi is-ko">
         <h3>Iš ko pagaminti</h3>
         <!-- „100 %“ išimta 2026-10-22 (tikrintojas: YL partneriams „100 %“ nevartoti — wyld-notes/laiskai/2026-10-18-parfumeriai-ir-naturalumas.md). -->
@@ -891,6 +905,7 @@ h2 { margin-bottom: var(--po-h2); }
           kvapai ant odos, drabužių ar plaukų laikosi 6 valandas ir ilgiau, kartais net kelias dienas. Trukmė priklauso nuo kvapo
           ir nuo to, kaip jis užpurškiamas. Taip kvapas atsiskleidžia sluoksnis po sluoksnio.</p>
         <p class="kaip-pastaba">Kiekvieno kvapo natos pasirodys užvedus pelę ant lašiuko prie buteliuko (telefone — palietus).</p>
+      </div>
       </div>
     </div>
 
@@ -955,18 +970,18 @@ h2 { margin-bottom: var(--po-h2); }
 
     <div class="rodyk">
       <!-- Rinkinių sąrašas išimtas 2026-10-04 (Dangira: svetainė gundo, ne katalogas). Nuoroda — su jos ref ir kodu. -->
-      <p>Visus kvepalus gali pamatyti ir užsisakyti čia:
-        <a href="https://wyldnotes.com/discount/lasas-juroje?ref=lasas-juroje&amp;redirect=/en-eu/collections/fine-fragrance" target="_blank" rel="noopener">wyldnotes.com</a>.</p>
+      <!-- Eilutė „Visus kvepalus gali pamatyti ir užsisakyti čia: wyldnotes.com“ išimta 2026-10-23 (Dangira: „kartojasi“ — tą patį daro mygtukas). -->
       <!-- 10 % pirmam pirkimui — wyldnotes.com/pages/faqs („first-time customers“), kodas lasas-juroje (wyld-notes/README.md).
            Nuoroda neša ir partnerės ref, ir nuolaidos kodą; ar kasoje nusiskaito automatiškai — nepatikrinta, todėl prašome įvesti. -->
       <div class="wyld-kvietimas">
         <h3>Pirmam pirkimui — 10 % nuolaida</h3>
-        <p>Per pirmą pirkimą kasoje įvesk kodą <span class="kodas">lasas-juroje</span>.
+        <!-- 2026-10-23 Dangira: „kokioje kasoje — čia nėra jokios kasos“ → aiškiau, kur įvesti kodą. -->
+        <p>Pirmą kartą užsakydamas Wyld NOTES svetainėje, prieš apmokėdamas įvesk nuolaidos kodą <span class="kodas">lasas-juroje</span>.
           Kvepalai siunčiami ir į Lietuvą.</p>
         <!-- Wyld svetainė kartais rodo savo naujienlaiškio langą „10% off“ su el. pašto laukeliu (Dangira matė 2026-10-04). -->
         <p class="pastaba-langas">Jei atsidarys langas su el. pašto laukeliu, spausk „No, thanks“ — nuolaidą jau gauni
           su kodu <strong>lasas-juroje</strong>.</p>
-        <a class="mygtukas pilnas" href="https://wyldnotes.com/discount/lasas-juroje?ref=lasas-juroje&amp;redirect=/en-eu/collections/fine-fragrance" target="_blank" rel="noopener">Pažiūrėti kvepalus</a>
+        <a class="mygtukas pilnas" href="https://wyldnotes.com/discount/lasas-juroje?ref=lasas-juroje&amp;redirect=/en-eu/collections/fine-fragrance" target="_blank" rel="noopener">Užsisakyti kvepalus</a>
       </div>
     </div>
   </div>
@@ -1045,7 +1060,7 @@ h2 { margin-bottom: var(--po-h2); }
                „Klientai negali dalyvauti „Essential Rewards“ programoje“; BRAND PARTNER „gali įsigyti … didmeninės prekybos kaina“.
                Komp. plano „Loyalty Rewards“ — „Brand Partners may elect…“. YL_NUORODA turi type=member = BRAND PARTNER registracija. -->
           <p style="margin-top: var(--po-p)">Jei nori rinkti taškus ar kurti savo komandą, registruokis kaip Young Living BRAND PARTNER.
-            Mano nuoroda kaip tik ir veda į šią registraciją.</p>
+            Nuoroda kaip tik ir veda į šią registraciją.</p>
         </div>
       </div>
 
@@ -1054,8 +1069,7 @@ h2 { margin-bottom: var(--po-h2); }
         <p>Jei dar nežinai, ką imti, pradėk nuo vieno iš keturių aukščiau aprašytų aliejų.</p>
         <!-- Nuoroda įrašoma vienoje vietoje, apačioje: YL_NUORODA. -->
         <a class="mygtukas pilnas yl-nuoroda" href="#uzsakyti">Į Young Living</a>
-        <!-- 2026-10-22 Dangira: „viena Young Living nuoroda, o kita kvepalų turi būti“ — ta pati partnerės nuoroda kaip kvepalų skiltyje. -->
-        <a class="mygtukas" href="https://wyldnotes.com/discount/lasas-juroje?ref=lasas-juroje&amp;redirect=/en-eu/collections/fine-fragrance" target="_blank" rel="noopener">Į Wyld NOTES kvepalus</a>
+        <!-- Mygtukas „Į Wyld NOTES kvepalus“ (2026-10-22) išimtas 2026-10-23 — Dangira: „palik tik Į Young Living“. -->
       </div>
     </div>
   </div>
