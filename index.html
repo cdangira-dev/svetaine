@@ -61,7 +61,7 @@ p { margin: 0 0 16px; max-width: 60ch; }
 .plotis { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
 section { padding: 120px 0; }
 @media (max-width: 767px) { section { padding: 72px 0; } .plotis { padding: 0 20px; } }
-h2 { font-size: clamp(32px, 4.6vw, 54px); line-height: 1.08; letter-spacing: -0.01em; margin-bottom: 22px; max-width: 18ch; }
+h2 { font-size: clamp(28px, 3vw, 42px); /* 2026-10-23 Dangira: visos skilčių antraštės vienodo dydžio */ line-height: 1.08; letter-spacing: -0.01em; margin-bottom: 22px; max-width: 18ch; }
 .ivadas { font-size: 19px; color: var(--pilkas); max-width: 52ch; }
 
 /* ---------- juodraščio juosta (dingsta, kai įdedama nuoroda) ---------- */
@@ -333,7 +333,6 @@ h2 { font-size: clamp(32px, 4.6vw, 54px); line-height: 1.08; letter-spacing: -0.
   .raindrop .tekstas p { max-width: 78ch; }
 }
 @media (min-width: 1100px) and (max-height: 800px) {
-  .raindrop .tekstas h2 { font-size: 40px; }
   .raindrop .tekstas p { font-size: 15px; margin-bottom: 8px; }
 }
 .pradek { margin-top: 28px; padding: 28px 0 0; border-top: 1px solid var(--linija); }
@@ -599,7 +598,7 @@ h2 { margin-bottom: var(--po-h2); }
 .misinys .dalys { display: grid; grid-template-columns: 1fr; gap: 0; }
 @media (min-width: 900px) { .misinys .dalys { grid-template-columns: 0.8fr 1.2fr; align-items: center; } }
 .misinys-video { margin: 0; padding: 0 24px 72px; }
-@media (min-width: 900px) { .misinys-video { padding: 40px 0 64px 8vw; } } /* 2026-10-23 Dangira: viršuje per daug balto tarpo */
+@media (min-width: 900px) { .misinys-video { padding: 40px 0 32px 8vw; } } /* 2026-10-23 Dangira: viršuje per daug balto tarpo */
 @media (max-width: 899px) { .misinys .tekstas { order: -1; } .misinys-video { max-width: 360px; margin: 0 auto; } }
 .misinys-video video { display: block; width: 100%; max-width: 360px; margin: 0 auto; aspect-ratio: 9 / 16; border-radius: 18px; background: var(--tamsi, #24406f); box-shadow: 0 16px 40px rgba(36,64,111,.14); }
 .misinys-video figcaption { margin-top: 10px; font-size: 14px; letter-spacing: .14em; text-transform: uppercase; color: var(--melyna, #3c67b1); text-align: center; }
@@ -671,7 +670,7 @@ h2 { margin-bottom: var(--po-h2); }
   .kvepalai { padding-top: 48px; }
   .kvepalai .wyld-logotipas { margin-bottom: 10px; padding-bottom: 10px; }
   .kvepalai .wyld-logotipas img { width: 110px; }
-  .kvepalai .plotis > .rodyk:first-child h2 { font-size: clamp(28px, 2.6vw, 38px); }
+
   .kvapu-pinai { max-width: 1180px; margin: 24px auto 8px; gap: 18px; }
   .kvapu-pinai { max-width: min(1180px, calc((100svh - 330px) * 4 + 54px)); }
   .pinas h3 { font-size: 19px; } .pinas figcaption { padding-top: 8px; } .pinas figcaption p { font-size: 13px; }
@@ -711,10 +710,10 @@ h2 { margin-bottom: var(--po-h2); }
 }
 @media (max-width: 599px) { .faktu-plyteles { grid-template-columns: 1fr; } .kv-faktai h3 { font-size: 22px; } .nuolaidos-juosta { padding: 22px 20px; } }
 /* ---------- naujienos, tikrinimas, užsakymas — pertvarkyta 2026-10-23 ---------- */
-.naujienos { padding: 56px 0; }
+.naujienos { padding: 24px 0 32px; } /* 2026-10-23 Dangira: dovanų gidas arčiau — mažiau tarpo prieš ir po */
 .nauj-juosta { display: flex; align-items: center; justify-content: space-between; gap: 40px; padding: 36px 44px; border-radius: 18px;
   background: linear-gradient(135deg, var(--gilus) 0%, var(--virsus) 100%); color: #fff; }
-.nauj-juosta h2 { color: #fff; font-size: clamp(28px, 3vw, 38px); margin: 0 0 8px; }
+.nauj-juosta h2 { color: #fff; margin: 0 0 8px; }
 .naujienos .nauj-juosta p { color: #d4def0; margin: 0; font-size: 17px; }
 .naujienos .nauj-juosta .nauj-virs { font-size: 13px; letter-spacing: .16em; text-transform: uppercase; color: #E7CB8A; margin-bottom: 8px; }
 .nauj-mygtukai { display: flex; gap: 12px; flex: none; }
