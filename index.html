@@ -770,6 +770,19 @@ h2 { margin-bottom: var(--po-h2); }
   .langas-tekstas { padding: 24px 22px 24px; }
   .langas-tekstas h3 { font-size: 28px; }
 }
+/* ---------- 2026-10-23 Dangira: tekstų dydžiai vienodi visame puslapyje ----------
+   įvadas po antrašte 19 · pagrindinis tekstas 17 · kortelės ir langeliai 16 · pastabos ir šaltiniai 14 */
+button { font-family: inherit; }
+.scena .kortele .kada { font-size: 16px; }
+.faktu-plyteles b, .tikr-korteles b, .uzs-zingsniai b { font-size: 17px; } /* kortelių pavadinimai */
+.faktu-plyteles span, .natu-laikas li > span:last-child, .tikr-korteles span, .uzs-zingsniai li > span:last-child,
+.uzsakymas .uzs-keliai p, .pinas figcaption p, .kvepalai .kv-faktai .kv-ivadas + .faktu-plyteles span { font-size: 16px; }
+.kvepalai .kv-faktai .kv-ivadas, .kvepalai .nuolaidos-juosta p, .naujienos .nauj-juosta p, .tikrinimas .tikr-isvada { font-size: 17px; }
+.kvepalai .nuolaidos-juosta .pastaba-langas, .kvepalai .natu-juosta .kaip-pastaba, .saltinis, .tikrinimas .saltinis, .misinys .saltinis,
+.kvapo-langas .langas-saltinis { font-size: 14px; }
+@media (max-width: 767px) {
+  .kvepalai .kv-faktai .kv-ivadas, .kvepalai .nuolaidos-juosta p, .naujienos .nauj-juosta p, .tikrinimas .tikr-isvada { font-size: 16px; }
+}
 </style>
 </head>
 <body>
@@ -1267,22 +1280,6 @@ h2 { margin-bottom: var(--po-h2); }
   </div>
 </section>
 
-<!-- ============ 7. APIE MANE (vienintelė vieta su veidu) ============ -->
-<section class="apie" id="apie">
-  <div class="plotis dalys">
-    <img class="rodyk" src="vaizdai/dangira-portretas-svetainei.jpg" alt="Dangira prie jūros" loading="lazy">
-    <div class="rodyk">
-      <h2>Labas, aš Dangira</h2>
-      <p class="ivadas">Paaiškinu, kaip aliejus naudoti namuose, ir padedu išsirinkti,
-        nuo ko pradėti. Užsisakai pats per mano nuorodą, kada tau patogu.</p>
-      <p>Nežinai, kurį imti? Parašyk man per
-        <a href="https://facebook.com/dangira.ciakiene" target="_blank" rel="noopener">Facebook</a>.
-        Paklausiu trijų dalykų ir pasiūlysiu vieną aliejų. Jei pasirodys, kad tau
-        šito nereikia, taip ir pasakysiu.</p>
-    </div>
-  </div>
-</section>
-
 <!-- ============ 8. ATSARGUMAS IR APAČIA ============ -->
 <section style="padding:64px 0">
   <div class="plotis">
@@ -1295,17 +1292,17 @@ h2 { margin-bottom: var(--po-h2); }
 
 <footer>
   <div class="plotis">
+    <!-- 2026-10-23 Dangira: „bus tik Lašas jūroje“ — viršuje prekės ženklas ir jo Facebook / Instagram; vardas liko tik teisinėje eilutėje žemiau. -->
     <div class="autore">
       <picture>
         <source srcset="vaizdai/Logo_lasas_juroje_tamsus_tamsesnis.png" media="(prefers-color-scheme: dark)">
-        <img src="vaizdai/Logo_lasas_juroje_sviesus_tamsesnis.png" alt="Lašas jūroje">
+        <img src="vaizdai/Logo_lasas_juroje_sviesus_tamsesnis.png" alt="">
       </picture>
       <div>
-        <div class="vardas">Dangira Čiakienė</div>
-        <!-- YL P&P Europe 2021 (LT) 5.7: BRAND PARTNER'io vardas ir numeris; 5.2: žodžiai „BRAND PARTNER“.
-             Numeris — sponsorid/enrollerid iš jos registracijos nuorodos. -->
-        <div class="role">Young Living nepriklausoma konsultantė (Independent Brand Partner), Nr. 3882850.
-          <a href="https://facebook.com/dangira.ciakiene" target="_blank" rel="noopener">Facebook</a></div>
+        <div class="vardas">Lašas jūroje</div>
+        <div class="role">Klausimų? Rašyk per
+          <a href="https://www.facebook.com/profile.php?id=61594088541906" target="_blank" rel="noopener">Facebook</a> arba
+          <a href="https://www.instagram.com/lasas.juroje/" target="_blank" rel="noopener">Instagram</a>.</div>
       </div>
     </div>
     <!-- 2026-10-23 Dangira: „kad nebūtų tiek tuščios baltos erdvės“ → kompiuteryje dvi kolonos: kairėje teisinė frazė ir pastaba, dešinėje šaltiniai. -->
@@ -1315,8 +1312,9 @@ h2 { margin-bottom: var(--po-h2); }
       <p class="teisine">„1. Reklamuotojui ar dalyviui, esančiam prekybos schemoje, nevalia įtikinėti ką nors
         atlikti mokėjimus, žadant naudą iš to, kad prisijungtų kiti asmenys.<br>
         2. Neapsigaukite girdėdami teiginius, kad didelis uždarbis lengvai pasiekiamas.“</p>
-      <p>Šią svetainę parengiau aš, nepriklausoma konsultantė. Young Living jos nerengė
-        ir netvirtino. Produktų nuotraukos: Young Living ir Wyld NOTES.</p>
+      <!-- YL P&P Europe 2021 (LT) 5.7: BRAND PARTNER'io vardas ir numeris; 5.2: žodžiai „BRAND PARTNER“. Numeris — sponsorid iš jos nuorodos. -->
+      <p>Svetainę parengė nepriklausoma Young Living konsultantė (Independent Brand Partner) Dangira Čiakienė, Nr. 3882850.
+        Young Living jos nerengė ir netvirtino. Produktų nuotraukos: Young Living ir Wyld NOTES.</p>
       <!-- „Scenų vaizdai sukurti dirbtiniu intelektu“ išimta 2026-10-23 jos sprendimu („sakinio nepalik“), nors pasakyta apie ES DI akto 50 str. 4 d. -->
 
       </div>
