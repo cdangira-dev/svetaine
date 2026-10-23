@@ -663,6 +663,18 @@ h2 { margin-bottom: var(--po-h2); }
 .pinas h3 { color: #fff; font-size: 22px; line-height: 1.15; margin: 0 0 4px; }
 .pinas figcaption p { font-size: 14px; line-height: 1.45; color: #c9d6ee; margin: 0; }
 @media (max-width: 599px) { .pinas h3 { font-size: 18px; } .pinas figcaption p { font-size: 13px; } }
+/* 2026-10-23 Dangira: 100 % mastelyje kompiuteryje visa skiltis (logotipas, antraštė, 4 nuotraukos su pavadinimais) telpa į ekraną,
+   mažiau mėlyno fono, mažesni užrašai */
+@media (min-width: 900px) {
+  .kvepalai { padding-top: 48px; }
+  .kvepalai .wyld-logotipas { margin-bottom: 10px; padding-bottom: 10px; }
+  .kvepalai .wyld-logotipas img { width: 110px; }
+  .kvepalai .plotis > .rodyk:first-child h2 { font-size: clamp(28px, 2.6vw, 38px); }
+  .kvapu-pinai { max-width: 1180px; margin: 24px auto 8px; gap: 18px; }
+  .kvapu-pinai .pinas-nuotrauka img { max-height: min(46vh, 440px); object-fit: cover; }
+  .kvapu-pinai .pinas:nth-child(2) { margin-top: 24px; } .kvapu-pinai .pinas:nth-child(4) { margin-top: 12px; }
+  .pinas h3 { font-size: 19px; } .pinas figcaption { padding-top: 8px; } .pinas figcaption p { font-size: 13px; }
+}
 .kvapo-langas { width: min(860px, calc(100vw - 32px)); max-height: calc(100dvh - 32px); padding: 0; border: 0; border-radius: 20px; background: #fff; color: #23262b; overflow: auto; }
 .kvapo-langas::backdrop { background: rgba(10,20,40,.72); }
 .langas-uzdaryti { position: absolute; top: 10px; right: 12px; z-index: 2; width: 40px; height: 40px; border: 0; border-radius: 50%; background: #eef1f8; color: #20406f; font-size: 26px; line-height: 1; cursor: pointer; }
