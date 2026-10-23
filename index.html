@@ -588,12 +588,12 @@ h2 { margin-bottom: var(--po-h2); }
 .misinys .dalys { display: grid; grid-template-columns: 1fr; gap: 0; }
 @media (min-width: 900px) { .misinys .dalys { grid-template-columns: 0.8fr 1.2fr; align-items: center; } }
 .misinys-video { margin: 0; padding: 0 24px 72px; }
-@media (min-width: 900px) { .misinys-video { padding: 88px 0 88px 8vw; } }
+@media (min-width: 900px) { .misinys-video { padding: 40px 0 64px 8vw; } } /* 2026-10-23 Dangira: viršuje per daug balto tarpo */
 @media (max-width: 899px) { .misinys .tekstas { order: -1; } .misinys-video { max-width: 360px; margin: 0 auto; } }
 .misinys-video video { display: block; width: 100%; max-width: 360px; margin: 0 auto; aspect-ratio: 9 / 16; border-radius: 18px; background: var(--tamsi, #24406f); box-shadow: 0 16px 40px rgba(36,64,111,.14); }
 .misinys-video figcaption { margin-top: 10px; font-size: 14px; letter-spacing: .14em; text-transform: uppercase; color: var(--melyna, #3c67b1); text-align: center; }
 .misinys .tekstas { padding: 88px 24px 32px; }
-@media (min-width: 900px) { .misinys .tekstas { padding: 88px 8vw 88px 72px; } }
+@media (min-width: 900px) { .misinys .tekstas { padding: 40px 8vw 64px 72px; } }
 .misinys .menuo { font-size: 14px; letter-spacing: .14em; text-transform: uppercase; color: var(--melyna); margin-bottom: 12px; }
 .misinys p { max-width: 62ch; }
 .receptas { margin: 8px 0 var(--po-h2); padding: 20px 0; border-top: 1px solid var(--linija); border-bottom: 1px solid var(--linija); }
@@ -601,6 +601,11 @@ h2 { margin-bottom: var(--po-h2); }
 .receptas ul { margin: 0 0 var(--po-p); padding-left: 1.2em; }
 .receptas li { margin-bottom: 4px; }
 .receptas p { margin: 0; }
+.receptas ul.lasiukai { list-style: none; padding: 0; margin: 0; }
+.lasiukai li { display: flex; align-items: center; gap: 12px; margin-bottom: 6px; color: var(--tamsi); }
+.lasiukai li:last-child { margin-bottom: 0; }
+.lasiukai svg { width: 20px; height: 20px; flex-shrink: 0; fill: var(--melyna); }
+.lasiukai b { font-weight: 600; }
 .misinio-mygtukai { margin-top: var(--pries-mygtuka); }
 .misinio-mygtukai .mygtukas { margin: 0 8px 8px 0; background: #24406f; color: #fff; border-color: #24406f; }
 .misinio-mygtukai .mygtukas:hover { background: #2f548f; border-color: #2f548f; }
@@ -855,7 +860,7 @@ h2 { margin-bottom: var(--po-h2); }
       <video controls playsinline preload="none" poster="vaizdai/misinys-plaukai-poster.jpg">
         <source src="vaizdai/misinys-plaukai-svetainei.mp4" type="video/mp4">
       </video>
-      <figcaption>Įtrink 10–20 min. prieš plovimą</figcaption>
+      <figcaption>Vakare įsitrink, ryte išsiplauk</figcaption>
     </figure>
     <div class="tekstas rodyk">
       <h2>Mišinys galvos odai</h2>
@@ -863,21 +868,20 @@ h2 { margin-bottom: var(--po-h2); }
         lieka be jokios priežiūros.</p>
       <div class="receptas">
         <h3>Mano mišinys</h3>
-        <ul>
-          <li>4 lašai rozmarino</li>
-          <li>4 lašai pipirmėtės</li>
-          <li>4 lašai šalavijo</li>
+        <!-- 2026-10-23 Dangira: sąrašas kaip video — pilni mėlyni lašiukai, „15 ml“ irgi su lašiuku (ne šaukštas, ne atskiras sakinys). -->
+        <ul class="lasiukai">
+          <li><svg viewBox="0 0 44 44" aria-hidden="true"><path d="M22 5 C22 5 9 19 9 28 a13 13 0 0 0 26 0 C35 19 22 5 22 5 Z"/></svg><span><b>4 lašai</b> rozmarino</span></li>
+          <li><svg viewBox="0 0 44 44" aria-hidden="true"><path d="M22 5 C22 5 9 19 9 28 a13 13 0 0 0 26 0 C35 19 22 5 22 5 Z"/></svg><span><b>4 lašai</b> pipirmėtės</span></li>
+          <li><svg viewBox="0 0 44 44" aria-hidden="true"><path d="M22 5 C22 5 9 19 9 28 a13 13 0 0 0 26 0 C35 19 22 5 22 5 Z"/></svg><span><b>4 lašai</b> šalavijo</span></li>
+          <li><svg viewBox="0 0 44 44" aria-hidden="true"><path d="M22 5 C22 5 9 19 9 28 a13 13 0 0 0 26 0 C35 19 22 5 22 5 Z"/></svg><span><b>15&nbsp;ml</b> V-6 arba kokosų aliejaus</span></li>
         </ul>
-        <!-- 2026-10-23 Dangira: „turi būti kaip video“, kiekis — 15 ml (ne „1 valg. š.“). -->
-        <p>Viską sulašinu į 15&nbsp;ml V-6 arba kokosų aliejaus.</p>
       </div>
       <!-- 2026-10-23 Dangira: vietoj „vakare įsitrinu… ryte išsiplaunu“ — 10–20 min. prieš plovimą. -->
       <p>Mišinį naudoti 2–3 kartus per savaitę, įtrinant į galvos odą 10–20&nbsp;min. prieš galvos plovimą.</p>
       <!-- 2026-10-23 Dangira: YL citata ir trys mygtukai išimti; vienas mygtukas „Mišinys“.
            Mišinys = rozmarinų, pipirmėčių, šalavijų eterinis aliejus + V-6 236 ml (kol kas veda į registraciją). -->
-      <p>Mišinį galvos odai gali užsisakyti nuorodoje:</p>
       <div class="misinio-mygtukai">
-        <a class="yl-nuoroda mygtukas pilnas" href="#uzsakyti" target="_blank" rel="noopener">Mišinys</a>
+        <a class="yl-nuoroda mygtukas pilnas" href="#uzsakyti" target="_blank" rel="noopener">Užsisakyti</a>
       </div>
       <div class="saugumas" style="margin-top:32px">
         Eteriniai aliejai nėra vaistai ir nepakeičia gydytojo konsultacijos. Vaikams,
