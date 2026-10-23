@@ -310,6 +310,21 @@ h2 { font-size: clamp(32px, 4.6vw, 54px); line-height: 1.08; letter-spacing: -0.
 .raindrop .video-pora figcaption { margin-top: 10px; font-size: 14px; letter-spacing: .14em; text-transform: uppercase; color: var(--melyna, #3c67b1); text-align: center; }
 .raindrop .tekstas { padding: 96px 24px; display: flex; flex-direction: column; justify-content: center; }
 @media (min-width: 900px) { .raindrop .tekstas { padding: 96px 8vw 96px 72px; } }
+/* 2026-10-23: telefone tarpas tarp teksto ir video buvo 144 px (eilutės 307 padding-bottom perrašydavo 311) */
+@media (max-width: 899px) { .raindrop .tekstas { padding: 56px 24px 16px; } .raindrop .video-pora { padding-top: 24px; } }
+/* 2026-10-23 Dangira: 100 % ekrane paspaudus „Raindrop“ visa skiltis turi tilpti, be tuščio tarpo dešinėje */
+@media (min-width: 1100px) {
+  .raindrop .dalys { grid-template-columns: auto 1fr; min-height: 100vh; align-items: center; }
+  .raindrop .video-pora { grid-template-columns: auto auto; padding: 0 0 0 4vw; }
+  .raindrop .video-pora video { height: calc(100vh - 110px); max-height: 820px; width: auto; }
+  .raindrop .tekstas { padding: 24px 4vw 24px 56px; }
+  .raindrop .tekstas h2 { max-width: none; }
+  .raindrop .tekstas p { max-width: 78ch; }
+}
+@media (min-width: 1100px) and (max-height: 800px) {
+  .raindrop .tekstas h2 { font-size: 40px; }
+  .raindrop .tekstas p { font-size: 15px; margin-bottom: 8px; }
+}
 .pradek { margin-top: 28px; padding: 28px 0 0; border-top: 1px solid var(--linija); }
 .pradek h3 { font-size: 22px; margin-bottom: 10px; }
 .pradek p { font-size: 16px; color: var(--pilkas); margin: 0; }
