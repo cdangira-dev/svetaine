@@ -99,13 +99,13 @@ h2 { font-size: clamp(28px, 3vw, 42px); /* 2026-10-23 Dangira: visos skilčių a
 @media (max-width: 899px) { .meniu nav > a { display: none; } }
 .meniu nav { align-items: center; }
 .uzsakyti-meniu { position: relative; }
-.uzsakyti-meniu summary { list-style: none; cursor: pointer; background: #fff; color: #20406f; font-size: 15px; letter-spacing: .02em; padding: 9px 18px;
+.uzsakyti-meniu summary { list-style: none; cursor: pointer; background: rgba(255,255,255,.12); color: #fff; font-size: 15px; letter-spacing: .02em; padding: 8px 18px; border-radius: 999px; /* 2026-10-23 Dangira: A be balto apvado */
   display: flex; align-items: center; gap: 8px; }
 .uzsakyti-meniu summary::-webkit-details-marker { display: none; }
 .uzsakyti-meniu summary::after { content: ""; width: 7px; height: 7px; border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor;
   transform: translateY(-2px) rotate(45deg); transition: transform .2s; }
 .uzsakyti-meniu[open] summary::after { transform: translateY(2px) rotate(-135deg); }
-.uzsakyti-meniu summary:hover { background: #e6ecf7; }
+.uzsakyti-meniu summary:hover, .uzsakyti-meniu[open] summary { background: rgba(255,255,255,.2); }
 .uzsakyti-sarasas { position: absolute; right: 0; top: calc(100% + 8px); z-index: 60; min-width: 220px; background: #fff; border-radius: 10px;
   box-shadow: 0 14px 34px rgba(10,20,40,.28); padding: 6px; }
 .meniu nav .uzsakyti-sarasas a { display: block; padding: 10px 14px; border-radius: 8px; color: #20406f; }
