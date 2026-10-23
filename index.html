@@ -142,6 +142,17 @@ h2 { font-size: clamp(32px, 4.6vw, 54px); line-height: 1.08; letter-spacing: -0.
 .aliejai > .plotis:last-child { padding-top: 0; padding-bottom: 120px; }
 /* tarp scenų — šviesi juostelė (Dangira 2026-10-16: „kad tarp nuotraukų būtų kažkoks tarpelis, juostelė tarp visų“) */
 .scenos { margin-top: 64px; display: grid; gap: 12px; background: var(--fonas); }
+/* 2026-10-23 Dangira: paspaudus „Aliejai“ — mažiau balto tarpo, pirma nuotrauka telpa į ekraną.
+   Kompiuteryje antraštė ir įvadas vienoje eilėje, pirma scena = ekrano aukštis minus antraštės juosta. */
+@media (min-width: 900px) {
+  .aliejai { padding-top: 40px; }
+  .aliejai > .plotis:first-child > .rodyk { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 56px; align-items: end; }
+  .aliejai > .plotis:first-child h2 { margin-bottom: 0; max-width: none; white-space: nowrap; }
+  .aliejai > .plotis:first-child .ivadas { margin: 0; }
+  .aliejai .scenos { margin-top: 32px; }
+  .aliejai .scenos > .scena:first-child { min-height: calc(100svh - 150px); }
+}
+@media (max-width: 899px) { .aliejai { padding-top: 32px; } .aliejai > .plotis:first-child .ivadas { margin-bottom: 0; } .aliejai .scenos { margin-top: 24px; } }
 @media (max-width: 767px) { .scenos { gap: 8px; } }
 .scena { position: relative; overflow: hidden; min-height: 86vh; display: flex; align-items: center; }
 .scenos-foto { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
