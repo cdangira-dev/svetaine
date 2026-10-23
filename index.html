@@ -459,6 +459,14 @@ h2 { font-size: clamp(32px, 4.6vw, 54px); line-height: 1.08; letter-spacing: -0.
   .kv-dezes { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-top: 36px; align-items: stretch; }
   .kv-dezes .kaip-skleidziasi { margin: 0; max-width: none; }
 }
+/* 2026-10-23: pirma buteliukai, aprašymai po jų — antraštė kompaktiškesnė, kad buteliukai matytųsi iškart */
+.kvepalai .plotis > .rodyk:first-child { margin-bottom: 0; }
+.kvepalai .plotis > .rodyk:first-child h2 { max-width: none; margin-bottom: 0; }
+.wyld-logotipas { margin-bottom: 18px; padding-bottom: 16px; }
+.wyld-logotipas img { width: 150px; }
+.kvepalai .penki-kvapai { margin-top: 36px; }
+.kv-aprasymai { max-width: 1180px; margin: 48px auto 0; }
+.kv-aprasymai .kv-dezes { margin-top: 0; }
 /* apatinė dalis (nuoroda + 10 % kvietimas) — centre kaip viršus (2026-10-22, jos ekrano nuotrauka: buvo prigludusi kairėje) */
 .kvepalai .plotis > .rodyk:last-child { max-width: 720px; margin: 0 auto; text-align: center; }
 .kvepalai .plotis > .rodyk:last-child .wyld-kvietimas,
@@ -900,37 +908,6 @@ h2 { margin-bottom: var(--po-h2); }
            to make it unfit for consumption“); produkto puslapis white-lie — „Full ingredient list“; wyld-restoration — „1% of every sale“.
            Sveikatos pažadų („safe“, „non-toxic“, „less irritation“) NEDĖTI. Atranka: claude-darbas/projects/young-living/wyld-notes/.
            2026-10-22 jos prašymu perkelta į įvado vietą vietoj „Ar žinai, kad yra kvepalų su eteriniais aliejais?…“. -->
-      <!-- 2026-10-23 Dangira: „labai daug tuščios vietos“ → kompiuteryje abu langeliai šalia (.kv-dezes), telefone vienas po kito. -->
-      <div class="kv-dezes">
-      <div class="kaip-skleidziasi is-ko">
-        <h3>Iš ko pagaminti</h3>
-        <!-- „100 %“ išimta 2026-10-22 (tikrintojas: YL partneriams „100 %“ nevartoti — wyld-notes/laiskai/2026-10-18-parfumeriai-ir-naturalumas.md). -->
-        <p>Gamintojas sako, kad prabangūs kvepalai gali būti natūralūs, o jų sudėtis — visiškai atvira.</p>
-        <ul>
-          <li>Sudėtyje — tik augalinės kilmės medžiagos: eteriniai aliejai, natūralūs ekstraktai ir augaliniai absoliutai.</li>
-          <li><strong>Ekologiškas nedenatūruotas cukranendrių alkoholis.</strong> Pasak gamintojo, daugumoje kvepalų naudojamas
-            denatūruotas alkoholis — į jį dedama cheminių priedų, kad jo nebūtų galima gerti.</li>
-          <li>Be sintetinių medžiagų, ftalatų, parabenų, sulfatų ir naftos produktų.</li>
-          <li>Veganiški ir neišbandyti su gyvūnais.</li>
-          <li>Gamintojo puslapyje prie kiekvieno kvapo nurodyta visa sudėtis.</li>
-          <li>1 % kiekvieno pardavimo sumos skiriama gamtai atkurti.</li>
-        </ul>
-      </div>
-      <!-- Gamintojo natų lapo vertimas (partnerių skydelis → Marketing Tools, „fragrance cards“, 2026-10-04):
-           „Fragrance notes evolve over time… Top notes… Mid notes… base notes… layer by layer.“ Mid notes = vidurinės.
-           Trukmės (2026-10-21, jos „kiek laikosi natos labai svarbu“): wyldnotes.com/en-eu/blogs/the-blog/top-mid-and-base-notes-explained —
-           top 15–30 min., mid 2–4 h, base „6+ hours, sometimes days“ ant odos, drabužių, plaukų, „depending on the fragrance and application“. -->
-      <div class="kaip-skleidziasi">
-        <h3>Kaip skleidžiasi kvapas</h3>
-        <p>Laikui bėgant kvapo natos keičiasi. <strong>Viršutinės natos</strong> — pirmas įspūdis: dažniausiai lengvos,
-          gaivios ar citrusinės, išgaruoja per pirmąsias 15–30 minučių. Joms nykstant atsiskleidžia
-          <strong>vidurinės natos</strong> — kvapo šerdis: sodresni gėlių, prieskonių ar žolelių kvapai, kurie išlieka
-          2–4 valandas. <strong>Bazinės natos</strong> suteikia gylio ir ilgiausiai išlieka: šilti medienos ar muskuso
-          kvapai ant odos, drabužių ar plaukų laikosi 6 valandas ir ilgiau, kartais net kelias dienas. Trukmė priklauso nuo kvapo
-          ir nuo to, kaip jis užpurškiamas. Taip kvapas atsiskleidžia sluoksnis po sluoksnio.</p>
-        <p class="kaip-pastaba">Kiekvieno kvapo natos pasirodys užvedus pelę ant lašiuko prie buteliuko (telefone — palietus).</p>
-      </div>
-      </div>
     </div>
 
     <!-- Faktai tik iš wyldnotes.com/en-eu produktų aprašymų (2026-09-25; pertikrinta 2026-10-04).
@@ -967,7 +944,7 @@ h2 { margin-bottom: var(--po-h2); }
       <figure class="kvapas">
         <div class="butelis" data-didelis="vaizdai/kvapas-sweet-decadence-wyld.jpg">
           <img class="ingredientai" src="vaizdai/kvapas-sweet-decadence-wyld.jpg" alt="" loading="lazy">
-          <img class="kv-but" src="vaizdai/wyld-sweet-decadence-svarus.png" alt="Wyld NOTES Sweet Decadence kvepalų buteliukas" loading="lazy">
+          <img class="kv-but" src="vaizdai/wyld-sweet-decadence-v2.png" alt="Wyld NOTES Sweet Decadence kvepalų buteliukas" loading="lazy">
           <button class="taskas taskas-lasas" type="button" aria-expanded="false" aria-label="Sweet Decadence: kvapo natos"><img src="vaizdai/lasiukas-mygtukas.png" alt=""></button>
           <div class="natos natos-sd" role="note"><p class="natos-vardas">Sweet Decadence</p><div class="lygis"><span>Viršutinės</span><ul><li><svg><use href="#i-citrus"/></svg>Apelsinas</li><li><svg><use href="#i-zole"/></svg>Levanda</li></ul></div><div class="lygis"><span>Vidurinės</span><ul><li><svg><use href="#i-saldu"/></svg>Kokosas</li><li><svg><use href="#i-gele"/></svg>Rožė</li></ul></div><div class="lygis"><span>Bazinės</span><ul><li><svg><use href="#i-saldu"/></svg>Tonkos pupelė</li><li><svg><use href="#i-saldu"/></svg>Vanilė</li></ul></div></div>
                   </div>
@@ -980,7 +957,7 @@ h2 { margin-bottom: var(--po-h2); }
       <figure class="kvapas">
         <div class="butelis" data-didelis="vaizdai/kvapas-smokey-ember-wyld.jpg">
           <img class="ingredientai" src="vaizdai/kvapas-smokey-ember-wyld.jpg" alt="" loading="lazy">
-          <img class="kv-but" src="vaizdai/wyld-smokey-ember-svarus.png" alt="Wyld NOTES Smokey Ember kvepalų buteliukas" loading="lazy">
+          <img class="kv-but" src="vaizdai/wyld-smokey-ember-v2.png" alt="Wyld NOTES Smokey Ember kvepalų buteliukas" loading="lazy">
           <button class="taskas taskas-lasas" type="button" aria-expanded="false" aria-label="Smokey Ember: kvapo natos"><img src="vaizdai/lasiukas-mygtukas.png" alt=""></button>
           <div class="natos natos-se" role="note"><p class="natos-vardas">Smokey Ember</p><div class="lygis"><span>Viršutinės</span><ul><li><svg><use href="#i-citrus"/></svg>Citrina</li><li><svg><use href="#i-spygliai"/></svg>Kadagys</li></ul></div><div class="lygis"><span>Vidurinės</span><ul><li><svg><use href="#i-gele"/></svg>Jazminas</li><li><svg><use href="#i-zole"/></svg>Muskatinis šalavijas</li></ul></div><div class="lygis"><span>Bazinės</span><ul><li><svg><use href="#i-spygliai"/></svg>Kiparisas</li><li><svg><use href="#i-spygliai"/></svg>Juodoji eglė</li></ul></div></div>
                   </div>
@@ -990,6 +967,41 @@ h2 { margin-bottom: var(--po-h2); }
           <div class="kv-natos"><p><b>Viršutinės</b>Citrina · kadagys</p><p><b>Vidurinės</b>Jazminas · muskatinis šalavijas</p><p><b>Bazinės</b>Kiparisas · juodoji eglė</p></div>
         </figcaption>
       </figure>
+    </div>
+
+    <!-- 2026-10-23 Dangira + antra nuomonė: pirma buteliukai, aprašymai po jų. -->
+    <div class="rodyk kv-aprasymai">
+      <!-- 2026-10-23 Dangira: „labai daug tuščios vietos“ → kompiuteryje abu langeliai šalia (.kv-dezes), telefone vienas po kito. -->
+      <div class="kv-dezes">
+      <div class="kaip-skleidziasi is-ko">
+        <h3>Iš ko pagaminti</h3>
+        <!-- „100 %“ išimta 2026-10-22 (tikrintojas: YL partneriams „100 %“ nevartoti — wyld-notes/laiskai/2026-10-18-parfumeriai-ir-naturalumas.md). -->
+        <p>Gamintojas sako, kad prabangūs kvepalai gali būti natūralūs, o jų sudėtis — visiškai atvira.</p>
+        <ul>
+          <li>Sudėtyje — tik augalinės kilmės medžiagos: eteriniai aliejai, natūralūs ekstraktai ir augaliniai absoliutai.</li>
+          <li><strong>Ekologiškas nedenatūruotas cukranendrių alkoholis.</strong> Pasak gamintojo, daugumoje kvepalų naudojamas
+            denatūruotas alkoholis — į jį dedama cheminių priedų, kad jo nebūtų galima gerti.</li>
+          <li>Be sintetinių medžiagų, ftalatų, parabenų, sulfatų ir naftos produktų.</li>
+          <li>Veganiški ir neišbandyti su gyvūnais.</li>
+          <li>Gamintojo puslapyje prie kiekvieno kvapo nurodyta visa sudėtis.</li>
+          <li>1 % kiekvieno pardavimo sumos skiriama gamtai atkurti.</li>
+        </ul>
+      </div>
+      <!-- Gamintojo natų lapo vertimas (partnerių skydelis → Marketing Tools, „fragrance cards“, 2026-10-04):
+           „Fragrance notes evolve over time… Top notes… Mid notes… base notes… layer by layer.“ Mid notes = vidurinės.
+           Trukmės (2026-10-21, jos „kiek laikosi natos labai svarbu“): wyldnotes.com/en-eu/blogs/the-blog/top-mid-and-base-notes-explained —
+           top 15–30 min., mid 2–4 h, base „6+ hours, sometimes days“ ant odos, drabužių, plaukų, „depending on the fragrance and application“. -->
+      <div class="kaip-skleidziasi">
+        <h3>Kaip skleidžiasi kvapas</h3>
+        <p>Laikui bėgant kvapo natos keičiasi. <strong>Viršutinės natos</strong> — pirmas įspūdis: dažniausiai lengvos,
+          gaivios ar citrusinės, išgaruoja per pirmąsias 15–30 minučių. Joms nykstant atsiskleidžia
+          <strong>vidurinės natos</strong> — kvapo šerdis: sodresni gėlių, prieskonių ar žolelių kvapai, kurie išlieka
+          2–4 valandas. <strong>Bazinės natos</strong> suteikia gylio ir ilgiausiai išlieka: šilti medienos ar muskuso
+          kvapai ant odos, drabužių ar plaukų laikosi 6 valandas ir ilgiau, kartais net kelias dienas. Trukmė priklauso nuo kvapo
+          ir nuo to, kaip jis užpurškiamas. Taip kvapas atsiskleidžia sluoksnis po sluoksnio.</p>
+        <p class="kaip-pastaba">Kiekvieno kvapo natos pasirodys užvedus pelę ant lašiuko prie buteliuko (telefone — palietus).</p>
+      </div>
+      </div>
     </div>
 
     <div class="rodyk">
