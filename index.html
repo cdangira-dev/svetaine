@@ -96,7 +96,23 @@ h2 { font-size: clamp(28px, 3vw, 42px); /* 2026-10-23 Dangira: visos skilčių a
 .meniu nav { display: flex; gap: 32px; }
 .meniu nav a { color: #dbe4f3; text-decoration: none; font-size: 15px; letter-spacing: .02em; }
 .meniu nav a:hover { color: #fff; }
-@media (max-width: 899px) { .meniu nav { display: none; } }
+@media (max-width: 899px) { .meniu nav > a { display: none; } }
+.meniu nav { align-items: center; }
+.uzsakyti-meniu { position: relative; }
+.uzsakyti-meniu summary { list-style: none; cursor: pointer; background: #fff; color: #20406f; font-size: 15px; letter-spacing: .02em; padding: 9px 18px;
+  display: flex; align-items: center; gap: 8px; }
+.uzsakyti-meniu summary::-webkit-details-marker { display: none; }
+.uzsakyti-meniu summary::after { content: ""; width: 7px; height: 7px; border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor;
+  transform: translateY(-2px) rotate(45deg); transition: transform .2s; }
+.uzsakyti-meniu[open] summary::after { transform: translateY(2px) rotate(-135deg); }
+.uzsakyti-meniu summary:hover { background: #e6ecf7; }
+.uzsakyti-sarasas { position: absolute; right: 0; top: calc(100% + 8px); z-index: 60; min-width: 220px; background: #fff; border-radius: 10px;
+  box-shadow: 0 14px 34px rgba(10,20,40,.28); padding: 6px; }
+.meniu nav .uzsakyti-sarasas a { display: block; padding: 10px 14px; border-radius: 8px; color: #20406f; }
+.meniu nav .uzsakyti-sarasas a:hover { background: #eef1f8; color: #20406f; }
+.uzsakyti-sarasas b { display: block; font-weight: 600; font-size: 15px; }
+.uzsakyti-sarasas span { display: block; font-size: 13px; color: #5a6170; }
+#kvepalai-uzsakymas { scroll-margin-top: 120px; }
 
 .virsus .turinys {
   flex: 1; display: grid; gap: 40px; align-items: center;
@@ -805,8 +821,16 @@ footer .smulkme p { font-size: 14px; margin: 0 0 8px; max-width: none; }
       <a href="#aliejai">Aliejai</a>
       <a href="#raindrop">Raindrop</a>
       <a href="#misinys">Mišinys</a>
-      <a href="#uzsakyti">Užsakymas</a>
       <a href="#kvepalai">Kvepalai</a>
+      <!-- 2026-10-23 Dangira: „Užsakyti“ — išskirtinis mygtukas su dviem pasirinkimais (YL ir Wyld NOTES — skirtingos parduotuvės).
+           Veda į skiltis su paaiškinimais (registracija / nuolaidos kodas), ne tiesiai į parduotuves. Telefone matosi tik šis mygtukas. -->
+      <details class="uzsakyti-meniu">
+        <summary>Užsakyti</summary>
+        <div class="uzsakyti-sarasas">
+          <a href="#uzsakyti"><b>Aliejai</b><span>Young Living</span></a>
+          <a href="#kvepalai-uzsakymas"><b>Kvepalai</b><span>Wyld NOTES</span></a>
+        </div>
+      </details>
     </nav>
   </div>
   <div class="plotis turinys">
@@ -1273,7 +1297,7 @@ footer .smulkme p { font-size: 14px; margin: 0 0 8px; max-width: none; }
 
       <!-- 10 % pirmam pirkimui — wyldnotes.com/pages/faqs („first-time customers“), kodas lasas-juroje (wyld-notes/README.md).
            Wyld svetainė kartais rodo savo naujienlaiškio langą „10% off“ su el. pašto laukeliu (Dangira matė 2026-10-04). -->
-      <div class="nuolaidos-juosta">
+      <div class="nuolaidos-juosta" id="kvepalai-uzsakymas">
         <div>
           <h3>Pirmam pirkimui – 10 % nuolaida</h3>
           <p>Pirmą kartą užsakydamas Wyld NOTES svetainėje, prieš apmokėdamas įvesk kodą <span class="kodas">lasas-juroje</span>. Kvepalai siunčiami ir į Lietuvą.</p>
@@ -1478,6 +1502,14 @@ footer .smulkme p { font-size: 14px; margin: 0 0 8px; max-width: none; }
     });
     langas.querySelector(".langas-uzdaryti").addEventListener("click", function () { langas.close(); });
     langas.addEventListener("click", function (e) { if (e.target === langas) langas.close(); });
+  })();
+</script>
+<script>
+  // Užsakyti meniu: užsidaro paspaudus pasirinkimą arba bet kur šalia.
+  (function () {
+    var m = document.querySelector(".uzsakyti-meniu"); if (!m) return;
+    m.querySelectorAll("a").forEach(function (a) { a.addEventListener("click", function () { m.open = false; }); });
+    document.addEventListener("click", function (e) { if (m.open && !m.contains(e.target)) m.open = false; });
   })();
 </script>
 </body>
