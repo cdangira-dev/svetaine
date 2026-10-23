@@ -541,7 +541,7 @@ footer { padding: 48px 0 56px; border-top: 1px solid var(--linija); }
 .role { font-size: 14px; color: var(--pilkas); }
 .smulkme { font-size: 13px; color: var(--pilkas); line-height: 1.6; }
 .smulkme p { margin-bottom: 8px; max-width: 90ch; }
-@media (min-width: 900px) { .smulkme { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; } .smulkme p { max-width: none; } }
+.smulkme p { max-width: none; } /* 2026-10-23 Dangira: šaltiniai per visą plotį, viena kolona */
 
 /* ---------- judesys: švelnus pasirodymas ---------- */
 @media (prefers-reduced-motion: no-preference) {
