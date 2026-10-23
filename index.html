@@ -113,6 +113,21 @@ h2 { font-size: clamp(28px, 3vw, 42px); /* 2026-10-23 Dangira: visos skilčių a
 .uzsakyti-sarasas b { display: block; font-weight: 600; font-size: 15px; }
 .uzsakyti-sarasas span { display: block; font-size: 13px; color: #5a6170; }
 #kvepalai-uzsakymas { scroll-margin-top: 120px; }
+.mob-meniu { display: none; position: relative; }
+@media (max-width: 899px) { .uzsakyti-meniu { display: none; } .mob-meniu { display: block; } }
+.mob-meniu summary { list-style: none; cursor: pointer; width: 44px; height: 44px; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 5px; }
+.mob-meniu summary::-webkit-details-marker { display: none; }
+.mob-meniu summary span { display: block; width: 24px; height: 2px; background: #fff; border-radius: 2px; transition: transform .25s, opacity .2s; }
+.mob-meniu[open] summary span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.mob-meniu[open] summary span:nth-child(2) { opacity: 0; }
+.mob-meniu[open] summary span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+.mob-sarasas { position: absolute; right: 0; top: calc(100% + 6px); z-index: 60; width: min(280px, calc(100vw - 32px)); background: #fff; border-radius: 12px;
+  box-shadow: 0 14px 34px rgba(10,20,40,.3); padding: 8px; }
+.meniu nav .mob-sarasas a { display: block; padding: 11px 14px; border-radius: 8px; color: #20406f; font-size: 16px; }
+.meniu nav .mob-sarasas a:hover { background: #eef1f8; }
+.mob-sarasas p { margin: 6px 14px 2px; padding-top: 10px; border-top: 1px solid #e3e8f2; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: #3c67b1; }
+.mob-sarasas .mob-uzs b { display: block; font-weight: 600; font-size: 15px; }
+.mob-sarasas .mob-uzs span { display: block; font-size: 13px; color: #5a6170; }
 
 .virsus .turinys {
   flex: 1; display: grid; gap: 40px; align-items: center;
@@ -831,6 +846,19 @@ footer .smulkme p { font-size: 14px; margin: 0 0 8px; max-width: none; }
           <a href="#kvepalai-uzsakymas"><b>Kvepalai</b><span>Wyld NOTES</span></a>
         </div>
       </details>
+      <!-- 2026-10-23 Dangira: telefone — visas meniu po ☰ mygtuku. -->
+      <details class="mob-meniu">
+        <summary aria-label="Meniu"><span></span><span></span><span></span></summary>
+        <div class="mob-sarasas">
+          <a href="#aliejai">Aliejai</a>
+          <a href="#raindrop">Raindrop</a>
+          <a href="#misinys">Mišinys</a>
+          <a href="#kvepalai">Kvepalai</a>
+          <p>Užsisakyti</p>
+          <a class="mob-uzs" href="#uzsakyti"><b>Aliejai</b><span>Young Living</span></a>
+          <a class="mob-uzs" href="#kvepalai-uzsakymas"><b>Kvepalai</b><span>Wyld NOTES</span></a>
+        </div>
+      </details>
     </nav>
   </div>
   <div class="plotis turinys">
@@ -1507,9 +1535,10 @@ footer .smulkme p { font-size: 14px; margin: 0 0 8px; max-width: none; }
 <script>
   // Užsakyti meniu: užsidaro paspaudus pasirinkimą arba bet kur šalia.
   (function () {
-    var m = document.querySelector(".uzsakyti-meniu"); if (!m) return;
-    m.querySelectorAll("a").forEach(function (a) { a.addEventListener("click", function () { m.open = false; }); });
-    document.addEventListener("click", function (e) { if (m.open && !m.contains(e.target)) m.open = false; });
+    document.querySelectorAll(".uzsakyti-meniu, .mob-meniu").forEach(function (m) {
+      m.querySelectorAll("a").forEach(function (a) { a.addEventListener("click", function () { m.open = false; }); });
+      document.addEventListener("click", function (e) { if (m.open && !m.contains(e.target)) m.open = false; });
+    });
   })();
 </script>
 </body>
