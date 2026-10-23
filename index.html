@@ -720,6 +720,7 @@ h2 { margin-bottom: var(--po-h2); }
 .nauj-mygtukai { display: flex; gap: 12px; flex: none; }
 .tikrinimas { padding: 80px 0; }
 .tikrinimas h2, .uzsakymas h2 { max-width: none; }
+.tikrinimas .ivadas, .uzsakymas .ivadas { max-width: none; } /* 2026-10-23 Dangira: nekelti į antrą eilutę, jei telpa */
 .tikr-korteles, .uzs-zingsniai { list-style: none; margin: 32px 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
 .tikr-korteles li, .uzs-zingsniai li { background: var(--pavirsius); border: 1px solid var(--linija); border-radius: 16px; padding: 26px 24px; }
 .tikr-korteles svg { width: 34px; height: 34px; color: var(--melyna); margin-bottom: 14px; }
@@ -1054,7 +1055,7 @@ h2 { margin-bottom: var(--po-h2); }
   <!-- 2026-10-23 pertvarkyta į 3 korteles; tekstas tas pats (YL Seed to Seal). -->
   <div class="plotis rodyk">
     <h2>Kaip tikrinami aliejai</h2>
-    <p class="ivadas">Young Living eterinius aliejus tikrina savo mokslininkai ir nepriklausomos trečiųjų šalių laboratorijos – ne vieną kartą.</p>
+    <p class="ivadas">Young Living eterinius aliejus kelis kartus tiria bendrovės mokslininkai ir nepriklausomos trečiųjų šalių laboratorijos.</p>
     <ul class="tikr-korteles">
       <li><svg viewBox="0 0 24 24" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6M10 3v6l-5 9a2 2 0 0 0 2 3h10a2 2 0 0 0 2-3l-5-9V3"/><path d="M7.5 15h9"/></g></svg><b>Žaliavos ir galutinis produktas</b><span>Tikrinamos ne tik žaliavos, bet ir galutinis produktas.</span></li>
       <li><svg viewBox="0 0 24 24" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5M8.5 11h5M11 8.5v5"/></g></svg><b>Sudėties tyrimas</b><span>Sudėtis tiriama dujų chromatografija ir masių spektrometrija.</span></li>
