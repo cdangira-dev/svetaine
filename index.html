@@ -718,19 +718,24 @@ h2 { margin-bottom: var(--po-h2); }
 .naujienos .nauj-juosta p { color: #d4def0; margin: 0; font-size: 17px; }
 .naujienos .nauj-juosta .nauj-virs { font-size: 13px; letter-spacing: .16em; text-transform: uppercase; color: #E7CB8A; margin-bottom: 8px; }
 .nauj-mygtukai { display: flex; gap: 12px; flex: none; }
-.tikrinimas { padding: 80px 0; }
+.tikrinimas { padding: 44px 0 36px; }
 .tikrinimas h2, .uzsakymas h2 { max-width: none; }
 .tikrinimas .ivadas, .uzsakymas .ivadas { max-width: none; } /* 2026-10-23 Dangira: nekelti į antrą eilutę, jei telpa */
-.tikr-korteles, .uzs-zingsniai { list-style: none; margin: 32px 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
-.tikr-korteles li, .uzs-zingsniai li { background: var(--pavirsius); border: 1px solid var(--linija); border-radius: 16px; padding: 26px 24px; }
-.tikr-korteles svg { width: 34px; height: 34px; color: var(--melyna); margin-bottom: 14px; }
+.tikr-korteles, .uzs-zingsniai { list-style: none; margin: 22px 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.tikr-korteles li, .uzs-zingsniai li { background: var(--pavirsius); border: 1px solid var(--linija); border-radius: 16px; padding: 20px 22px; }
+/* 2026-10-23 Dangira: numeris ir pavadinimas vienoje eilutėje — kortelės žemesnės */
+.uzs-zingsniai li { display: grid; grid-template-columns: 40px 1fr; column-gap: 14px; align-items: center; align-content: start; }
+.uzs-zingsniai li > span:last-child { grid-column: 1 / -1; margin-top: 8px; }
+.uzs-zingsniai b { margin: 0; }
+.tikr-korteles svg { width: 30px; height: 30px; color: var(--melyna); margin-bottom: 10px; }
 .tikr-korteles b, .uzs-zingsniai b { display: block; color: var(--tamsi); font-size: 18px; font-weight: 600; margin-bottom: 6px; }
 .tikr-korteles span, .uzs-zingsniai li > span:last-child { display: block; color: var(--tekstas); font-size: 16px; line-height: 1.55; }
 .tikrinimas .tikr-isvada { margin: 24px 0 0; font-size: 17px; color: var(--tamsi); font-weight: 600; max-width: none; }
-.uzsakymas { padding: 80px 0; }
-.uzs-nr { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 50%; background: var(--virsus);
-  color: #fff; font-family: var(--antr); font-size: 22px; margin-bottom: 14px; }
-.uzs-keliai { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 18px; }
+.uzsakymas { padding: 36px 0 64px; }
+.uzs-nr { display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 50%; background: var(--virsus);
+  color: #fff; font-family: var(--antr); font-size: 20px; margin: 0; }
+.uzs-keliai { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 18px; }
+.uzs-keliai > div + div { grid-column: span 2; } /* 2026-10-23 Dangira: „Vieną kartą“ kaip vienas žingsnis, lojalumas per du */
 .uzs-keliai > div { background: var(--langelis); border-radius: 16px; padding: 26px 28px; }
 .uzs-keliai h3 { font-size: 24px; margin: 0 0 8px; }
 .uzsakymas .uzs-keliai p { font-size: 16px; margin: 0 0 8px; max-width: none; }
@@ -742,7 +747,8 @@ h2 { margin-bottom: var(--po-h2); }
   .nauj-juosta, .uzs-kvietimas { flex-direction: column; align-items: flex-start; padding: 28px 24px; }
   .nauj-mygtukai { flex-wrap: wrap; }
   .tikr-korteles, .uzs-zingsniai, .uzs-keliai { grid-template-columns: 1fr; }
-  .tikrinimas, .uzsakymas { padding: 56px 0; } .naujienos { padding: 40px 0; }
+  .uzs-keliai > div + div { grid-column: auto; } .uzs-zingsniai li { grid-template-columns: 40px 1fr; }
+  .tikrinimas { padding: 36px 0 28px; } .uzsakymas { padding: 28px 0 48px; } .naujienos { padding: 32px 0; }
 }
 .kvapo-langas { width: min(860px, calc(100vw - 32px)); max-height: calc(100dvh - 32px); padding: 0; border: 0; border-radius: 20px; background: #fff; color: #23262b; overflow: auto; }
 .kvapo-langas::backdrop { background: rgba(10,20,40,.72); }
