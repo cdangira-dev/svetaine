@@ -648,8 +648,10 @@ h2 { margin-bottom: var(--po-h2); }
 
 /* ---------- kvepalai kaip Pinterest (2026-10-23) ---------- */
 .kvapu-pinai { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; align-items: start; margin: 40px 0 8px; }
-.kvapu-pinai .pinas:nth-child(2) { margin-top: 48px; } .kvapu-pinai .pinas:nth-child(4) { margin-top: 24px; }
-@media (max-width: 899px) { .kvapu-pinai { grid-template-columns: 1fr 1fr; gap: 14px; } .kvapu-pinai .pinas:nth-child(4) { margin-top: 0; } }
+/* 2026-10-23 Dangira: visos nuotraukos vienodo dydžio ir vienoje linijoje; siaurame telefone — po vieną */
+.kvapu-pinai .pinas-nuotrauka img { aspect-ratio: 1; object-fit: cover; }
+@media (max-width: 899px) { .kvapu-pinai { grid-template-columns: 1fr 1fr; gap: 14px; } }
+@media (max-width: 599px) { .kvapu-pinai { grid-template-columns: 1fr; gap: 28px; } }
 .pinas { margin: 0; }
 .pinas-nuotrauka { position: relative; display: block; width: 100%; padding: 0; border: 0; background: none; cursor: zoom-in; border-radius: 16px; overflow: hidden; }
 .pinas-nuotrauka img { display: block; width: 100%; height: auto; transition: transform .7s var(--lygiai), filter .4s; }
@@ -671,8 +673,7 @@ h2 { margin-bottom: var(--po-h2); }
   .kvepalai .wyld-logotipas img { width: 110px; }
   .kvepalai .plotis > .rodyk:first-child h2 { font-size: clamp(28px, 2.6vw, 38px); }
   .kvapu-pinai { max-width: 1180px; margin: 24px auto 8px; gap: 18px; }
-  .kvapu-pinai .pinas-nuotrauka img { max-height: min(46vh, 440px); object-fit: cover; }
-  .kvapu-pinai .pinas:nth-child(2) { margin-top: 24px; } .kvapu-pinai .pinas:nth-child(4) { margin-top: 12px; }
+  .kvapu-pinai { max-width: min(1180px, calc((100svh - 330px) * 4 + 54px)); }
   .pinas h3 { font-size: 19px; } .pinas figcaption { padding-top: 8px; } .pinas figcaption p { font-size: 13px; }
 }
 .kvapo-langas { width: min(860px, calc(100vw - 32px)); max-height: calc(100dvh - 32px); padding: 0; border: 0; border-radius: 20px; background: #fff; color: #23262b; overflow: auto; }
@@ -1098,7 +1099,7 @@ h2 { margin-bottom: var(--po-h2); }
           2–4 valandas. <strong>Bazinės natos</strong> suteikia gylio ir ilgiausiai išlieka: šilti medienos ar muskuso
           kvapai ant odos, drabužių ar plaukų laikosi 6 valandas ir ilgiau, kartais net kelias dienas. Trukmė priklauso nuo kvapo
           ir nuo to, kaip jis užpurškiamas. Taip kvapas atsiskleidžia sluoksnis po sluoksnio.</p>
-        <p class="kaip-pastaba">Kiekvieno kvapo natos pasirodys užvedus pelę ant lašiuko prie buteliuko (telefone — palietus).</p>
+        <p class="kaip-pastaba">Kiekvieno kvapo natos pasirodys paspaudus jo nuotrauką.</p>
       </div>
       </div>
     </div>
