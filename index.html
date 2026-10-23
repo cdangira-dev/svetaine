@@ -321,10 +321,10 @@ h2 { font-size: clamp(28px, 3vw, 42px); /* 2026-10-23 Dangira: visos skilčių a
   .scena .kortele.atidaryta h3, .scena .kortele.atidaryta p, .scena .kortele.atidaryta .kada { color: var(--al-tekstas); }
   .scena .kortele.atidaryta .kitaip, .scena .kortele.atidaryta .kada strong { color: var(--al-akcentas); }
   .scena .kortele.atidaryta .uzsakyti-al { background: var(--al-mygtukas) !important; border-color: var(--al-mygtukas) !important; }
-  .scena[data-al="thieves"] .kortele.atidaryta { background: #3a2416; }
-  .scena[data-al="pipirmete"] .kortele.atidaryta { background: #eaf1e6; }
-  .scena[data-al="levanda"] .kortele.atidaryta { background: #2a2548; }
-  .scena[data-al="roze"] .kortele.atidaryta { background: #4a0e1f; }
+  .scena[data-al="thieves"] .kortele { background: #3a2416; }
+  .scena[data-al="pipirmete"] .kortele { background: #eaf1e6; }
+  .scena[data-al="levanda"] .kortele { background: #2a2548; }
+  .scena[data-al="roze"] .kortele { background: #4a0e1f; }
   .scena .plotis, .scena.roze .plotis { margin-top: 0; padding-top: 0; padding-bottom: 0; }
 }
 
@@ -586,20 +586,20 @@ footer { padding: 48px 0 56px; border-top: 1px solid var(--linija); }
 }
 /* nauji aliejai 2026-10-06 — lapelio spalvos */
 .scena[data-al="citrina"] { --al-fonas: rgba(250,246,232,.88); --al-tekstas: #3a3420; --al-akcentas: #a07a10; --al-mygtukas: #b38a12; }
-@media (max-width: 767px) { .scena[data-al="citrina"] .kortele.atidaryta { background: #f7f1dc; } }
+@media (max-width: 767px) { .scena[data-al="citrina"] .kortele { background: #f7f1dc; } }
 .scena[data-al="apelsinas"] { --al-fonas: rgba(58,28,12,.82); --al-tekstas: #f8e6d2; --al-akcentas: #f0a35a; --al-mygtukas: #c2611c; }
-@media (max-width: 767px) { .scena[data-al="apelsinas"] .kortele.atidaryta { background: #3a1d0e; } }
+@media (max-width: 767px) { .scena[data-al="apelsinas"] .kortele { background: #3a1d0e; } }
 .scena[data-al="rozmarinas"] { --al-fonas: rgba(238,236,226,.88); --al-tekstas: #2f3a2c; --al-akcentas: #5a7a4a; --al-mygtukas: #4f6e40; }
-@media (max-width: 767px) { .scena[data-al="rozmarinas"] .kortele.atidaryta { background: #ecebe0; } }
+@media (max-width: 767px) { .scena[data-al="rozmarinas"] .kortele { background: #ecebe0; } }
 .scena[data-al="frankincensas"] { --al-fonas: rgba(34,28,24,.84); --al-tekstas: #f1e6d4; --al-akcentas: #d8b06a; --al-mygtukas: #a3742c; }
-@media (max-width: 767px) { .scena[data-al="frankincensas"] .kortele.atidaryta { background: #231c17; } }
+@media (max-width: 767px) { .scena[data-al="frankincensas"] .kortele { background: #231c17; } }
 .scena[data-al="arbatmedis"] { --al-fonas: rgba(240,242,240,.88); --al-tekstas: #25332b; --al-akcentas: #4f7a5e; --al-mygtukas: #3f6b4f; }
-@media (max-width: 767px) { .scena[data-al="arbatmedis"] .kortele.atidaryta { background: #eef1ee; } }
+@media (max-width: 767px) { .scena[data-al="arbatmedis"] .kortele { background: #eef1ee; } }
 .scena[data-al="salavijas"] { --al-fonas: rgba(244,240,228,.88); --al-tekstas: #33392c; --al-akcentas: #6f7f56; --al-mygtukas: #5e6e46; }
-@media (max-width: 767px) { .scena[data-al="salavijas"] .kortele.atidaryta { background: #f2eee2; } }
+@media (max-width: 767px) { .scena[data-al="salavijas"] .kortele { background: #f2eee2; } }
 /* Purification 2026-10-06 */
 .scena[data-al="purification"] { --al-fonas: rgba(244,246,246,.88); --al-tekstas: #2a2f33; --al-akcentas: #9c2a5c; --al-mygtukas: #9c2a5c; }
-@media (max-width: 767px) { .scena[data-al="purification"] .kortele.atidaryta { background: #f1f3f3; } }
+@media (max-width: 767px) { .scena[data-al="purification"] .kortele { background: #f1f3f3; } }
 
 /* ===== Viena tipografijos sistema visoms skiltims (Dangira 2026-10-16: „nėra bendros sistemos — šriftai, dydžiai, tarpai
    skiriasi; antraštėse minimalūs tarpai, tarp antraštės ir teksto šiek tiek tarpelio, tekstas glaustas; pavienodink visur“).
@@ -822,6 +822,23 @@ button { font-family: inherit; }
 .apacia-klausimai { font-size: 14px; margin-bottom: 18px; }
 .smulkme .apacios-saugumas { max-width: none; font-size: 14px; margin: 0 0 16px; padding: 2px 0 2px 14px; }
 footer .smulkme p { font-size: 14px; margin: 0 0 8px; max-width: none; }
+/* 2026-10-23 Dangira + Claude: aliejų kortelės matosi visada — kompiuteryje šalia buteliuko ant nuotraukos, telefone po nuotrauka */
+@media (min-width: 768px) {
+  .scenos .scena > .kortele.rodyk { opacity: 1; visibility: visible; transform: scale(var(--mastas, 1)); transition: none; }
+}
+@media (max-width: 767px) {
+  .scena .kortele, .scena.roze .kortele { display: grid; grid-template-columns: 1fr; padding: 18px; margin: 0; background: var(--al-fonas); border: 0; box-shadow: none; }
+  .scena .kortele h3, .scena .kortele p, .scena .kortele .kada { color: var(--al-tekstas); }
+  .scena .kortele .kitaip, .scena .kortele .kada strong { color: var(--al-akcentas); }
+  .scena .kortele .uzsakyti-al { background: var(--al-mygtukas) !important; border-color: var(--al-mygtukas) !important; }
+  .scena[data-al="thieves"] .kortele { background: #3a2416; }
+  .scena[data-al="pipirmete"] .kortele { background: #eaf1e6; }
+  .scena[data-al="levanda"] .kortele { background: #2a2548; }
+  .scena[data-al="roze"] .kortele { background: #4a0e1f; }
+  .scena[data-al="citrina"] .kortele { background: #f7f1dc; }
+  .scena[data-al="apelsinas"] .kortele { background: #3a1d0e; }
+  .scenos { gap: 0; } /* 2026-10-23 Dangira: be balto tarpo tarp kortelės ir kitos nuotraukos */
+}
 </style>
 </head>
 <body>
@@ -955,7 +972,7 @@ footer .smulkme p { font-size: 14px; margin: 0 0 8px; max-width: none; }
         </div>
       </div>
     </article>
-    <article class="scena apacia">
+    <article class="scena apacia" data-kortele="virs">
       <!-- Garai: projects/young-living/vizualai/2026-09-24-svetaine/garintuvai-flow (Viya sumažinta viya-mazinti.py, garai garai-daleles.py, 2026-10-02) -->
       <video class="scenos-foto" autoplay muted loop playsinline preload="metadata"
              poster="vaizdai/01-levanda-viya-poster-v3.jpg"
@@ -1470,8 +1487,12 @@ footer .smulkme p { font-size: 14px; margin: 0 0 8px; max-width: none; }
     var m = Math.max(sc.offsetWidth / 1920, 0.75);
     k.style.setProperty("--mastas", m);
     var zl = z.offsetLeft, zt = z.offsetTop, zw = z.offsetWidth, zh = z.offsetHeight, kw = k.offsetWidth * m, kh = k.offsetHeight * m, W = sc.offsetWidth, H = sc.offsetHeight;
-    // lapelis iškyla pačioje buteliuko vietoje — pelės nereikia niekur vesti (Dangira 2026-10-04)
-    var l = zl + zw / 2 - kw / 2, t = zt + zh / 2 - kh / 2;
+    // 2026-10-23 Dangira: lapelis matosi visada, šalia buteliuko (ten, kur daugiau vietos), kad jo neuždengtų
+    var tarpas = 36 * m, desine = W - (zl + zw), l;
+    l = desine >= kw + tarpas + 16 ? zl + zw + tarpas : zl - tarpas - kw;
+    var t = zt + zh / 2 - kh / 2;
+    // data-kortele="virs": virš buteliuko, kad neuždengtų garintuvo (levanda)
+    if (sc.dataset.kortele === "virs") { l = W - 48 * m - kw; t = zt - tarpas - kh; }
     if (l + kw > W - 16) l = W - 16 - kw;
     t = Math.min(Math.max(t, 16), H - kh - 16);
     k.style.left = Math.max(l, 16) + "px"; k.style.top = t + "px";
