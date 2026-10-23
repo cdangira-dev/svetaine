@@ -710,6 +710,39 @@ h2 { margin-bottom: var(--po-h2); }
   .nuolaidos-juosta { flex-direction: column; align-items: flex-start; }
 }
 @media (max-width: 599px) { .faktu-plyteles { grid-template-columns: 1fr; } .kv-faktai h3 { font-size: 22px; } .nuolaidos-juosta { padding: 22px 20px; } }
+/* ---------- naujienos, tikrinimas, užsakymas — pertvarkyta 2026-10-23 ---------- */
+.naujienos { padding: 56px 0; }
+.nauj-juosta { display: flex; align-items: center; justify-content: space-between; gap: 40px; padding: 36px 44px; border-radius: 18px;
+  background: linear-gradient(135deg, var(--gilus) 0%, var(--virsus) 100%); color: #fff; }
+.nauj-juosta h2 { color: #fff; font-size: clamp(28px, 3vw, 38px); margin: 0 0 8px; }
+.naujienos .nauj-juosta p { color: #d4def0; margin: 0; font-size: 17px; }
+.naujienos .nauj-juosta .nauj-virs { font-size: 13px; letter-spacing: .16em; text-transform: uppercase; color: #E7CB8A; margin-bottom: 8px; }
+.nauj-mygtukai { display: flex; gap: 12px; flex: none; }
+.tikrinimas { padding: 80px 0; }
+.tikrinimas h2, .uzsakymas h2 { max-width: none; }
+.tikr-korteles, .uzs-zingsniai { list-style: none; margin: 32px 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.tikr-korteles li, .uzs-zingsniai li { background: var(--pavirsius); border: 1px solid var(--linija); border-radius: 16px; padding: 26px 24px; }
+.tikr-korteles svg { width: 34px; height: 34px; color: var(--melyna); margin-bottom: 14px; }
+.tikr-korteles b, .uzs-zingsniai b { display: block; color: var(--tamsi); font-size: 18px; font-weight: 600; margin-bottom: 6px; }
+.tikr-korteles span, .uzs-zingsniai li > span:last-child { display: block; color: var(--tekstas); font-size: 16px; line-height: 1.55; }
+.tikrinimas .tikr-isvada { margin: 24px 0 0; font-size: 17px; color: var(--tamsi); font-weight: 600; max-width: none; }
+.uzsakymas { padding: 80px 0; }
+.uzs-nr { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 50%; background: var(--virsus);
+  color: #fff; font-family: var(--antr); font-size: 22px; margin-bottom: 14px; }
+.uzs-keliai { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 18px; }
+.uzs-keliai > div { background: var(--langelis); border-radius: 16px; padding: 26px 28px; }
+.uzs-keliai h3 { font-size: 24px; margin: 0 0 8px; }
+.uzsakymas .uzs-keliai p { font-size: 16px; margin: 0 0 8px; max-width: none; }
+.uzs-kvietimas { margin-top: 32px; display: flex; align-items: center; justify-content: space-between; gap: 32px; padding: 30px 36px; border-radius: 18px;
+  background: linear-gradient(135deg, var(--gilus) 0%, var(--virsus) 100%); }
+.uzsakymas .uzs-kvietimas p { color: #fff; font-size: 19px; margin: 0; max-width: 46ch; font-family: var(--antr); }
+.uzs-kvietimas .mygtukas { flex: none; font-size: 17px; padding: 18px 40px; }
+@media (max-width: 899px) {
+  .nauj-juosta, .uzs-kvietimas { flex-direction: column; align-items: flex-start; padding: 28px 24px; }
+  .nauj-mygtukai { flex-wrap: wrap; }
+  .tikr-korteles, .uzs-zingsniai, .uzs-keliai { grid-template-columns: 1fr; }
+  .tikrinimas, .uzsakymas { padding: 56px 0; } .naujienos { padding: 40px 0; }
+}
 .kvapo-langas { width: min(860px, calc(100vw - 32px)); max-height: calc(100dvh - 32px); padding: 0; border: 0; border-radius: 20px; background: #fff; color: #23262b; overflow: auto; }
 .kvapo-langas::backdrop { background: rgba(10,20,40,.72); }
 .langas-uzdaryti { position: absolute; top: 10px; right: 12px; z-index: 2; width: 40px; height: 40px; border: 0; border-radius: 50%; background: #eef1f8; color: #20406f; font-size: 26px; line-height: 1; cursor: pointer; }
@@ -789,7 +822,7 @@ h2 { margin-bottom: var(--po-h2); }
   <div class="plotis">
     <div class="rodyk">
       <h2>Keturi aliejai pradžiai</h2>
-      <p class="ivadas">Šituos keturis dažniausiai siūlau pradedantiesiems. Jų užtenka
+      <p class="ivadas">Nuo šių keturių dažniausiai pradedama. Jų užtenka
         namų kvapui, vakaro ramybei ir mažiems kasdieniams ritualams.</p>
     </div>
 
@@ -935,7 +968,7 @@ h2 { margin-bottom: var(--po-h2); }
         <h3>Nuo ko pradėti</h3>
         <p>Young Living turi atskirą Raindrop rinkinį, kuriame yra visi reikalingi aliejai. Kai
           kurie iš jų stiprūs, todėl prieš pirmą kartą perskaityk rinkinio aprašymą ir
-          atsargumo nurodymus. Rinkinį rasi Young Living puslapyje per mano nuorodą.</p>
+          atsargumo nurodymus. Rinkinį rasi Young Living puslapyje per nuorodą.</p>
         <!-- 2026-10-22 Dangira: lankstinukas jau nuoroda viršuje („rinkinio lankstinuke“), čia — rinkinio pirkimas per ją.
              YL LT rinkinys „Raindrop Technique“ — lt_lt/products/id/66039 (kito slug adreso neturi; patikrinta: su parametrais
              localStorage.link_params = sponsorid/enrollerid 3882850, kaip Thieves nuorodoje). -->
@@ -964,7 +997,7 @@ h2 { margin-bottom: var(--po-h2); }
       <p class="ivadas">Plaukams turime šampūną, kondicionierių, kaukę, o galvos oda dažniausiai
         lieka be jokios priežiūros.</p>
       <div class="receptas">
-        <h3>Mano mišinys</h3>
+        <h3>Receptas</h3>
         <!-- 2026-10-23 Dangira: sąrašas kaip video — pilni mėlyni lašiukai, „15 ml“ irgi su lašiuku (ne šaukštas, ne atskiras sakinys). -->
         <ul class="lasiukai">
           <li><svg viewBox="0 0 44 44" aria-hidden="true"><path d="M22 5 C22 5 9 19 9 28 a13 13 0 0 0 26 0 C35 19 22 5 22 5 Z"/></svg><span><b>4 lašai</b> rozmarino</span></li>
@@ -993,24 +1026,18 @@ h2 { margin-bottom: var(--po-h2); }
      Gido failo pas save nelaikome — YL Policies & Procedures Europe (2021) 5.2: YL leidiniai
      „copyrighted and should not be reproduced without written permission“. Todėl tik nuoroda. -->
 <section class="naujienos" id="naujienos">
+  <!-- 2026-10-23 Dangira: „stiprus pertvarkymas“ → viena juosta: gidas ir užsakymas vienoje eilėje. -->
   <div class="plotis rodyk">
-    <!-- 2026-10-23 Dangira: be „Rugsėjis–spalis“ ir be įvado; iš karto „Pažiūrėk…“ + gidas, toliau „Kai išsirinksi…“ + jos nuoroda. -->
-    <h2>Šio mėnesio naujienos</h2>
-    <div class="kvietimas">
-      <h3>Dovanų gidas</h3>
-      <!-- 2026-10-23 Dangira: „kad nebūtų tiek tuščios baltos erdvės“ → langelis per visą plotį, du žingsniai šalia (telefone — vienas po kito). -->
-      <div class="naujienos-dalys">
-        <div>
-          <span class="naujienos-nr">1</span>
-          <p>Pažiūrėk, kas šį sezoną naujo.</p>
-          <a class="mygtukas pilnas" href="https://www.youngliving.com/lt_lt/ipaper/september-2026/2026-sept-oct-gift-guide-lt-lt" target="_blank" rel="noopener">Atsiversti gidą</a>
-        </div>
-        <!-- Gidas veda į YL puslapį be jos numerio, todėl toliau — užsakymas per jos nuorodą (YL_NUORODA, kaip ir aliejams). -->
-        <div>
-          <span class="naujienos-nr">2</span>
-          <p>Kai išsirinksi, užsisakyk per nuorodą.</p>
-          <a class="mygtukas yl-nuoroda" href="#uzsakyti">Užsisakyti</a>
-        </div>
+    <div class="nauj-juosta">
+      <div>
+        <p class="nauj-virs">Šio mėnesio naujienos</p>
+        <h2>Dovanų gidas</h2>
+        <p>Pažiūrėk, kas šį sezoną naujo. Kai išsirinksi, užsisakyk per nuorodą.</p>
+      </div>
+      <div class="nauj-mygtukai">
+        <a class="mygtukas pilnas" href="https://www.youngliving.com/lt_lt/ipaper/september-2026/2026-sept-oct-gift-guide-lt-lt" target="_blank" rel="noopener">Atsiversti gidą</a>
+        <!-- Gidas veda į YL puslapį be jos numerio, todėl — užsakymas per jos nuorodą (YL_NUORODA). -->
+        <a class="mygtukas yl-nuoroda" href="#uzsakyti">Užsisakyti</a>
       </div>
     </div>
   </div>
@@ -1024,61 +1051,51 @@ h2 { margin-bottom: var(--po-h2); }
      „Jei … tiekėjo produktas neatitinka mūsų griežtų standartų, jo nenaudojame.“
      „Vibracijų“ ir „kvepalų pramonės“ neminėti — oficialaus šaltinio nėra (claude-darbas/projects/young-living/saltiniai/vibracijos-tyrimas-2026-10-20.md). -->
 <section class="tikrinimas" id="tikrinimas">
+  <!-- 2026-10-23 pertvarkyta į 3 korteles; tekstas tas pats (YL Seed to Seal). -->
   <div class="plotis rodyk">
     <h2>Kaip tikrinami aliejai</h2>
-    <p class="ivadas">Young Living eterinius aliejus tikrina savo mokslininkai ir nepriklausomos
-      trečiųjų šalių laboratorijos – ne vieną kartą.</p>
-    <p>Tikrinamos ne tik žaliavos, bet ir galutinis produktas. Sudėtis tiriama dujų chromatografija
-      ir masių spektrometrija, o švinas, arsenas, kadmis ir gyvsidabris – atskiru tyrimu.
-      Jei aliejus griežtų standartų neatitinka, jo nenaudoja.</p>
+    <p class="ivadas">Young Living eterinius aliejus tikrina savo mokslininkai ir nepriklausomos trečiųjų šalių laboratorijos – ne vieną kartą.</p>
+    <ul class="tikr-korteles">
+      <li><svg viewBox="0 0 24 24" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6M10 3v6l-5 9a2 2 0 0 0 2 3h10a2 2 0 0 0 2-3l-5-9V3"/><path d="M7.5 15h9"/></g></svg><b>Žaliavos ir galutinis produktas</b><span>Tikrinamos ne tik žaliavos, bet ir galutinis produktas.</span></li>
+      <li><svg viewBox="0 0 24 24" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5M8.5 11h5M11 8.5v5"/></g></svg><b>Sudėties tyrimas</b><span>Sudėtis tiriama dujų chromatografija ir masių spektrometrija.</span></li>
+      <li><svg viewBox="0 0 24 24" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6z"/><path d="M9 12l2 2 4-4"/></g></svg><b>Atskiras tyrimas</b><span>Švinas, arsenas, kadmis ir gyvsidabris tikrinami atskiru tyrimu.</span></li>
+    </ul>
+    <p class="tikr-isvada">Jei aliejus griežtų standartų neatitinka, jo nenaudoja.</p>
     <p class="saltinis">Šaltinis: <a href="https://www.seedtoseal.com/lt/lt/science/" target="_blank" rel="noopener">Young Living „Seed to Seal®“</a></p>
   </div>
 </section>
 
 <!-- ============ 6. KAIP UŽSISAKYTI ============ -->
 <section class="uzsakymas" id="uzsakyti">
-  <div class="plotis dalys">
-    <div class="rodyk">
-      <h2>Kaip užsisakyti pačiam</h2>
-      <p class="ivadas">Skambinti man nereikia — užsisakai pats, kada
-        tau patogu, o siuntinys atkeliauja tiesiai į namus.</p>
-      <ol class="zingsniai">
-        <li><strong>Atsidaryk mano nuorodą</strong>
-          Mygtukas „Į Young Living“ yra šalia. Jis veda į oficialų Young Living puslapį.</li>
-        <li><strong>Užsiregistruok savo vardu</strong>
-          Viršuje spausk „Susikurti paskyrą“. Paskyra tavo, užsakymai irgi tavo. Kitą kartą tiesiog prisijungsi.</li>
-        <li><strong>Išsirink ir užsisakyk</strong>
-          Kainos surašytos ten pat, oficialiame puslapyje. Siuntinys atkeliauja paštu.</li>
-      </ol>
-    </div>
-
-    <div class="rodyk">
-      <div class="keliai">
-        <div>
-          <h3>Vieną kartą</h3>
-          <p>Užsisakai, ko reikia, ir viskas. Privalomos sumos nėra — gali užsisakyti
-            ir kartą per metus.</p>
-        </div>
-        <div>
-          <h3>Lojalumo programa</h3>
-          <p>Užsisakai reguliariai ir siuntinys kas mėnesį atkeliauja pats, tad tikrai
-            nepamirši. Tam reikia bent 50 PV per mėnesį. Taškais grįžta 10 %, nuo 4-ojo mėnesio
-            iš eilės — 20&nbsp;%, nuo 25-ojo — 25&nbsp;%.</p>
+  <!-- 2026-10-23 Dangira: „manęs kaip asmens tekstuose turi nelikti“ — be „aš/mano/man“ (išskyrus „Labas, aš Dangira“ ir teisinę pastabą apačioje). -->
+  <!-- 2026-10-23 Dangira: „stiprus pertvarkymas“ → 3 žingsniai vienoje eilėje, du vienodi pasirinkimai, vienas didelis mygtukas. -->
+  <div class="plotis rodyk">
+    <h2>Kaip užsisakyti pačiam</h2>
+    <p class="ivadas">Užsisakai pats, kada tau patogu, o siuntinys atkeliauja tiesiai į namus.</p>
+    <ol class="uzs-zingsniai">
+      <li><span class="uzs-nr">1</span><b>Atsidaryk nuorodą</b><span>Mygtukas „Į Young Living“ yra žemiau. Jis veda į oficialų Young Living puslapį.</span></li>
+      <li><span class="uzs-nr">2</span><b>Užsiregistruok savo vardu</b><span>Viršuje spausk „Susikurti paskyrą“. Paskyra tavo, užsakymai irgi tavo. Kitą kartą tiesiog prisijungsi.</span></li>
+      <li><span class="uzs-nr">3</span><b>Išsirink ir užsisakyk</b><span>Kainos surašytos ten pat, oficialiame puslapyje. Siuntinys atkeliauja paštu.</span></li>
+    </ol>
+    <div class="uzs-keliai">
+      <div>
+        <h3>Vieną kartą</h3>
+        <p>Užsisakai, ko reikia, ir viskas. Privalomos sumos nėra – gali užsisakyti ir kartą per metus.</p>
+      </div>
+      <div>
+        <h3>Lojalumo programa</h3>
+        <p>Užsisakai reguliariai ir siuntinys kas mėnesį atkeliauja pats, tad tikrai nepamirši. Tam reikia bent 50 PV per mėnesį.
+          Taškais grįžta 10 %, nuo 4-ojo mėnesio iš eilės – 20&nbsp;%, nuo 25-ojo – 25&nbsp;%.</p>
           <!-- 2026-10-22 Dangira: „jei nori rinkti taškus, kurti savo komandą — registruokis…“. YL P&P Europe 2021 (LT) 3.2:
                „Klientai negali dalyvauti „Essential Rewards“ programoje“; BRAND PARTNER „gali įsigyti … didmeninės prekybos kaina“.
                Komp. plano „Loyalty Rewards“ — „Brand Partners may elect…“. YL_NUORODA turi type=member = BRAND PARTNER registracija. -->
-          <p style="margin-top: var(--po-p)">Jei nori rinkti taškus ar kurti savo komandą, registruokis kaip Young Living BRAND PARTNER.
-            Nuoroda kaip tik ir veda į šią registraciją.</p>
-        </div>
+        <p>Jei nori rinkti taškus ar kurti savo komandą, registruokis kaip Young Living BRAND PARTNER. Nuoroda kaip tik ir veda į šią registraciją.</p>
       </div>
-
-      <div class="kvietimas">
-        <h3>Užsisakyk per nuorodą</h3>
-        <p>Jei dar nežinai, ką imti, pradėk nuo vieno iš keturių aukščiau aprašytų aliejų.</p>
-        <!-- Nuoroda įrašoma vienoje vietoje, apačioje: YL_NUORODA. -->
-        <a class="mygtukas pilnas yl-nuoroda" href="#uzsakyti">Į Young Living</a>
-        <!-- Mygtukas „Į Wyld NOTES kvepalus“ (2026-10-22) išimtas 2026-10-23 — Dangira: „palik tik Į Young Living“. -->
-      </div>
+    </div>
+    <div class="uzs-kvietimas">
+      <p>Jei dar nežinai, ką imti, pradėk nuo vieno iš keturių aukščiau aprašytų aliejų.</p>
+      <!-- Nuoroda įrašoma vienoje vietoje, apačioje: YL_NUORODA. -->
+      <a class="mygtukas pilnas yl-nuoroda" href="#uzsakyti">Į Young Living</a>
     </div>
   </div>
 </section>
