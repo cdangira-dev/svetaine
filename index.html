@@ -676,6 +676,40 @@ h2 { margin-bottom: var(--po-h2); }
   .kvapu-pinai { max-width: min(1180px, calc((100svh - 330px) * 4 + 54px)); }
   .pinas h3 { font-size: 19px; } .pinas figcaption { padding-top: 8px; } .pinas figcaption p { font-size: 13px; }
 }
+/* ---------- kvepalų aprašymai vaizdžiai (2026-10-23) ---------- */
+.kvepalai .plotis > .kv-faktai.rodyk { max-width: 1180px; margin: 56px auto 0; text-align: left; }
+.kvepalai .plotis > .kv-faktai.rodyk p { margin-left: 0; margin-right: 0; }
+.kv-faktai h3 { color: #fff; font-size: 26px; margin: 0 0 6px; }
+.kvepalai .kv-faktai .kv-ivadas { color: #c9d6ee; font-size: 16px; margin: 0 0 22px; max-width: 70ch; }
+.faktu-plyteles { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.faktu-plyteles li { display: flex; gap: 14px; align-items: flex-start; padding: 18px; border-radius: 14px; background: rgba(255,255,255,.06); }
+.faktu-plyteles svg { width: 30px; height: 30px; flex: none; color: #E7CB8A; }
+.faktu-plyteles b { display: block; color: #fff; font-weight: 600; font-size: 15px; margin-bottom: 4px; }
+.faktu-plyteles span { display: block; color: #c9d6ee; font-size: 14px; line-height: 1.5; }
+.natu-juosta { margin-top: 56px; }
+.natu-laikas { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; position: relative; }
+.natu-laikas::before { content: ""; position: absolute; left: 8px; right: 8px; top: 7px; height: 2px; background: linear-gradient(90deg, #E7CB8A, rgba(231,203,138,.25)); }
+.natu-laikas li { position: relative; padding: 30px 24px 0 0; }
+.natu-laikas li::before { content: ""; position: absolute; left: 0; top: 0; width: 16px; height: 16px; border-radius: 50%; background: #E7CB8A; box-shadow: 0 0 0 5px rgba(231,203,138,.18); }
+.natu-laikas .laikas { display: block; font-family: var(--antr); font-size: 24px; color: #E7CB8A; margin-bottom: 4px; }
+.natu-laikas b { display: block; color: #fff; font-size: 16px; font-weight: 600; margin-bottom: 4px; }
+.natu-laikas li > span:last-child { display: block; color: #c9d6ee; font-size: 14px; line-height: 1.5; }
+.kvepalai .natu-juosta .kaip-pastaba { font-size: 14px; color: #c9d6ee; opacity: .8; margin: 22px 0 0; max-width: none; }
+.nuolaidos-juosta { margin-top: 56px; display: flex; align-items: center; justify-content: space-between; gap: 32px; padding: 26px 30px; border-radius: 16px;
+  background: rgba(255,255,255,.07); border: 1px solid rgba(231,203,138,.35); }
+.nuolaidos-juosta h3 { font-size: 24px; margin: 0 0 6px; }
+.kvepalai .nuolaidos-juosta p { margin: 0 0 4px; color: #d4def0; font-size: 15px; max-width: 64ch; }
+.kvepalai .nuolaidos-juosta .pastaba-langas { font-size: 13px; opacity: .8; margin: 6px 0 0; }
+.nuolaidos-juosta .kodas { font-family: Consolas, monospace; background: #fff; color: #20406f; padding: 1px 8px; border-radius: 4px; }
+.nuolaidos-juosta .mygtukas { flex: none; }
+@media (max-width: 899px) {
+  .faktu-plyteles { grid-template-columns: 1fr 1fr; }
+  .natu-laikas { grid-template-columns: 1fr; gap: 22px; }
+  .natu-laikas::before { left: 7px; right: auto; top: 8px; bottom: 8px; width: 2px; height: auto; background: linear-gradient(180deg, #E7CB8A, rgba(231,203,138,.25)); }
+  .natu-laikas li { padding: 0 0 0 34px; }
+  .nuolaidos-juosta { flex-direction: column; align-items: flex-start; }
+}
+@media (max-width: 599px) { .faktu-plyteles { grid-template-columns: 1fr; } .kv-faktai h3 { font-size: 22px; } .nuolaidos-juosta { padding: 22px 20px; } }
 .kvapo-langas { width: min(860px, calc(100vw - 32px)); max-height: calc(100dvh - 32px); padding: 0; border: 0; border-radius: 20px; background: #fff; color: #23262b; overflow: auto; }
 .kvapo-langas::backdrop { background: rgba(10,20,40,.72); }
 .langas-uzdaryti { position: absolute; top: 10px; right: 12px; z-index: 2; width: 40px; height: 40px; border: 0; border-radius: 50%; background: #eef1f8; color: #20406f; font-size: 26px; line-height: 1; cursor: pointer; }
@@ -1069,54 +1103,46 @@ h2 { margin-bottom: var(--po-h2); }
       <div class="langas-turinys"></div>
     </dialog>
 
-    <!-- 2026-10-23 Dangira + antra nuomonė: pirma buteliukai, aprašymai po jų. -->
-    <div class="rodyk kv-aprasymai">
-      <!-- 2026-10-23 Dangira: „labai daug tuščios vietos“ → kompiuteryje abu langeliai šalia (.kv-dezes), telefone vienas po kito. -->
-      <div class="kv-dezes">
-      <div class="kaip-skleidziasi is-ko">
+    <!-- 2026-10-23 Dangira: „nepatinka tų aprašymų išdėstymas“ + „pertikrinti pagal lietuvių kalbos taisykles“ → vaizdžiai:
+         „Iš ko pagaminti“ — 6 langeliai su ženkliukais, „Kaip skleidžiasi kvapas“ — laiko juosta, nuolaida — viena juosta.
+         Faktai nepakeisti. Šaltiniai: wyldnotes.com/en-eu/pages/wyld-promise („luxurious, 100% natural, and fully transparent“, „essential oils,
+         natural extracts, plant-based absolutes, and organic non-denatured sugarcane alcohol“, „free from parabens, phthalates, sulfates, and
+         petrochemicals“, „100% vegan and cruelty-free“); tinklaraštis crafting-clean-fragrance („Most fragrances use denatured alcohol“);
+         white-lie „Full ingredient list“; wyld-restoration „1% of every sale“. „100 %“ nevartoti (2026-10-22).
+         Natų trukmės: wyldnotes.com/en-eu/blogs/the-blog/top-mid-and-base-notes-explained — top 15–30 min., mid 2–4 h, base „6+ hours, sometimes days“. -->
+    <div class="kv-faktai rodyk">
+      <div class="is-ko2">
         <h3>Iš ko pagaminti</h3>
-        <!-- „100 %“ išimta 2026-10-22 (tikrintojas: YL partneriams „100 %“ nevartoti — wyld-notes/laiskai/2026-10-18-parfumeriai-ir-naturalumas.md). -->
-        <p>Gamintojas sako, kad prabangūs kvepalai gali būti natūralūs, o jų sudėtis — visiškai atvira.</p>
-        <ul>
-          <li>Sudėtyje — tik augalinės kilmės medžiagos: eteriniai aliejai, natūralūs ekstraktai ir augaliniai absoliutai.</li>
-          <li><strong>Ekologiškas nedenatūruotas cukranendrių alkoholis.</strong> Pasak gamintojo, daugumoje kvepalų naudojamas
-            denatūruotas alkoholis — į jį dedama cheminių priedų, kad jo nebūtų galima gerti.</li>
-          <li>Be sintetinių medžiagų, ftalatų, parabenų, sulfatų ir naftos produktų.</li>
-          <li>Veganiški ir neišbandyti su gyvūnais.</li>
-          <li>Gamintojo puslapyje prie kiekvieno kvapo nurodyta visa sudėtis.</li>
-          <li>1 % kiekvieno pardavimo sumos skiriama gamtai atkurti.</li>
+        <p class="kv-ivadas">Gamintojo teigimu, prabangūs kvepalai gali būti natūralūs, o jų sudėtis – visiškai atvira.</p>
+        <ul class="faktu-plyteles">
+          <li><svg viewBox="0 0 24 24" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19c0-8 5-13 14-14-1 9-6 14-14 14z"/><path d="M5 19l8-8"/></g></svg><div><b>Augalinės kilmės medžiagos</b><span>Eteriniai aliejai, natūralūs ekstraktai ir augaliniai absoliutai.</span></div></li>
+          <li><svg viewBox="0 0 24 24" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c3 4 5 7 5 10a5 5 0 0 1-10 0c0-3 2-6 5-10z"/></g></svg><div><b>Nedenatūruotas cukranendrių alkoholis</b><span>Ekologiškas. Pasak gamintojo, daugumoje kvepalų naudojamas denatūruotas alkoholis – į jį dedama cheminių priedų, kad jo nebūtų galima gerti.</span></div></li>
+          <li><svg viewBox="0 0 24 24" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M6 6l12 12"/></g></svg><div><b>Be ftalatų ir parabenų</b><span>Be sintetinių medžiagų, ftalatų, parabenų, sulfatų ir naftos produktų.</span></div></li>
+          <li><svg viewBox="0 0 24 24" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></g></svg><div><b>Veganiški</b><span>Neišbandyti su gyvūnais.</span></div></li>
+          <li><svg viewBox="0 0 24 24" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3h7l4 4v14H7z"/><path d="M14 3v4h4M10 12h5M10 16h5"/></g></svg><div><b>Atvira sudėtis</b><span>Gamintojo puslapyje prie kiekvieno kvapo nurodyta visa sudėtis.</span></div></li>
+          <li><svg viewBox="0 0 24 24" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21v-7"/><path d="M12 14c-4 0-6-3-6-6 3 0 6 2 6 6zM12 14c4 0 6-3 6-6-3 0-6 2-6 6z"/></g></svg><div><b>Gamtai</b><span>1 % kiekvieno pardavimo sumos skiriama gamtai atkurti.</span></div></li>
         </ul>
       </div>
-      <!-- Gamintojo natų lapo vertimas (partnerių skydelis → Marketing Tools, „fragrance cards“, 2026-10-04):
-           „Fragrance notes evolve over time… Top notes… Mid notes… base notes… layer by layer.“ Mid notes = vidurinės.
-           Trukmės (2026-10-21, jos „kiek laikosi natos labai svarbu“): wyldnotes.com/en-eu/blogs/the-blog/top-mid-and-base-notes-explained —
-           top 15–30 min., mid 2–4 h, base „6+ hours, sometimes days“ ant odos, drabužių, plaukų, „depending on the fragrance and application“. -->
-      <div class="kaip-skleidziasi">
-        <h3>Kaip skleidžiasi kvapas</h3>
-        <p>Laikui bėgant kvapo natos keičiasi. <strong>Viršutinės natos</strong> — pirmas įspūdis: dažniausiai lengvos,
-          gaivios ar citrusinės, išgaruoja per pirmąsias 15–30 minučių. Joms nykstant atsiskleidžia
-          <strong>vidurinės natos</strong> — kvapo šerdis: sodresni gėlių, prieskonių ar žolelių kvapai, kurie išlieka
-          2–4 valandas. <strong>Bazinės natos</strong> suteikia gylio ir ilgiausiai išlieka: šilti medienos ar muskuso
-          kvapai ant odos, drabužių ar plaukų laikosi 6 valandas ir ilgiau, kartais net kelias dienas. Trukmė priklauso nuo kvapo
-          ir nuo to, kaip jis užpurškiamas. Taip kvapas atsiskleidžia sluoksnis po sluoksnio.</p>
-        <p class="kaip-pastaba">Kiekvieno kvapo natos pasirodys paspaudus jo nuotrauką.</p>
-      </div>
-      </div>
-    </div>
 
-    <div class="rodyk">
-      <!-- Rinkinių sąrašas išimtas 2026-10-04 (Dangira: svetainė gundo, ne katalogas). Nuoroda — su jos ref ir kodu. -->
-      <!-- Eilutė „Visus kvepalus gali pamatyti ir užsisakyti čia: wyldnotes.com“ išimta 2026-10-23 (Dangira: „kartojasi“ — tą patį daro mygtukas). -->
+      <div class="natu-juosta">
+        <h3>Kaip skleidžiasi kvapas</h3>
+        <p class="kv-ivadas">Laikui bėgant kvapo natos keičiasi – kvapas atsiskleidžia sluoksnis po sluoksnio.</p>
+        <ol class="natu-laikas">
+          <li><span class="laikas">15–30 min.</span><b>Viršutinės natos</b><span>Pirmas įspūdis: dažniausiai lengvos, gaivios ar citrusinės.</span></li>
+          <li><span class="laikas">2–4 val.</span><b>Vidurinės natos</b><span>Kvapo šerdis: sodresni gėlių, prieskonių ar žolelių kvapai.</span></li>
+          <li><span class="laikas">6 val. ir ilgiau</span><b>Bazinės natos</b><span>Suteikia gylio: šilti medienos ar muskuso kvapai. Ant odos, drabužių ar plaukų kartais išlieka net kelias dienas.</span></li>
+        </ol>
+        <p class="kaip-pastaba">Trukmė priklauso nuo kvapo ir nuo to, kaip jis užpurškiamas. Kiekvieno kvapo natos pasirodys paspaudus jo nuotrauką.</p>
+      </div>
+
       <!-- 10 % pirmam pirkimui — wyldnotes.com/pages/faqs („first-time customers“), kodas lasas-juroje (wyld-notes/README.md).
-           Nuoroda neša ir partnerės ref, ir nuolaidos kodą; ar kasoje nusiskaito automatiškai — nepatikrinta, todėl prašome įvesti. -->
-      <div class="wyld-kvietimas">
-        <h3>Pirmam pirkimui — 10 % nuolaida</h3>
-        <!-- 2026-10-23 Dangira: „kokioje kasoje — čia nėra jokios kasos“ → aiškiau, kur įvesti kodą. -->
-        <p>Pirmą kartą užsakydamas Wyld NOTES svetainėje, prieš apmokėdamas įvesk nuolaidos kodą <span class="kodas">lasas-juroje</span>.
-          Kvepalai siunčiami ir į Lietuvą.</p>
-        <!-- Wyld svetainė kartais rodo savo naujienlaiškio langą „10% off“ su el. pašto laukeliu (Dangira matė 2026-10-04). -->
-        <p class="pastaba-langas">Jei atsidarys langas su el. pašto laukeliu, spausk „No, thanks“ — nuolaidą jau gauni
-          su kodu <strong>lasas-juroje</strong>.</p>
+           Wyld svetainė kartais rodo savo naujienlaiškio langą „10% off“ su el. pašto laukeliu (Dangira matė 2026-10-04). -->
+      <div class="nuolaidos-juosta">
+        <div>
+          <h3>Pirmam pirkimui – 10 % nuolaida</h3>
+          <p>Pirmą kartą užsakydamas Wyld NOTES svetainėje, prieš apmokėdamas įvesk kodą <span class="kodas">lasas-juroje</span>. Kvepalai siunčiami ir į Lietuvą.</p>
+          <p class="pastaba-langas">Jei atsidarys langas su el. pašto laukeliu, spausk „No, thanks“ – nuolaidą jau gauni su kodu.</p>
+        </div>
         <a class="mygtukas pilnas" href="https://wyldnotes.com/discount/lasas-juroje?ref=lasas-juroje&amp;redirect=/en-eu/collections/fine-fragrance" target="_blank" rel="noopener">Užsisakyti kvepalus</a>
       </div>
     </div>
