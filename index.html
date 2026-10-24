@@ -1081,11 +1081,14 @@ footer .smulkme p { font-size: 14px; margin: 0 0 8px; max-width: none; }
         <h3>Nuo ko pradėti</h3>
         <p>Young Living siūlo atskirą Raindrop rinkinį su visais reikalingais aliejais. Kai
           kurie iš jų yra stiprūs, todėl prieš pirmąjį kartą atidžiai perskaityk rinkinio aprašymą ir
-          atsargumo nurodymus. Rinkinį rasi Young Living puslapyje — nuoroda žemiau.</p>
+          atsargumo nurodymus. Rinkinį rasi Young Living puslapyje — mygtukas žemiau.</p>
         <!-- 2026-10-22 Dangira: lankstinukas jau nuoroda viršuje („rinkinio lankstinuke“), čia — rinkinio pirkimas per ją.
              YL LT rinkinys „Raindrop Technique“ — lt_lt/products/id/66039 (kito slug adreso neturi; patikrinta: su parametrais
              localStorage.link_params = sponsorid/enrollerid 3882850, kaip Thieves nuorodoje). -->
-        <p style="margin-top: var(--po-p)"><a class="yl-nuoroda" href="#uzsakyti" data-produktas="https://www.youngliving.com/lt_lt/products/id/66039?sponsorid=3882850&amp;enrollerid=3882850&amp;isocountrycode=LT&amp;culture=lt-LT&amp;type=member" target="_blank" rel="noopener">Užsisakyti Raindrop rinkinį</a> (Young Living)</p>
+        <!-- 2026-10-24 Dangira: „kur mygtukas ir kur nuoroda“ → „sukurk“. Buvo tekstinė nuoroda su klase yl-nuoroda — skriptas ją perrašydavo
+             į bendrą YL_NUORODA (registraciją), o data-produktas niekur nenaudotas → Raindrop rinkinio puslapis neatsidarydavo.
+             Dabar mygtukas tiesiai į rinkinį 66039 (su sponsorid 3882850), be yl-nuoroda. -->
+        <div class="misinio-mygtukai"><a class="mygtukas" href="https://www.youngliving.com/lt_lt/products/id/66039?sponsorid=3882850&amp;enrollerid=3882850&amp;isocountrycode=LT&amp;culture=lt-LT&amp;type=member" target="_blank" rel="noopener">Užsisakyti Raindrop rinkinį</a></div>
       </div>
     </div>
   </div>
