@@ -744,11 +744,13 @@ h2 { margin-bottom: var(--po-h2); }
 @media (max-width: 599px) { .faktu-plyteles { grid-template-columns: 1fr; } .kv-faktai h3 { font-size: 22px; } .nuolaidos-juosta { padding: 22px 20px; } }
 /* ---------- naujienos, tikrinimas, užsakymas — pertvarkyta 2026-10-23 ---------- */
 .naujienos { padding: 24px 0 32px; } /* 2026-10-23 Dangira: dovanų gidas arčiau — mažiau tarpo prieš ir po */
-.nauj-juosta { display: flex; align-items: center; justify-content: space-between; gap: 40px; padding: 36px 44px; border-radius: 18px;
+.nauj-juosta { display: flex; align-items: center; justify-content: space-between; gap: 40px; padding: 22px 44px; border-radius: 18px;
   background: linear-gradient(135deg, var(--gilus) 0%, var(--virsus) 100%); color: #fff; }
-.nauj-juosta h2 { color: #fff; margin: 0 0 8px; }
+.nauj-juosta h2 { color: #fff; margin: 0; }
+/* 2026-10-24 Dangira: tekstas tarp „Dovanų gidas“ ir mygtuko, juosta siauresnė, „Užsisakyti“ išimtas */
+.naujienos .nauj-juosta .nauj-tekstas { flex: 1; text-align: center; }
 .naujienos .nauj-juosta p { color: #d4def0; margin: 0; font-size: 17px; }
-.naujienos .nauj-juosta .nauj-virs { font-size: 13px; letter-spacing: .16em; text-transform: uppercase; color: #E7CB8A; margin-bottom: 8px; }
+.naujienos .nauj-juosta .nauj-virs { font-size: 13px; letter-spacing: .16em; text-transform: uppercase; color: #E7CB8A; margin-bottom: 4px; }
 .nauj-mygtukai { display: flex; gap: 12px; flex: none; }
 .tikrinimas { padding: 44px 0 36px; }
 .tikrinimas h2, .uzsakymas h2 { max-width: none; }
@@ -777,6 +779,8 @@ h2 { margin-bottom: var(--po-h2); }
 .uzs-kvietimas .mygtukas { flex: none; font-size: 17px; padding: 18px 40px; }
 @media (max-width: 899px) {
   .nauj-juosta, .uzs-kvietimas { flex-direction: column; align-items: flex-start; padding: 28px 24px; }
+  .nauj-juosta { gap: 16px; padding: 22px 24px; }
+  .naujienos .nauj-juosta .nauj-tekstas { text-align: left; }
   .nauj-mygtukai { flex-wrap: wrap; }
   .tikr-korteles, .uzs-zingsniai, .uzs-keliai { grid-template-columns: 1fr; }
   .uzs-keliai > div + div { grid-column: auto; } .uzs-zingsniai li { grid-template-columns: 40px 1fr; }
@@ -1137,12 +1141,10 @@ footer .smulkme p { font-size: 14px; margin: 0 0 8px; max-width: none; }
       <div>
         <p class="nauj-virs">Šio mėnesio naujienos</p>
         <h2>Dovanų gidas</h2>
-        <p>Pažiūrėk, kas šį sezoną naujo. Kai išsirinksi, užsisakyk per nuorodą.</p>
       </div>
+      <p class="nauj-tekstas">Pažiūrėk, kas šį sezoną naujo.</p>
       <div class="nauj-mygtukai">
         <a class="mygtukas pilnas" href="https://www.youngliving.com/lt_lt/ipaper/september-2026/2026-sept-oct-gift-guide-lt-lt" target="_blank" rel="noopener">Atsiversti gidą</a>
-        <!-- Gidas veda į YL puslapį be jos numerio, todėl — užsakymas per jos nuorodą (YL_NUORODA). -->
-        <a class="mygtukas yl-nuoroda" href="#uzsakyti">Užsisakyti</a>
       </div>
     </div>
   </div>
@@ -1202,7 +1204,7 @@ footer .smulkme p { font-size: 14px; margin: 0 0 8px; max-width: none; }
       </div>
     </div>
     <div class="uzs-kvietimas">
-      <p>Jei dar nežinai, ką imti, pradėk nuo vieno iš keturių aukščiau aprašytų aliejų.</p>
+      <p>Jei dar nežinai, ką imti, pradėk nuo keturių aukščiau aprašytų aliejų.</p>
       <!-- Nuoroda įrašoma vienoje vietoje, apačioje: YL_NUORODA. -->
       <a class="mygtukas pilnas yl-nuoroda" href="#uzsakyti">Į Young Living</a>
     </div>
