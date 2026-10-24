@@ -848,6 +848,24 @@ footer .smulkme p { font-size: 14px; margin: 0 0 8px; max-width: none; }
   .scena[data-al="apelsinas"] .kortele { background: #3a1d0e; }
   .scenos { gap: 0; } /* 2026-10-23 Dangira: be balto tarpo tarp kortelės ir kitos nuotraukos */
 }
+
+/* 2026-10-24 Dangira: apačia mėlyname fone kaip viršus */
+footer.apacia { border-top: 0; color: #fff; padding: 56px 0 40px;
+  background: radial-gradient(60% 70% at 78% 30%, #2a4f86 0%, transparent 70%), var(--virsus); }
+.apacia-stulpeliai { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 32px; padding-bottom: 28px; margin-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,.18); }
+.apacia-stulpeliai h4 { font-family: var(--antr); font-size: 18px; font-weight: 400; color: #fff; margin: 0 0 12px; }
+.apacia-stulpeliai > div > a:not(.zenklas) { display: block; color: #fff; text-decoration: none; font-size: 15px; margin-bottom: 8px; opacity: .9; }
+.apacia-stulpeliai > div > a:not(.zenklas):hover { opacity: 1; text-decoration: underline; }
+.apacia-zenklas { display: inline-flex; align-items: center; gap: 14px; color: #fff; text-decoration: none; font-family: var(--antr); font-size: 26px; margin-bottom: 14px; }
+.apacia-zenklas img { width: 46px; height: auto; }
+footer.apacia .apacia-klausimai, footer.apacia .apacia-tel { color: var(--sviesi); font-size: 15px; margin: 0; line-height: 1.6; }
+footer.apacia .apacia-tel { margin-top: 14px; }
+footer.apacia .apacia-klausimai a, footer.apacia .apacia-tel a { color: #fff; }
+footer.apacia .smulkme, footer.apacia .smulkme-gale { color: var(--sviesi); }
+footer.apacia .smulkme strong { color: #fff; }
+footer.apacia .smulkme-gale { border-top-color: rgba(255,255,255,.18); }
+footer.apacia .smulkme-gale .teisine { opacity: .75; }
+@media (max-width: 767px) { .apacia-stulpeliai { grid-template-columns: 1fr 1fr; } .apacia-stulpeliai > div:first-child { grid-column: 1 / -1; } }
 </style>
 </head>
 <body>
@@ -1376,24 +1394,31 @@ footer .smulkme p { font-size: 14px; margin: 0 0 8px; max-width: none; }
 
 <!-- ============ 8. APAČIA (atsargumo pastaba perkelta į apačią po „Produktų nuotraukos“, 2026-10-23) ============ -->
 
-<footer>
+<footer class="apacia">
   <div class="plotis">
-    <!-- 2026-10-23 Dangira: „bus tik Lašas jūroje“ — viršuje prekės ženklas ir jo Facebook / Instagram; vardas liko tik teisinėje eilutėje žemiau. -->
-    <!-- 2026-10-23 Dangira: ženkliukas ir „Lašas jūroje“ vienoje eilutėje kaip viršuje, klausimų sakinys atskirai. -->
-    <div class="autore">
-      <picture>
-        <source srcset="vaizdai/Logo_lasas_juroje_tamsus_tamsesnis.png" media="(prefers-color-scheme: dark)">
-        <img src="vaizdai/Logo_lasas_juroje_sviesus_tamsesnis.png" alt="">
-      </picture>
-      <div class="vardas">Lašas jūroje</div>
+    <!-- 2026-10-24 Dangira: „turi atsirasti mėlyname fone, kaip ir viršuje… kaip užbaigimo puslapis“ → tamsiai mėlynas fonas kaip .virsus,
+         trys stulpeliai: prekės ženklas ir klausimai / puslapio dalys / užsakymas ir YL klientų aptarnavimo tel. (YL LT puslapio poraštė). -->
+    <div class="apacia-stulpeliai">
+      <div>
+        <a class="zenklas apacia-zenklas" href="#"><img src="vaizdai/Logo_virsui_svetainei.png" alt="">Lašas jūroje</a>
+        <p class="apacia-klausimai">Turi klausimų? Rašyk per
+          <a href="https://www.facebook.com/profile.php?id=61594088541906" target="_blank" rel="noopener">Facebook</a> arba
+          <a href="https://www.instagram.com/lasas.juroje/" target="_blank" rel="noopener">Instagram</a>.</p>
+      </div>
+      <div>
+        <h4>Puslapyje</h4>
+        <a href="#aliejai">Aliejai</a>
+        <a href="#raindrop">Raindrop</a>
+        <a href="#misinys">Mišinys</a>
+        <a href="#kvepalai">Kvepalai</a>
+      </div>
+      <div>
+        <h4>Užsisakyti</h4>
+        <a href="#uzsakyti">Aliejai — Young Living</a>
+        <a href="#kvepalai-uzsakymas">Kvepalai — Wyld NOTES</a>
+        <p class="apacia-tel">Young Living klientų aptarnavimas<br><a href="tel:+37080030914">0800 30914</a> (nemokamas)</p>
+      </div>
     </div>
-    <div class="role apacia-klausimai">Turi klausimų? Rašyk per
-      <a href="https://www.facebook.com/profile.php?id=61594088541906" target="_blank" rel="noopener">Facebook</a> arba
-      <a href="https://www.instagram.com/lasas.juroje/" target="_blank" rel="noopener">Instagram</a>.</div>
-    <!-- 2026-10-23 Dangira: „kad nebūtų tiek tuščios baltos erdvės“ → kompiuteryje dvi kolonos: kairėje teisinė frazė ir pastaba, dešinėje šaltiniai. -->
-    <!-- 2026-10-23 Dangira: vienodas dydis; tvarka — nuotraukos, Wyld NOTES, Young Living, atsargumo pastaba (be mėlyno brūkšnio).
-         YL P&P Europe 2021 (LT) 5.7 a — teisinė frazė žemiau, keisti NEGALIMA. „Scenų vaizdai sukurti DI“ išimta jos sprendimu.
-         Tikrinimo datos: YL 2026-10-04, Wyld 2026-09-25 ir 2026-10-21. -->
     <div class="smulkme">
       <p>Produktų nuotraukos: Young Living ir Wyld NOTES.</p>
       <p><strong>Wyld NOTES.</strong> Informacija: wyldnotes.com/en-eu, puslapis „Wyld Promise“, tinklaraštis ir „Wyld Restoration“.</p>
