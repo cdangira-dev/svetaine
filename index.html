@@ -775,7 +775,7 @@ h2 { margin-bottom: var(--po-h2); }
 .uzsakymas .uzs-keliai p { font-size: 16px; margin: 0 0 8px; max-width: none; }
 .uzs-kvietimas { margin-top: 32px; display: flex; align-items: center; justify-content: space-between; gap: 32px; padding: 30px 36px; border-radius: 18px;
   background: linear-gradient(135deg, var(--gilus) 0%, var(--virsus) 100%); }
-.uzsakymas .uzs-kvietimas p { color: #fff; font-size: 19px; margin: 0; max-width: 46ch; font-family: var(--antr); }
+.uzsakymas .uzs-kvietimas p { color: #fff; font-size: 19px; margin: 0; font-family: var(--antr); } /* 2026-10-24: viena eilutė */
 .uzs-kvietimas .mygtukas { flex: none; font-size: 17px; padding: 18px 40px; }
 @media (max-width: 899px) {
   .nauj-juosta, .uzs-kvietimas { flex-direction: column; align-items: flex-start; padding: 28px 24px; }
@@ -1205,8 +1205,8 @@ footer .smulkme p { font-size: 14px; margin: 0 0 8px; max-width: none; }
     </div>
     <div class="uzs-kvietimas">
       <p>Jei dar nežinai, ką imti, pradėk nuo keturių aukščiau aprašytų aliejų.</p>
-      <!-- Nuoroda įrašoma vienoje vietoje, apačioje: YL_NUORODA. -->
-      <a class="mygtukas pilnas yl-nuoroda" href="#uzsakyti">Į Young Living</a>
+      <!-- 2026-10-24 Dangira: veda į visus keturis aliejus (ta pati nuoroda kaip „arba visus keturis kartu“). Be yl-nuoroda, kad skriptas neperrašytų. -->
+      <a class="mygtukas pilnas" href="https://www.youngliving.com/apps/enrollment/social-links/366ab7ec-2195-40ca-a327-55b5eb2645d1" target="_blank" rel="noopener">Į Young Living</a>
     </div>
   </div>
 </section>
