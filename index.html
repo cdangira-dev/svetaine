@@ -849,9 +849,11 @@ footer .smulkme p { font-size: 14px; margin: 0 0 8px; max-width: none; }
   .scenos { gap: 0; } /* 2026-10-23 Dangira: be balto tarpo tarp kortelės ir kitos nuotraukos */
 }
 
-/* 2026-10-24 Dangira: apačia mėlyname fone kaip viršus */
+/* 2026-10-24 Dangira: apačia tamsiai mėlyname fone (tamsesnė už kvepalus); šaltiniai — šviesioje juostoje virš jos */
+.saltiniu-juosta { background: var(--langelis); padding: 36px 0 28px; }
+.saltiniu-juosta .smulkme p { font-size: 14px; margin: 0 0 8px; max-width: none; }
 footer.apacia { border-top: 0; color: #fff; padding: 56px 0 40px;
-  background: radial-gradient(60% 70% at 78% 30%, #2a4f86 0%, transparent 70%), var(--virsus); }
+  background: var(--gilus); }
 .apacia-stulpeliai { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 32px; padding-bottom: 28px; margin-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,.18); }
 .apacia-stulpeliai h4 { font-family: var(--antr); font-size: 18px; font-weight: 400; color: #fff; margin: 0 0 12px; }
 .apacia-stulpeliai > div > a:not(.zenklas) { display: block; color: #fff; text-decoration: none; font-size: 15px; margin-bottom: 8px; opacity: .9; }
@@ -863,7 +865,7 @@ footer.apacia .apacia-tel { margin-top: 14px; }
 footer.apacia .apacia-klausimai a, footer.apacia .apacia-tel a { color: #fff; }
 footer.apacia .smulkme, footer.apacia .smulkme-gale { color: var(--sviesi); }
 footer.apacia .smulkme strong { color: #fff; }
-footer.apacia .smulkme-gale { border-top-color: rgba(255,255,255,.18); }
+footer.apacia .smulkme-gale { border-top: 0; margin-top: 0; padding-top: 0; }
 footer.apacia .smulkme-gale .teisine { opacity: .75; }
 @media (max-width: 767px) { .apacia-stulpeliai { grid-template-columns: 1fr 1fr; } .apacia-stulpeliai > div:first-child { grid-column: 1 / -1; } }
 </style>
@@ -1394,6 +1396,23 @@ footer.apacia .smulkme-gale .teisine { opacity: .75; }
 
 <!-- ============ 8. APAČIA (atsargumo pastaba perkelta į apačią po „Produktų nuotraukos“, 2026-10-23) ============ -->
 
+<!-- 2026-10-24 Dangira: „paliekam šitą įrašą melsvame fone, toliau — kaip pasiūlei, pabaiga“ → šaltiniai ir atsargumo pastaba šviesiame
+     fone tarp mėlynų kvepalų ir tamsios apačios. Tvarka (2026-10-23): nuotraukos, Wyld NOTES, Young Living, atsargumo pastaba. -->
+<section class="saltiniu-juosta">
+  <div class="plotis">
+    <div class="smulkme">
+      <p>Produktų nuotraukos: Young Living ir Wyld NOTES.</p>
+      <p><strong>Wyld NOTES.</strong> Informacija: wyldnotes.com/en-eu, puslapis „Wyld Promise“, tinklaraštis ir „Wyld Restoration“.</p>
+      <p><strong>Young Living.</strong> Lašų kiekis garintuvui (8–10): youngliving.com/blog/eu/lt/kaip-naudoti-eterinius-aliejus.
+        Garinimo trukmė (iki 10 min. per dieną naujam aliejui): Young Living saugos gairės,
+        eu.youngliving.com/en-gb/pages/safety-guidelines. Rožių aliejaus faktai:
+        youngliving.com/lt_lt/products/roziu-eterinis-aliejus. Lojalumo programa:
+        youngliving.com/en_eu/opportunity/loyalty-rewards.</p>
+      <p>Eteriniai aliejai nėra vaistai ir nepakeičia gydytojo konsultacijos. Vaikams, nėščiosioms ir vaistus vartojantiems žmonėms galioja atskiros atsargumo taisyklės.</p>
+    </div>
+  </div>
+</section>
+
 <footer class="apacia">
   <div class="plotis">
     <!-- 2026-10-24 Dangira: „turi atsirasti mėlyname fone, kaip ir viršuje… kaip užbaigimo puslapis“ → tamsiai mėlynas fonas kaip .virsus,
@@ -1418,16 +1437,6 @@ footer.apacia .smulkme-gale .teisine { opacity: .75; }
         <a href="#kvepalai-uzsakymas">Kvepalai — Wyld NOTES</a>
         <p class="apacia-tel">Young Living klientų aptarnavimas<br><a href="tel:+37080030914">0800 30914</a> (nemokamas)</p>
       </div>
-    </div>
-    <div class="smulkme">
-      <p>Produktų nuotraukos: Young Living ir Wyld NOTES.</p>
-      <p><strong>Wyld NOTES.</strong> Informacija: wyldnotes.com/en-eu, puslapis „Wyld Promise“, tinklaraštis ir „Wyld Restoration“.</p>
-      <p><strong>Young Living.</strong> Lašų kiekis garintuvui (8–10): youngliving.com/blog/eu/lt/kaip-naudoti-eterinius-aliejus.
-        Garinimo trukmė (iki 10 min. per dieną naujam aliejui): Young Living saugos gairės,
-        eu.youngliving.com/en-gb/pages/safety-guidelines. Rožių aliejaus faktai:
-        youngliving.com/lt_lt/products/roziu-eterinis-aliejus. Lojalumo programa:
-        youngliving.com/en_eu/opportunity/loyalty-rewards.</p>
-      <p>Eteriniai aliejai nėra vaistai ir nepakeičia gydytojo konsultacijos. Vaikams, nėščiosioms ir vaistus vartojantiems žmonėms galioja atskiros atsargumo taisyklės.</p>
     </div>
     <!-- 2026-10-23 Dangira: neryškios teisinės pastabos — pačiame gale, per visą plotį. -->
     <div class="smulkme-gale">
