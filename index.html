@@ -868,6 +868,13 @@ footer.apacia .smulkme strong { color: #fff; }
 footer.apacia .smulkme-gale { border-top: 0; margin-top: 0; padding-top: 0; }
 footer.apacia .smulkme-gale .teisine { opacity: .75; }
 @media (max-width: 767px) { .apacia-stulpeliai { grid-template-columns: 1fr 1fr; } .apacia-stulpeliai > div:first-child { grid-column: 1 / -1; } }
+.i-virsu { position: fixed; right: 24px; bottom: 24px; z-index: 40; width: 52px; height: 52px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center; background: var(--virsus); color: #fff; text-decoration: none;
+  font-size: 24px; box-shadow: 0 6px 18px rgba(0,0,0,.25); border: 1px solid rgba(255,255,255,.35);
+  opacity: 0; pointer-events: none; transform: translateY(8px); transition: opacity .25s, transform .25s; }
+.i-virsu.matomas { opacity: 1; pointer-events: auto; transform: none; }
+.i-virsu:hover { background: #2f548f; }
+@media (max-width: 767px) { .i-virsu { right: 16px; bottom: 16px; width: 46px; height: 46px; } }
 </style>
 </head>
 <body>
@@ -1452,6 +1459,8 @@ footer.apacia .smulkme-gale .teisine { opacity: .75; }
   </div>
 </footer>
 
+<!-- 2026-10-24 Dangira: „nebeina pakelti“ → mygtukas „↑“ grįžti į viršų; pasirodo nuslinkus žemiau pirmo ekrano. -->
+<a class="i-virsu" href="#" aria-label="Į viršų">↑</a>
 <script>
   // Dangiros Young Living užsakymo nuoroda. Įrašyti čia, ir ji atsiras visur.
   // 2026-10-04: jos duota registracijos nuoroda (sponsorid/enrollerid 3882850), patikrinta — atsidaro LT, numeris įsimenamas.
@@ -1616,6 +1625,14 @@ footer.apacia .smulkme-gale .teisine { opacity: .75; }
       m.querySelectorAll("a").forEach(function (a) { a.addEventListener("click", function () { m.open = false; }); });
       document.addEventListener("click", function (e) { if (m.open && !m.contains(e.target)) m.open = false; });
     });
+  })();
+</script>
+<script>
+  // 2026-10-24: „↑ į viršų“ matosi nuslinkus žemiau pirmo ekrano
+  (function () {
+    var m = document.querySelector(".i-virsu"); if (!m) return;
+    var f = function () { m.classList.toggle("matomas", window.scrollY > window.innerHeight * 0.8); };
+    window.addEventListener("scroll", f, { passive: true }); f();
   })();
 </script>
 </body>
