@@ -216,6 +216,8 @@ h2 { font-size: clamp(28px, 3vw, 42px); /* 2026-10-23 Dangira: visos skilčių a
 .kortele .taskas-al { top: 20px; right: 20px; left: auto; margin: 0; border-color: #24406f; color: #24406f; background: rgba(36,64,111,.06); }
 .kortele:hover .taskas-al, .kortele.atidaryta .taskas-al { animation: none; }
 .uzsakyti-al { margin-top: 16px; background: #24406f !important; color: #fff !important; border-color: #24406f !important; }
+/* 2026-10-25: po aliejaus mygtuku — YL nuoroda su visais keturiais (Dangira: „po vieną, o po to — į visus keturis“) */
+.visi-keturi { display: block; margin-top: 8px; font-size: 14px; color: var(--al-tekstas, #5a6170); opacity: .9; text-decoration: underline; text-underline-offset: 3px; }
 /* tikros proporcijos: 5 ml ~5,1 cm, 15 ml ~6,4 cm aukščio (pardavėjų skelbimai) → 80 % */
 .kortele .buteliukas.mazas { width: 77px; justify-self: center; margin-top: 10px; }
 @media (max-width: 767px) { .kortele .buteliukas.mazas { width: 58px; } }
@@ -943,7 +945,9 @@ footer .smulkme p { font-size: 14px; margin: 0 0 8px; max-width: none; }
             <div class="aprasas">
             <p>Šiltas, prieskoninis kvapas, lyg ką tik būtų iškeptas pyragas su gvazdikėliais ir cinamonu.</p>
             <p class="kada"><strong>Kada:</strong> rudenį ir žiemą, kai norisi jaukesnių namų.</p>
-              <a class="yl-nuoroda mygtukas pilnas uzsakyti-al" href="#uzsakyti" data-produktas="https://www.youngliving.com/lt_lt/products/thieves?sponsorid=3882850&amp;enrollerid=3882850&amp;isocountrycode=LT&amp;culture=lt-LT&amp;type=member" target="_blank" rel="noopener">Užsisakyti</a>
+              <!-- 2026-10-25: YL socialinio tinklo nuoroda „Thieves“ (Thieves+ 5 ml 563108, Loyalty „Ne“); be yl-nuoroda, kad skriptas neperrašytų -->
+              <a class="mygtukas pilnas uzsakyti-al" href="https://www.youngliving.com/apps/enrollment/social-links/b8966402-b9d2-4334-b383-923c7f36c139" target="_blank" rel="noopener">Užsisakyti</a>
+              <a class="visi-keturi" href="https://www.youngliving.com/apps/enrollment/social-links/366ab7ec-2195-40ca-a327-55b5eb2645d1" target="_blank" rel="noopener">arba visus keturis kartu</a>
             </div>
           </div>
         </div>
@@ -966,7 +970,9 @@ footer .smulkme p { font-size: 14px; margin: 0 0 8px; max-width: none; }
             <div class="aprasas">
             <p>Gaivus, vėsus kvapas. Pabunda ir kambarys, ir tas, kas jame sėdi.</p>
             <p class="kada"><strong>Kada:</strong> ryte arba prie darbo stalo, kai reikia susikaupti. Kvapas stiprus, todėl užtenka kelių lašų.</p>
-              <a class="yl-nuoroda mygtukas pilnas uzsakyti-al" href="#uzsakyti" data-produktas="https://www.youngliving.com/lt_lt/products/pipirmeciu-eterinis-aliejus?sponsorid=3882850&amp;enrollerid=3882850&amp;isocountrycode=LT&amp;culture=lt-LT&amp;type=member" target="_blank" rel="noopener">Užsisakyti</a>
+              <!-- 2026-10-25: YL nuoroda „Pipirmete“ (Peppermint+ 5 ml 562808, Loyalty „Ne“) -->
+              <a class="mygtukas pilnas uzsakyti-al" href="https://www.youngliving.com/apps/enrollment/social-links/156bdaca-e1c8-486f-912d-b93634f1257d" target="_blank" rel="noopener">Užsisakyti</a>
+              <a class="visi-keturi" href="https://www.youngliving.com/apps/enrollment/social-links/366ab7ec-2195-40ca-a327-55b5eb2645d1" target="_blank" rel="noopener">arba visus keturis kartu</a>
             </div>
           </div>
         </div>
@@ -989,7 +995,9 @@ footer .smulkme p { font-size: 14px; margin: 0 0 8px; max-width: none; }
             <div class="aprasas">
             <p>Švelnus, ramus kvapas — nuo jo dažniausiai ir pradedama.</p>
             <p class="kada"><strong>Kada:</strong> vakare, kai nurimsta dienos šurmulys. Garintuvą išjunk prieš miegą.</p>
-              <a class="yl-nuoroda mygtukas pilnas uzsakyti-al" href="#uzsakyti" data-produktas="https://www.youngliving.com/lt_lt/products/levandu-eterinis-aliejus?sponsorid=3882850&amp;enrollerid=3882850&amp;isocountrycode=LT&amp;culture=lt-LT&amp;type=member" target="_blank" rel="noopener">Užsisakyti</a>
+              <!-- 2026-10-25: YL nuoroda „Levandos“ (Lavender+ 5 ml 559008, Loyalty „Ne“) -->
+              <a class="mygtukas pilnas uzsakyti-al" href="https://www.youngliving.com/apps/enrollment/social-links/f8c90385-6e1b-4df7-bd34-7a8108d65854" target="_blank" rel="noopener">Užsisakyti</a>
+              <a class="visi-keturi" href="https://www.youngliving.com/apps/enrollment/social-links/366ab7ec-2195-40ca-a327-55b5eb2645d1" target="_blank" rel="noopener">arba visus keturis kartu</a>
             </div>
           </div>
         </div>
@@ -1012,7 +1020,9 @@ footer .smulkme p { font-size: 14px; margin: 0 0 8px; max-width: none; }
             <div class="aprasas">
             <p>Ryškus, citrusinis ir gaivus kvapas. Young Living jį vadina „saulės spinduliais buteliuke“.</p>
             <p class="kada"><strong>Kada:</strong> ryte, kai norisi žvalumo. Jei tepi ant odos, iki 12 valandų po to venk saulės.</p>
-              <a class="yl-nuoroda mygtukas pilnas uzsakyti-al" href="#uzsakyti" data-produktas="https://www.youngliving.com/lt_lt/products/citrinu-eterinis-aliejus?sponsorid=3882850&amp;enrollerid=3882850&amp;isocountrycode=LT&amp;culture=lt-LT&amp;type=member" target="_blank" rel="noopener">Užsisakyti</a>
+              <!-- 2026-10-25: YL nuoroda „Citrina“ (Lemon+ 5 ml 562508, Loyalty „Ne“) -->
+              <a class="mygtukas pilnas uzsakyti-al" href="https://www.youngliving.com/apps/enrollment/social-links/499948fc-7ffa-4ecc-8f3f-1599085cfecf" target="_blank" rel="noopener">Užsisakyti</a>
+              <a class="visi-keturi" href="https://www.youngliving.com/apps/enrollment/social-links/366ab7ec-2195-40ca-a327-55b5eb2645d1" target="_blank" rel="noopener">arba visus keturis kartu</a>
             </div>
           </div>
         </div>
