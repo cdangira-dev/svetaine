@@ -773,6 +773,9 @@ h2 { margin-bottom: var(--po-h2); }
 .uzs-keliai > div { background: var(--langelis); border-radius: 16px; padding: 26px 28px; }
 .uzs-keliai h3 { font-size: 24px; margin: 0 0 8px; }
 .uzsakymas .uzs-keliai p { font-size: 16px; margin: 0 0 8px; max-width: none; }
+.uzs-loj { list-style: none; margin: 0; padding: 0; }
+.uzs-loj li { font-size: 16px; line-height: 1.55; margin: 0 0 8px; }
+.uzs-loj b { color: var(--tamsi); font-weight: 600; }
 .uzs-kvietimas { margin-top: 32px; display: flex; align-items: center; justify-content: space-between; gap: 32px; padding: 30px 36px; border-radius: 18px;
   background: linear-gradient(135deg, var(--gilus) 0%, var(--virsus) 100%); }
 .uzsakymas .uzs-kvietimas p { color: #fff; font-size: 19px; margin: 0; font-family: var(--antr); } /* 2026-10-24: viena eilutė */
@@ -1176,14 +1179,10 @@ footer .smulkme p { font-size: 14px; margin: 0 0 8px; max-width: none; }
 <section class="uzsakymas" id="uzsakyti">
   <!-- 2026-10-23 Dangira: „manęs kaip asmens tekstuose turi nelikti“ — be „aš/mano/man“ (išskyrus „Labas, aš Dangira“ ir teisinę pastabą apačioje). -->
   <!-- 2026-10-23 Dangira: „stiprus pertvarkymas“ → 3 žingsniai vienoje eilėje, du vienodi pasirinkimai, vienas didelis mygtukas. -->
+  <!-- 2026-10-24 Dangira: 3 žingsnių kortelės (1-2-3) — „naikink“. -->
   <div class="plotis rodyk">
     <h2>Kaip užsisakyti pačiam</h2>
     <p class="ivadas">Užsisakai pats, kada tau patogu, o siuntinys atkeliauja tiesiai į namus.</p>
-    <ol class="uzs-zingsniai">
-      <li><span class="uzs-nr">1</span><b>Atsidaryk nuorodą</b><span>Mygtukas „Į Young Living“ yra žemiau. Jis veda į oficialų Young Living puslapį.</span></li>
-      <li><span class="uzs-nr">2</span><b>Užsiregistruok savo vardu</b><span>Viršuje spausk „Susikurti paskyrą“. Paskyra tavo, užsakymai irgi tavo. Kitą kartą tiesiog prisijungsi.</span></li>
-      <li><span class="uzs-nr">3</span><b>Išsirink ir užsisakyk</b><span>Kainos surašytos ten pat, oficialiame puslapyje. Siuntinys atkeliauja paštu.</span></li>
-    </ol>
     <div class="uzs-keliai">
       <div>
         <h3>Vieną kartą</h3>
@@ -1191,16 +1190,14 @@ footer .smulkme p { font-size: 14px; margin: 0 0 8px; max-width: none; }
       </div>
       <div>
         <h3>Lojalumo programa</h3>
-        <p>Užsisakai reguliariai ir siuntinys kas mėnesį atkeliauja pats, tad tikrai nepamirši. Tam reikia bent 50 PV per mėnesį.
-          Taškais grįžta 10 %, nuo 4-ojo mėnesio iš eilės – 20&nbsp;%, nuo 25-ojo – 25&nbsp;%.</p>
-          <!-- 2026-10-22 Dangira: „jei nori rinkti taškus, kurti savo komandą — registruokis…“. YL P&P Europe 2021 (LT) 3.2:
-               „Klientai negali dalyvauti „Essential Rewards“ programoje“; BRAND PARTNER „gali įsigyti … didmeninės prekybos kaina“.
-               Komp. plano „Loyalty Rewards“ — „Brand Partners may elect…“. YL_NUORODA turi type=member = BRAND PARTNER registracija. -->
-        <p>Jei nori rinkti taškus ar kurti savo komandą, registruokis kaip Young Living BRAND PARTNER. Nuoroda kaip tik ir veda į šią registraciją.</p>
-        <!-- 2026-10-25 Dangira: paminėti lojalumo pasirinkimą. Visos aliejų/mišinio nuorodos sukurtos su Loyalty „Ne“.
-             YL registracijos formos žodžiai: „bet kuriuo metu galite užsiregistruoti į „Essential Rewards“ programą Virtualiajame biure
-             arba paskambinę į klientų aptarnavimo centrą“; tel. 0800 30914 — YL LT puslapio poraštė. -->
-        <p>Prie aliejų ir mišinio esantys mygtukai „Užsisakyti“ veda į vienkartinį užsakymą. Į lojalumo programą gali prisijungti bet kada vėliau: savo Young Living paskyroje arba paskambinęs klientų aptarnavimui (nemokamas tel. 0800&nbsp;30914).</p>
+        <!-- 2026-10-24 Dangira: „Lojalumo programos tekstas nekoks“ → trys eilutės; „Kaip prisijungti / BRAND PARTNER“ — „išmesti“.
+             Faktai tie patys kaip anksčiau: 50 PV; 10 % → 20 % nuo 4-ojo mėn. → 25 % nuo 25-ojo; YL registracijos formos žodžiai apie
+             prisijungimą vėliau „Virtualiajame biure arba paskambinę į klientų aptarnavimo centrą“; tel. 0800 30914 — YL LT poraštė. -->
+        <ul class="uzs-loj">
+          <li><b>Kaip veikia:</b> užsakymas atkeliauja kas mėnesį pats. Sąlyga – bent 50 PV per mėnesį.</li>
+          <li><b>Kas grįžta:</b> dalis užsakymo grįžta taškais – pirmus 3 mėnesius 10&nbsp;%, nuo 4-ojo mėnesio iš eilės 20&nbsp;%, nuo 25-ojo 25&nbsp;%.</li>
+          <li><b>Jau užsisakei vieną kartą?</b> Mygtukai „Užsisakyti“ prie aliejų ir mišinio veda į vienkartinį užsakymą. Į lojalumo programą gali prisijungti bet kada vėliau – savo Young Living paskyroje arba nemokamu tel. 0800&nbsp;30914.</li>
+        </ul>
       </div>
     </div>
     <div class="uzs-kvietimas">
