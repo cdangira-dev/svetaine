@@ -361,7 +361,7 @@ h2 { font-size: clamp(28px, 3vw, 42px); /* 2026-10-23 Dangira: visos skilčių a
 @media (min-width: 900px) {
   .raindrop .dalys { grid-template-columns: auto 1fr; min-height: 0; align-items: center; padding: 56px 0; }
   .raindrop .video-pora { grid-template-columns: auto auto; gap: 16px; padding: 0 0 0 4vw; }
-  .raindrop .video-pora video { height: min(calc(100svh - 190px), 680px); width: auto; }
+  .raindrop .video-pora video { height: min(calc(100svh - 150px), 820px); width: auto; } /* 10-25: dydis kaip anksčiau — Dangira norėjo mažinti ne langelį, o tarpą video viduje */
   .raindrop .tekstas { padding: 24px 4vw 24px 48px; }
   .raindrop .tekstas h2 { max-width: none; }
   .raindrop .tekstas p { max-width: 78ch; }
@@ -1083,14 +1083,14 @@ footer.apacia .smulkme-gale .teisine { opacity: .75; }
     <div class="video-pora rodyk">
       <figure>
         <!-- 2026-10-25: perdaryta be taškų po antraščių (VLKK); ?v= — kad naršyklė nerodytų senos kopijos -->
-        <video controls playsinline preload="none" poster="vaizdai/raindrop-padai-poster.jpg?v=20261025">
-          <source src="vaizdai/raindrop-padai-svetainei.mp4?v=20261025b" type="video/mp4">
+        <video controls playsinline preload="none" poster="vaizdai/raindrop-padai-poster.jpg?v=20261025c">
+          <source src="vaizdai/raindrop-padai-svetainei.mp4?v=20261025c" type="video/mp4">
         </video>
         <figcaption>1 dalis · Padai</figcaption>
       </figure>
       <figure>
-        <video controls playsinline preload="none" poster="vaizdai/raindrop-nugara-poster.jpg?v=20261025">
-          <source src="vaizdai/raindrop-nugara-svetainei.mp4?v=20261025b" type="video/mp4">
+        <video controls playsinline preload="none" poster="vaizdai/raindrop-nugara-poster.jpg?v=20261025c">
+          <source src="vaizdai/raindrop-nugara-svetainei.mp4?v=20261025c" type="video/mp4">
         </video>
         <figcaption>2 dalis · Nugara</figcaption>
       </figure>
