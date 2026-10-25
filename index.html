@@ -357,16 +357,26 @@ h2 { font-size: clamp(28px, 3vw, 42px); /* 2026-10-23 Dangira: visos skilčių a
 /* 2026-10-23: telefone tarpas tarp teksto ir video buvo 144 px (eilutės 307 padding-bottom perrašydavo 311) */
 @media (max-width: 899px) { .raindrop .tekstas { padding: 56px 24px 16px; } .raindrop .video-pora { padding-top: 24px; } }
 /* 2026-10-23 Dangira: 100 % ekrane paspaudus „Raindrop“ visa skiltis turi tilpti, be tuščio tarpo dešinėje */
-@media (min-width: 1100px) {
-  .raindrop .dalys { grid-template-columns: auto 1fr; min-height: 100vh; align-items: center; }
-  .raindrop .video-pora { grid-template-columns: auto auto; padding: 0 0 0 4vw; }
-  .raindrop .video-pora video { height: calc(100vh - 110px); max-height: 820px; width: auto; }
-  .raindrop .tekstas { padding: 24px 4vw 24px 56px; }
+/* 2026-10-25 Dangira: išdidinus (125–200 %) video netilpo, mygtukas nukirstas → video mažesni, taisyklė nuo 900 px, tekstas glaudesnis žemame lange */
+@media (min-width: 900px) {
+  .raindrop .dalys { grid-template-columns: auto 1fr; min-height: 0; align-items: center; padding: 56px 0; }
+  .raindrop .video-pora { grid-template-columns: auto auto; gap: 16px; padding: 0 0 0 4vw; }
+  .raindrop .video-pora video { height: min(calc(100svh - 190px), 680px); width: auto; }
+  .raindrop .tekstas { padding: 24px 4vw 24px 48px; }
   .raindrop .tekstas h2 { max-width: none; }
   .raindrop .tekstas p { max-width: 78ch; }
 }
-@media (min-width: 1100px) and (max-height: 800px) {
-  .raindrop .tekstas p { font-size: 15px; margin-bottom: 8px; }
+@media (min-width: 900px) and (max-height: 900px) {
+  .raindrop .tekstas h2 { font-size: 34px; margin-bottom: 12px; }
+  .raindrop .tekstas p { font-size: 15px; line-height: 1.5; margin-bottom: 6px; }
+  .raindrop .pradek { margin-top: 14px; padding-top: 14px; }
+  .raindrop .pradek h3 { font-size: 20px; margin-bottom: 4px; }
+  .raindrop .misinio-mygtukai { margin-top: 10px; }
+}
+/* labai žemas langas (200 %): video viršuje, kad tilptų visas; tekstas slenka žemyn */
+@media (min-width: 900px) and (max-height: 600px) {
+  .raindrop .dalys { padding: 24px 0; align-items: start; }
+  .raindrop .video-pora video { height: calc(100svh - 80px); }
 }
 .pradek { margin-top: 28px; padding: 28px 0 0; border-top: 1px solid var(--linija); }
 .pradek h3 { font-size: 22px; margin-bottom: 10px; }
@@ -1074,13 +1084,13 @@ footer.apacia .smulkme-gale .teisine { opacity: .75; }
       <figure>
         <!-- 2026-10-25: perdaryta be taškų po antraščių (VLKK); ?v= — kad naršyklė nerodytų senos kopijos -->
         <video controls playsinline preload="none" poster="vaizdai/raindrop-padai-poster.jpg?v=20261025">
-          <source src="vaizdai/raindrop-padai-svetainei.mp4?v=20261025" type="video/mp4">
+          <source src="vaizdai/raindrop-padai-svetainei.mp4?v=20261025b" type="video/mp4">
         </video>
         <figcaption>1 dalis · Padai</figcaption>
       </figure>
       <figure>
         <video controls playsinline preload="none" poster="vaizdai/raindrop-nugara-poster.jpg?v=20261025">
-          <source src="vaizdai/raindrop-nugara-svetainei.mp4?v=20261025" type="video/mp4">
+          <source src="vaizdai/raindrop-nugara-svetainei.mp4?v=20261025b" type="video/mp4">
         </video>
         <figcaption>2 dalis · Nugara</figcaption>
       </figure>
