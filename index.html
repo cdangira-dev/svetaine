@@ -135,7 +135,8 @@ h2 { font-size: clamp(28px, 3vw, 42px); /* 2026-10-23 Dangira: visos skilčių a
 }
 @media (min-width: 900px) { .virsus .turinys { grid-template-columns: 1.2fr 0.8fr; gap: 56px; padding-bottom: 48px; } }
 .uzrasas { font-size: 13px; letter-spacing: 4px; text-transform: uppercase; color: var(--sviesi); margin-bottom: 24px; }
-.virsus h1 { color: #fff; font-size: clamp(46px, 6.6vw, 88px); line-height: 1.02; letter-spacing: -0.015em; margin-bottom: 28px; max-width: 12ch; }
+/* 2026-10-26 Dangira: „nepatinka toks didelis pavadinimas“ — buvo clamp(46px, 6.6vw, 88px), 12ch */
+.virsus h1 { color: #fff; font-size: clamp(36px, 4vw, 58px); line-height: 1.06; letter-spacing: -0.015em; margin-bottom: 28px; max-width: 15ch; }
 .virsus .paantraste { font-size: 20px; color: #c9d6ee; max-width: 32ch; margin-bottom: 40px; }
 .mygtukai { display: flex; flex-wrap: wrap; gap: 14px; }
 
@@ -668,7 +669,7 @@ h2 { margin-bottom: var(--po-h2); }
 /* telefone — vienodi dydžiai: skilties antraštė 30, poskyris 22, produkto pavadinimas 26, įvadas 17, tekstas 16, smulkus 14 */
 @media (max-width: 767px) {
   body { font-size: 16px; }
-  .virsus h1 { font-size: 40px; line-height: 1.1; }
+  .virsus h1 { font-size: 34px; line-height: 1.1; }
   h2 { font-size: 30px; }
   .jura .citata { font-size: 26px; }
   .taisykles h3, .pradek h3, .keliai h3, .kvietimas h3, .wyld-kvietimas h3, .kaip-skleidziasi h3 { font-size: 22px; }
@@ -1140,7 +1141,7 @@ footer.apacia .smulkme-gale .teisine { opacity: .75; }
      video (vaizdai/misinys-*), mygtukus. Pirmas — galvos odos mišinys (claude-darbas/projects/young-living/misiniai/plauku-misinys/):
      receptas — jos pačios (4+4+4, 2–3 k./sav., vakare įsitrina, ryte išsiplauna). Šalavijas — jos sprendimas palikti
      (YL LT 2026-10-21 „šiuo metu neprieinamas“). Citata pažodžiui — youngliving.com/lt_LT/products/rozmarinu-eterinis-aliejus
-     (tikrinta 2026-10-20). Video tik A variantas (B su plike — ne viešai, YL P&P 5.3). Jokių „stabdo slinkimą“, „atauga“. -->
+     (tikrinta 2026-10-20). Video — C variantas (jos sprendimas 2026-10-22; 2026-10-26 eksperto pastaba dėl numanomo teiginio — ji palieka C). Jokių „stabdo slinkimą“, „atauga“. -->
 <section class="misinys" id="misinys">
   <div class="dalys">
     <figure class="misinys-video rodyk">
@@ -1172,7 +1173,11 @@ footer.apacia .smulkme-gale .teisine { opacity: .75; }
       <div class="misinio-mygtukai">
         <a class="mygtukas pilnas" href="https://www.youngliving.com/apps/enrollment/social-links/3ef511e0-cfde-4574-b68a-8b47e66fd554" target="_blank" rel="noopener">Užsisakyti mišinio aliejus</a>
       </div>
-      <!-- Atsargumo pastaba čia išimta 2026-10-23 (Dangira: „du kartus kartojasi, paliekame tik gale“) — lieka puslapio apačioje. -->
+      <!-- Bendra atsargumo pastaba čia išimta 2026-10-23 („du kartus kartojasi“) — lieka apačioje.
+           2026-10-26 Dangira „sutvarkai“ (eksperto A2): čia tik konkretūs etikečių nurodymai — pipirmėtė: YL LT puslapis „Laikykite“
+           (menesio-aliejai-video/saltiniai/yl-pipirmete-puslapis-2026-10-20.txt); šalavijas nėštumo metu: eu.youngliving.com/en-gb/pages/safety-guidelines
+           („DO NOT use … sage … during pregnancy“). -->
+      <p class="saltinis">Tik išoriniam naudojimui. Saugokite, kad nepatektų į akis ir ant gleivinių. Patepę odą pipirmėtės aliejumi, iki 12 valandų venkite buvimo saulėje ar UV spindulių. Šalavijo nenaudokite nėštumo metu. Jei maitinate krūtimi, vartojate vaistus ar sergate, prieš naudodami pasitarkite su sveikatos priežiūros specialistu.</p>
     </div>
   </div>
 </section>
@@ -1231,7 +1236,8 @@ footer.apacia .smulkme-gale .teisine { opacity: .75; }
     <div class="uzs-keliai">
       <div>
         <h3>Vieną kartą</h3>
-        <p>Užsisakote, ko reikia, ir viskas. Privalomos sumos nėra – galite užsisakyti ir kartą per metus.</p>
+        <p>Užsisakote, ko reikia, ir viskas. Privalomos mėnesio sumos nėra.</p>
+        <!-- 2026-10-26 (eksperto A5): „galite užsisakyti ir kartą per metus“ išimta — YL P&P LT: BRAND PARTNER be 50 PV per 12 mėn. laikomas neaktyviu (12.1.1); kokia narystė per socialinę nuorodą — nepatikrinta. -->
         <!-- 2026-10-25 Dangira: sakinys apie mygtukus perkeltas čia iš lojalumo langelio („nesusiję“). Visos YL nuorodos sukurtos su Loyalty „Ne“. -->
         <p>Visi aliejų mygtukai „Užsisakyti“ šiame puslapyje veda į tokį užsakymą.</p>
       </div>
@@ -1409,7 +1415,7 @@ footer.apacia .smulkme-gale .teisine { opacity: .75; }
         <div>
           <h3>Pirmam pirkimui – 10&nbsp;% nuolaida</h3>
           <!-- 2026-10-25 Dangira: „įveskite kodą“ neaišku — nuorodos kodą pritaiko pačios (patikrinta: Black Book → krepšelis → apmokėjimas, LASAS-JUROJE jau yra) -->
-          <p>Jei kvepalus užsisakote per šiame puslapyje pateiktas kvepalų nuorodas, gaunate 10&nbsp;% nuolaidą, nes automatiškai pritaikomas kodas <span class="kodas">lasas-juroje</span>. Kvepalai siunčiami ir į Lietuvą.</p>
+          <p>Jei kvepalus užsisakote per šiame puslapyje pateiktas kvepalų nuorodas, pirmam pirkimui gaunate 10&nbsp;% nuolaidą, nes automatiškai pritaikomas kodas <span class="kodas">lasas-juroje</span>. Kvepalai siunčiami ir į Lietuvą. Puslapio autorė yra Wyld Notes partnerė ir už pirkinius per šias nuorodas gauna komisinį atlygį.</p>
           <p class="pastaba-langas">Jei atsidarys langas su el. pašto laukeliu, spauskite „No, thanks“ – nuolaida jau pritaikyta. Apmokėdami patikrinkite, ar šalis – Lithuania.</p>
         </div>
         <a class="mygtukas pilnas" href="https://wyldnotes.com/discount/lasas-juroje?ref=lasas-juroje&amp;redirect=/en-eu/collections/fine-fragrance" target="_blank" rel="noopener">Užsisakyti kvepalus</a>
